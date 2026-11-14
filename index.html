@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#18110d" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <title>Сетлист & Аккорды</title>
+<html lang="ru"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#18110d">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Сетлист &amp; Аккорды</title>
   <style>
     :root {
       --bg-main: #160f0b;
@@ -590,7 +589,7 @@
   <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
   <header class="top-bar">
     <div class="top-row-1">
-      <button class="btn primary" onclick="toggleDrawer(true)">☰ Треклист (<span id="songCount">0</span>)</button>
+      <button class="btn primary" onclick="toggleDrawer(true)">☰ Треклист (<span id="songCount">59</span>)</button>
       <button class="btn gold" onclick="document.getElementById('txtFileInput').click()" title="Загрузить 53 штуки+.txt">📂 Загрузить 53 штуки+.txt</button>
       <button class="btn" onclick="openQuickPasteModal()">📋 Вставить песню</button>
       <button class="btn" onclick="openEditModal(currentSongId)">✎ Изм.</button>
@@ -625,12 +624,64 @@
         <button class="btn" style="padding:2px 7px; min-height:24px; font-size:11px;" onclick="toggleChordStrip()" id="hideChordsBtn">Скрыть ▲</button>
       </div>
     </div>
-    <div class="chord-strip" id="chordStrip"></div>
+    <div class="chord-strip" id="chordStrip">
+      <div class="chord-card" data-chord="Em" onclick="playGuitarChord([0,2,2,0,0,0])">
+        <div class="chord-card-name">Em</div>
+        <div class="chord-card-pos">Откр.</div>
+        <svg width="84" height="96" viewBox="0 0 84 96"><line x1="16" y1="18" x2="74" y2="18" stroke="currentColor" stroke-width="3.2"></line><line x1="16" y1="18" x2="74" y2="18" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="35.5" x2="74" y2="35.5" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="53" x2="74" y2="53" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="70.5" x2="74" y2="70.5" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="88" x2="74" y2="88" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="18" x2="16" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.5"></line><line x1="27.6" y1="18" x2="27.6" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.3599999999999999"></line><line x1="39.2" y1="18" x2="39.2" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.22"></line><line x1="50.8" y1="18" x2="50.8" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.08"></line><line x1="62.4" y1="18" x2="62.4" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.94"></line><line x1="74" y1="18" x2="74" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.7999999999999999"></line><circle cx="16" cy="10" r="3.2" fill="none" stroke="#f5c451" stroke-width="1.5"></circle><circle cx="27.6" cy="44.25" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"></circle><text x="27.6" y="47.45" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">2</text><circle cx="39.2" cy="44.25" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"></circle><text x="39.2" y="47.45" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">2</text><circle cx="50.8" cy="10" r="3.2" fill="none" stroke="#f5c451" stroke-width="1.5"></circle><circle cx="62.4" cy="10" r="3.2" fill="none" stroke="#f5c451" stroke-width="1.5"></circle><circle cx="74" cy="10" r="3.2" fill="none" stroke="#f5c451" stroke-width="1.5"></circle></svg>
+        
+          <div class="chord-nav" onclick="event.stopPropagation()">
+            <button onclick="cycleChordVar('Em', -1)">◀</button>
+            <span>1/2</span>
+            <button onclick="cycleChordVar('Em', 1)">▶</button>
+          </div>
+        
+      </div>
+    
+      <div class="chord-card" data-chord="G" onclick="playGuitarChord([3,2,0,0,0,3])">
+        <div class="chord-card-name">G</div>
+        <div class="chord-card-pos">Откр.</div>
+        <svg width="84" height="96" viewBox="0 0 84 96"><line x1="16" y1="18" x2="74" y2="18" stroke="currentColor" stroke-width="3.2"></line><line x1="16" y1="18" x2="74" y2="18" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="35.5" x2="74" y2="35.5" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="53" x2="74" y2="53" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="70.5" x2="74" y2="70.5" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="88" x2="74" y2="88" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="18" x2="16" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.5"></line><line x1="27.6" y1="18" x2="27.6" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.3599999999999999"></line><line x1="39.2" y1="18" x2="39.2" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.22"></line><line x1="50.8" y1="18" x2="50.8" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.08"></line><line x1="62.4" y1="18" x2="62.4" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.94"></line><line x1="74" y1="18" x2="74" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.7999999999999999"></line><circle cx="16" cy="61.75" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"></circle><text x="16" y="64.95" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">3</text><circle cx="27.6" cy="44.25" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"></circle><text x="27.6" y="47.45" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">2</text><circle cx="39.2" cy="10" r="3.2" fill="none" stroke="#f5c451" stroke-width="1.5"></circle><circle cx="50.8" cy="10" r="3.2" fill="none" stroke="#f5c451" stroke-width="1.5"></circle><circle cx="62.4" cy="10" r="3.2" fill="none" stroke="#f5c451" stroke-width="1.5"></circle><circle cx="74" cy="61.75" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"></circle><text x="74" y="64.95" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">3</text></svg>
+        
+          <div class="chord-nav" onclick="event.stopPropagation()">
+            <button onclick="cycleChordVar('G', -1)">◀</button>
+            <span>1/3</span>
+            <button onclick="cycleChordVar('G', 1)">▶</button>
+          </div>
+        
+      </div>
+    
+      <div class="chord-card" data-chord="Bm" onclick="playGuitarChord([-1,2,4,4,3,2])">
+        <div class="chord-card-name">Bm</div>
+        <div class="chord-card-pos">Баррэ II (5стр)</div>
+        <svg width="84" height="96" viewBox="0 0 84 96"><line x1="16" y1="18" x2="74" y2="18" stroke="currentColor" stroke-width="3.2"></line><line x1="16" y1="18" x2="74" y2="18" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="35.5" x2="74" y2="35.5" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="53" x2="74" y2="53" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="70.5" x2="74" y2="70.5" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="88" x2="74" y2="88" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="18" x2="16" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.5"></line><line x1="27.6" y1="18" x2="27.6" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.3599999999999999"></line><line x1="39.2" y1="18" x2="39.2" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.22"></line><line x1="50.8" y1="18" x2="50.8" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.08"></line><line x1="62.4" y1="18" x2="62.4" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.94"></line><line x1="74" y1="18" x2="74" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.7999999999999999"></line><text x="16" y="13" text-anchor="middle" fill="#e55343" font-size="10" font-weight="800">×</text><circle cx="27.6" cy="44.25" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"></circle><text x="27.6" y="47.45" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">2</text><circle cx="39.2" cy="79.25" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"></circle><text x="39.2" y="82.45" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">4</text><circle cx="50.8" cy="79.25" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"></circle><text x="50.8" y="82.45" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">4</text><circle cx="62.4" cy="61.75" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"></circle><text x="62.4" y="64.95" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">3</text><circle cx="74" cy="44.25" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"></circle><text x="74" y="47.45" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">2</text></svg>
+        
+          <div class="chord-nav" onclick="event.stopPropagation()">
+            <button onclick="cycleChordVar('Bm', -1)">◀</button>
+            <span>1/3</span>
+            <button onclick="cycleChordVar('Bm', 1)">▶</button>
+          </div>
+        
+      </div>
+    
+      <div class="chord-card" data-chord="A" onclick="playGuitarChord([-1,0,2,2,2,0])">
+        <div class="chord-card-name">A</div>
+        <div class="chord-card-pos">Откр.</div>
+        <svg width="84" height="96" viewBox="0 0 84 96"><line x1="16" y1="18" x2="74" y2="18" stroke="currentColor" stroke-width="3.2"></line><line x1="16" y1="18" x2="74" y2="18" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="35.5" x2="74" y2="35.5" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="53" x2="74" y2="53" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="70.5" x2="74" y2="70.5" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="88" x2="74" y2="88" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"></line><line x1="16" y1="18" x2="16" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.5"></line><line x1="27.6" y1="18" x2="27.6" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.3599999999999999"></line><line x1="39.2" y1="18" x2="39.2" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.22"></line><line x1="50.8" y1="18" x2="50.8" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.08"></line><line x1="62.4" y1="18" x2="62.4" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.94"></line><line x1="74" y1="18" x2="74" y2="88" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.7999999999999999"></line><text x="16" y="13" text-anchor="middle" fill="#e55343" font-size="10" font-weight="800">×</text><circle cx="27.6" cy="10" r="3.2" fill="none" stroke="#f5c451" stroke-width="1.5"></circle><circle cx="39.2" cy="44.25" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"></circle><text x="39.2" y="47.45" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">2</text><circle cx="50.8" cy="44.25" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"></circle><text x="50.8" y="47.45" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">2</text><circle cx="62.4" cy="44.25" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"></circle><text x="62.4" y="47.45" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">2</text><circle cx="74" cy="10" r="3.2" fill="none" stroke="#f5c451" stroke-width="1.5"></circle></svg>
+        
+          <div class="chord-nav" onclick="event.stopPropagation()">
+            <button onclick="cycleChordVar('A', -1)">◀</button>
+            <span>1/2</span>
+            <button onclick="cycleChordVar('A', 1)">▶</button>
+          </div>
+        
+      </div>
+    </div>
   </section>
 
   <!-- ОСНОВНОЙ ЭКРАН ПЕСНИ -->
   <main class="song-container" id="songMain" ondblclick="toggleAutoscroll()">
-    <div class="import-banner" id="importBanner">
+    <div class="import-banner" id="importBanner" style="display: none;">
       <div style="font-size:13px;">
         <b>Исправлено чтение переносов строк Windows (`\r\n`)!</b> Нажми <b>«📂 Загрузить 53 штуки+.txt»</b> — парсер разложит файл ровно на все <b>59 треков</b> со всеми каподастрами и перестановкой `Am C F Dm` в «Лаэла».
       </div>
@@ -638,11 +689,11 @@
     </div>
 
     <div class="song-header">
-      <div class="song-title" id="songTitle">Загрузка...</div>
-      <div class="song-meta" id="songMeta"></div>
+      <div class="song-title" id="songTitle">Би-2 — Оксимирон - Пора возвращаться домой</div>
+      <div class="song-meta" id="songMeta"><span>Категория: <b>Би-2</b></span><span class="badge">📌 капо 2 | Бой: Восьмерка</span><span class="badge capo-suggest" onclick="setSongTranspose(-7)">💡 Без баррэ: Капо 7 (-7)</span></div>
     </div>
 
-    <div class="lyrics-area" id="lyricsArea"></div>
+    <div class="lyrics-area" id="lyricsArea"><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Рекомендуемый Бой: Восьмерка</span></span></div><div class="lyric-empty"></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">вст. </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd"> </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd"> 2p</span></span></div><div class="lyric-empty"></div><div class="section-tag">Куплет 1, Би-2:</div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd">Чёрный чёрствый хлеб туп</span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">ой ломает нож, </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Уставлены глаза в разм</span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">ытый горизонт. </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Прямо с потолка и</span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">дёт бесшумный дождь, </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Бегущая строка у</span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">пёрлась в переплёт. </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span></div><div class="lyric-empty"></div><div class="section-tag">Припев, Би-2:</div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd">Любовью чужой горя</span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">т города, </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Извилистый путь зат</span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">янулся петлёй; </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Когда все дороги в</span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">едут в никуда - </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Настала пора во</span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">звращаться домой. </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd"> </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd"> 2p</span></span></div><div class="lyric-empty"></div><div class="section-tag">Куплет 2, Би-2:</div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd">Шумная толпа зап</span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">олнила перрон </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">И мальчик за стеклом всё</span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd"> машет мне рукой. </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Каждая судьба з</span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">авязана со мной, </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">И в памяти живой да</span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">вно снесённый дом. </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span></div><div class="lyric-empty"></div><div class="section-tag">Припев, Би-2:</div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd">Любовью чужой горя</span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">т города, </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Извилистый путь зат</span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">янулся петлёй; </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Когда все дороги в</span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">едут в никуда - </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Настала пора во</span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">звращаться домой. </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd"> </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd"> 2p</span></span></div><div class="lyric-empty"></div><div class="section-tag">Куплет 3, Oxxxymiron:</div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd">Едва ли спасут летящего на смерть:</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">Кипарисы, пальмы, лазурь, загар - не доспех.</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd">Тут муссон прозвали монсун, пейзажи как во сне;</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">Но чем замазать тоску по месту, где нас нет?</span></span></div><div class="lyric-empty"></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd">Здесь пусть не комфорт, но и не Лефортово,</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">А ты упорно ждешь телепорт домой, чтобы торкнуло.</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd">По старой формуле, в дом родной, где нет орднунга!</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">Здесь ты видел все: шахты Дортмунда, скалы Корнуэлла.</span></span></div><div class="lyric-empty"></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd">Стадо Морлоков из трущоб раннего Оруэлла книг.</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">На ладони странника мир, пока связи порваны с точкой "А";</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd">Но комом в горле глотку чесало,</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">Подработки швейцаром, стакан водки с Cinzano…</span></span></div><div class="lyric-empty"></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Хули, ч</span></span><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd">то делать, если победа сердца над разумом?</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">И всё - надоело среди туземцев быть пасынком!</span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">П</span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd">озади рай, но раз, увы, камикадзе мы -</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">Впереди мир камер газовых, армий Власова,</span></span></div><div class="lyric-empty"></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd">Казней массовых, но все же тянет назад, стой,</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">Потряхивает, входим в родное антипространство</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd">Что, сказать "Стоп"? Остаться, писать в стол?</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">Ссать, что умрешь тут, как эмигрантский запас слов?</span></span></div><div class="lyric-empty"></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd">Без подпитки живой настоящей речи</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">Ты ведь думал, что выживешь без нее, но расстояние нечем</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd">Сократить, думал - пройдет, все - ничего, расстояние лечит,</span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Но я</span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">зык твой так и не стал ни на грамм онемеченным, камо грядеши?</span></span></div><div class="lyric-empty"></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd">Ишь, ладони, Икар, сложил ближе ко лбу.</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">За спиной - тараканьи бега, Париж и Стамбул.</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd">Триста коньяка, самолёт все выше - и стал вдруг,</span></span></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">Описав круг над мысом точкой - дерзай, друг, а там, внизу -</span></span></div><div class="lyric-empty"></div><div class="section-tag">Припев, Би-2:</div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd">Любовью чужой горя</span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">т города, </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Извилистый путь зат</span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">янулся петлёй; </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Когда все дороги в</span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">едут в никуда - </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Настала пора во</span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">звращаться домой. </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span></div><div class="lyric-empty"></div><div class="lyric-line"><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd">Любовью чужой горя</span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">т города, </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Извилистый путь зат</span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">янулся петлёй; </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Em')">Em</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Когда все дороги в</span></span><span class="pair"><span class="ch" onclick="openChordPopup('G')">G</span><span class="wd">едут в никуда - </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span></div><div class="lyric-line"><span class="pair"><span class="ch-empty"></span><span class="wd">Настала пора во</span></span><span class="pair"><span class="ch" onclick="openChordPopup('A')">A</span><span class="wd">звращаться домой. </span></span><span class="pair"><span class="ch" onclick="openChordPopup('Bm')">Bm</span><span class="wd"> </span></span></div></div>
 
     <div class="song-footer-nav">
       <button class="btn" onclick="stepSong(-1)">⏮ Предыдущий трек</button>
@@ -662,17 +713,507 @@
   </div>
 
   <!-- БОКОВАЯ ШТОРКА ТРЕКЛИСТА -->
-  <div class="backdrop" id="drawerBackdrop" onclick="toggleDrawer(false)"></div>
-  <aside class="drawer" id="drawer">
+  <div class="backdrop open" id="drawerBackdrop" onclick="toggleDrawer(false)"></div>
+  <aside class="drawer open" id="drawer">
     <div class="drawer-head">
       <div style="display:flex; justify-content:space-between; align-items:center;">
-        <b style="font-size:16px; color:var(--accent-gold);">🎸 Сетлист группы (<span id="drawerCount">0</span>)</b>
+        <b style="font-size:16px; color:var(--accent-gold);">🎸 Сетлист группы (<span id="drawerCount">59</span>)</b>
         <button class="btn" style="padding:4px 8px; min-height:28px;" onclick="toggleDrawer(false)">✕</button>
       </div>
-      <input type="text" class="search-input" id="searchInput" placeholder="Поиск по названию, артисту или тексту..." oninput="renderSetlist()" />
-      <div class="cat-chips" id="catChips"></div>
+      <input type="text" class="search-input" id="searchInput" placeholder="Поиск по названию, артисту или тексту..." oninput="renderSetlist()">
+      <div class="cat-chips" id="catChips">
+    <span class="chip active" onclick="selectCategory('Все')">Все</span>
+  
+    <span class="chip " onclick="selectCategory('Би-2')">Би-2</span>
+  
+    <span class="chip " onclick="selectCategory('Швец')">Швец</span>
+  
+    <span class="chip " onclick="selectCategory('Нервы')">Нервы</span>
+  
+    <span class="chip " onclick="selectCategory('Моргенштерн')">Моргенштерн</span>
+  
+    <span class="chip " onclick="selectCategory('Нойз')">Нойз</span>
+  
+    <span class="chip " onclick="selectCategory('Оля Ля')">Оля Ля</span>
+  
+    <span class="chip " onclick="selectCategory('Папин Олимпос')">Папин Олимпос</span>
+  
+    <span class="chip " onclick="selectCategory('Разное')">Разное</span>
+  </div>
     </div>
-    <div class="song-list" id="songList"></div>
+    <div class="song-list" id="songList">
+    <div class="song-item active" onclick="selectSong('song_1794692944497_0')">
+      <div style="min-width:0;">
+        <div class="song-item-title">1. Оксимирон - Пора возвращаться домой</div>
+        <div class="song-item-sub">Би-2</div>
+      </div>
+      <span class="song-item-capo">капо 2 | Бой: Восьмерка</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944497_1')">
+      <div style="min-width:0;">
+        <div class="song-item-title">2. Молитва</div>
+        <div class="song-item-sub">Би-2</div>
+      </div>
+      <span class="song-item-capo">капо 2 на 1</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944498_2')">
+      <div style="min-width:0;">
+        <div class="song-item-title">3. Её глаза</div>
+        <div class="song-item-sub">Би-2</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944498_3')">
+      <div style="min-width:0;">
+        <div class="song-item-title">4. Неудачница</div>
+        <div class="song-item-sub">Алёна Швец</div>
+      </div>
+      <span class="song-item-capo">капо 3</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944498_4')">
+      <div style="min-width:0;">
+        <div class="song-item-title">5. Портвейн</div>
+        <div class="song-item-sub">Алёна Швец</div>
+      </div>
+      <span class="song-item-capo">Бой: ↓↓↑↑↓↓↓↑</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944498_5')">
+      <div style="min-width:0;">
+        <div class="song-item-title">6. Мальчики не плачут</div>
+        <div class="song-item-sub">Алёна Швец</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944499_6')">
+      <div style="min-width:0;">
+        <div class="song-item-title">7. Две девочки</div>
+        <div class="song-item-sub">Алёна Швец</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944499_7')">
+      <div style="min-width:0;">
+        <div class="song-item-title">8. Расстрел</div>
+        <div class="song-item-sub">Алёна Швец</div>
+      </div>
+      <span class="song-item-capo">капо 7</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944500_8')">
+      <div style="min-width:0;">
+        <div class="song-item-title">9. Лаэла</div>
+        <div class="song-item-sub">Нервы</div>
+      </div>
+      <span class="song-item-capo">капо 0 (Am C F Dm)</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944500_9')">
+      <div style="min-width:0;">
+        <div class="song-item-title">10. Да или... (Ты идеальна)</div>
+        <div class="song-item-sub">Нервы</div>
+      </div>
+      <span class="song-item-capo">капо 3</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944500_10')">
+      <div style="min-width:0;">
+        <div class="song-item-title">11. Её имя</div>
+        <div class="song-item-sub">Нервы</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944500_11')">
+      <div style="min-width:0;">
+        <div class="song-item-title">12. Вороны</div>
+        <div class="song-item-sub">Нервы</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944500_12')">
+      <div style="min-width:0;">
+        <div class="song-item-title">13. Самый дорогой человек</div>
+        <div class="song-item-sub">Нервы</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944500_13')">
+      <div style="min-width:0;">
+        <div class="song-item-title">14. Слишком влюблён</div>
+        <div class="song-item-sub">Нервы</div>
+      </div>
+      <span class="song-item-capo">капо у</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944501_14')">
+      <div style="min-width:0;">
+        <div class="song-item-title">15. Игры больших</div>
+        <div class="song-item-sub">Нервы</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944501_15')">
+      <div style="min-width:0;">
+        <div class="song-item-title">16. (Я не хочу без тебя) спать</div>
+        <div class="song-item-sub">Нервы</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944501_16')">
+      <div style="min-width:0;">
+        <div class="song-item-title">17. Пустой вокзал</div>
+        <div class="song-item-sub">MORGENSHTERN</div>
+      </div>
+      <span class="song-item-capo">0</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944501_17')">
+      <div style="min-width:0;">
+        <div class="song-item-title">18. Красный Флаг</div>
+        <div class="song-item-sub">MORGENSHTERN</div>
+      </div>
+      <span class="song-item-capo">0</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944501_18')">
+      <div style="min-width:0;">
+        <div class="song-item-title">19. Последняя Любовь</div>
+        <div class="song-item-sub">MORGENSHTERN</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944502_19')">
+      <div style="min-width:0;">
+        <div class="song-item-title">20. Зелёный - мой любимый цвет</div>
+        <div class="song-item-sub">Noize MC</div>
+      </div>
+      <span class="song-item-capo">0</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944502_20')">
+      <div style="min-width:0;">
+        <div class="song-item-title">21. Жвачка</div>
+        <div class="song-item-sub">Noize MC</div>
+      </div>
+      <span class="song-item-capo">-4</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944502_21')">
+      <div style="min-width:0;">
+        <div class="song-item-title">22. Yes Future</div>
+        <div class="song-item-sub">Noize MC</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944502_22')">
+      <div style="min-width:0;">
+        <div class="song-item-title">23. Светлая Полоса</div>
+        <div class="song-item-sub">Noize MC</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944502_23')">
+      <div style="min-width:0;">
+        <div class="song-item-title">24. Мятные конфетки</div>
+        <div class="song-item-sub">Оля Ля</div>
+      </div>
+      <span class="song-item-capo">0, капо 4</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944502_24')">
+      <div style="min-width:0;">
+        <div class="song-item-title">25. Не забывают</div>
+        <div class="song-item-sub">Оля Ля</div>
+      </div>
+      <span class="song-item-capo">0, капо 5</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944503_25')">
+      <div style="min-width:0;">
+        <div class="song-item-title">26. Официантка</div>
+        <div class="song-item-sub">Папин Олимпос</div>
+      </div>
+      <span class="song-item-capo">5</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944503_26')">
+      <div style="min-width:0;">
+        <div class="song-item-title">27. Динозаврики</div>
+        <div class="song-item-sub">Папин Олимпос</div>
+      </div>
+      <span class="song-item-capo">5</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944503_27')">
+      <div style="min-width:0;">
+        <div class="song-item-title">28. Goodbye</div>
+        <div class="song-item-sub">Папин Олимпос</div>
+      </div>
+      <span class="song-item-capo">капо 5</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944503_28')">
+      <div style="min-width:0;">
+        <div class="song-item-title">29. Самолёт</div>
+        <div class="song-item-sub">Папин Олимпос</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944503_29')">
+      <div style="min-width:0;">
+        <div class="song-item-title">30. День, когда мы все встретились</div>
+        <div class="song-item-sub">Папин Олимпос</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944504_30')">
+      <div style="min-width:0;">
+        <div class="song-item-title">31. Ненавижу вас всех</div>
+        <div class="song-item-sub">Папин Олимпос</div>
+      </div>
+      <span class="song-item-capo">капо 5</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944504_31')">
+      <div style="min-width:0;">
+        <div class="song-item-title">32. Sailor Song</div>
+        <div class="song-item-sub">gigi perez</div>
+      </div>
+      <span class="song-item-capo">капо 3</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944504_32')">
+      <div style="min-width:0;">
+        <div class="song-item-title">33. Bellyache</div>
+        <div class="song-item-sub">Billie Eilish</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944504_33')">
+      <div style="min-width:0;">
+        <div class="song-item-title">34. Это было в России</div>
+        <div class="song-item-sub">Монеточка</div>
+      </div>
+      <span class="song-item-capo">кап 1</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944504_34')">
+      <div style="min-width:0;">
+        <div class="song-item-title">35. Кладбище самолетов</div>
+        <div class="song-item-sub">Валентин Стрыкало</div>
+      </div>
+      <span class="song-item-capo">капо 0</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944504_35')">
+      <div style="min-width:0;">
+        <div class="song-item-title">36. Нежная Любовь</div>
+        <div class="song-item-sub">Beautiful Boys</div>
+      </div>
+      <span class="song-item-capo">капо 3</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944505_36')">
+      <div style="min-width:0;">
+        <div class="song-item-title">37. Портреты</div>
+        <div class="song-item-sub">Zhanulka</div>
+      </div>
+      <span class="song-item-capo">капо 0</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944505_37')">
+      <div style="min-width:0;">
+        <div class="song-item-title">38. Да что романтичного в птичках?</div>
+        <div class="song-item-sub">pyrokinesis</div>
+      </div>
+      <span class="song-item-capo">капо +4, +2</span>
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944505_38')">
+      <div style="min-width:0;">
+        <div class="song-item-title">39. Пока, целую, снишься</div>
+        <div class="song-item-sub">Торба-на-круче</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944505_39')">
+      <div style="min-width:0;">
+        <div class="song-item-title">40. 31-я весна</div>
+        <div class="song-item-sub">Ночные Снайперы</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944505_40')">
+      <div style="min-width:0;">
+        <div class="song-item-title">41. Creep</div>
+        <div class="song-item-sub">Radiohead</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944506_41')">
+      <div style="min-width:0;">
+        <div class="song-item-title">42. Я Хочу Быть С Тобой</div>
+        <div class="song-item-sub">Nautilus Pompilius</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944506_42')">
+      <div style="min-width:0;">
+        <div class="song-item-title">43. Дыхание</div>
+        <div class="song-item-sub">Nautilus Pompilius</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944506_43')">
+      <div style="min-width:0;">
+        <div class="song-item-title">44. Я вытащу тебя со дна</div>
+        <div class="song-item-sub">KSB muzic</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944506_44')">
+      <div style="min-width:0;">
+        <div class="song-item-title">45. Нон Стоп</div>
+        <div class="song-item-sub">Пошлая молли</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944506_45')">
+      <div style="min-width:0;">
+        <div class="song-item-title">46. Между нами (Давай останемся друзьями)</div>
+        <div class="song-item-sub">LIZER</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944506_46')">
+      <div style="min-width:0;">
+        <div class="song-item-title">47. Солнце взойдет</div>
+        <div class="song-item-sub">Гражданская Оборона</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944507_47')">
+      <div style="min-width:0;">
+        <div class="song-item-title">48. По разбитым зеркалам</div>
+        <div class="song-item-sub">Электрофорез</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944507_48')">
+      <div style="min-width:0;">
+        <div class="song-item-title">49. Потерянный рай</div>
+        <div class="song-item-sub">Ария</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944507_49')">
+      <div style="min-width:0;">
+        <div class="song-item-title">50. На заре</div>
+        <div class="song-item-sub">Альянс</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944507_50')">
+      <div style="min-width:0;">
+        <div class="song-item-title">51. Тело</div>
+        <div class="song-item-sub">ЛСП</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944507_51')">
+      <div style="min-width:0;">
+        <div class="song-item-title">52. Останусь</div>
+        <div class="song-item-sub">Город 312</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944507_52')">
+      <div style="min-width:0;">
+        <div class="song-item-title">53. Глаза (прилипли)</div>
+        <div class="song-item-sub">Комсомольск</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944507_53')">
+      <div style="min-width:0;">
+        <div class="song-item-title">54. Девочка с каре</div>
+        <div class="song-item-sub">МУККА</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944508_54')">
+      <div style="min-width:0;">
+        <div class="song-item-title">55. Молчи</div>
+        <div class="song-item-sub">Кис-Кис</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944508_55')">
+      <div style="min-width:0;">
+        <div class="song-item-title">56. Снежинка</div>
+        <div class="song-item-sub">Папин Олимпос</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944508_56')">
+      <div style="min-width:0;">
+        <div class="song-item-title">57. Тёмно-оранжевый</div>
+        <div class="song-item-sub">Папин Олимпос</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944508_57')">
+      <div style="min-width:0;">
+        <div class="song-item-title">58. Ты не считаешь</div>
+        <div class="song-item-sub">Noize MC</div>
+      </div>
+      
+    </div>
+  
+    <div class="song-item " onclick="selectSong('song_1794692944508_58')">
+      <div style="min-width:0;">
+        <div class="song-item-title">59. Твоим морем</div>
+        <div class="song-item-sub">Нервы</div>
+      </div>
+      
+    </div>
+  </div>
     <div class="drawer-foot">
       <button class="btn gold" style="grid-column: span 2;" onclick="exportSelfContainedHtml()">📦 Скачать готовый index.html (для GitHub)</button>
       <button class="btn primary" onclick="openEditModal(null)">+ Новый трек</button>
@@ -683,7 +1224,7 @@
   </aside>
 
   <!-- СКРЫТЫЙ INPUT ДЛЯ ФАЙЛА 53 штуки+.txt ИЛИ JSON -->
-  <input type="file" id="txtFileInput" accept=".txt,.json" style="display:none" onchange="handleFileImport(event)" />
+  <input type="file" id="txtFileInput" accept=".txt,.json" style="display:none" onchange="handleFileImport(event)">
 
   <!-- МОДАЛКА РЕДАКТОРА / БЫСТРОЙ ВСТАВКИ -->
   <div class="modal" id="editModal">
@@ -694,11 +1235,11 @@
       </div>
       <div class="modal-body">
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
-          <input type="text" class="form-input" id="editArtist" placeholder="Исполнитель / Группа (напр. Нервы)" />
-          <input type="text" class="form-input" id="editTitle" placeholder="Название песни" />
+          <input type="text" class="form-input" id="editArtist" placeholder="Исполнитель / Группа (напр. Нервы)">
+          <input type="text" class="form-input" id="editTitle" placeholder="Название песни">
         </div>
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
-          <input type="text" class="form-input" id="editCapo" placeholder="Капо / Строй (напр. капо 2, -4)" />
+          <input type="text" class="form-input" id="editCapo" placeholder="Капо / Строй (напр. капо 2, -4)">
           <button class="btn gold" onclick="pasteFromClipboardAndParse()">📋 Вставить из буфера и распознать</button>
         </div>
         <div style="display:flex; gap:6px; flex-wrap:wrap;">
@@ -1314,44 +1855,476 @@ function parseMultiSongTxt(fullText) {
 /*__DEFAULT_SONGS_START__*/
 const DEFAULT_SONGS = [
   {
-    id: "s_1",
-    artist: "Би-2 - Оксимирон",
-    title: "Пора возвращаться домой",
-    category: "Би-2",
-    capo: "капо 2 | Бой: Восьмерка",
-    body: `Рекомендуемый Бой: Восьмерка\n\nвст. [Em] [G] [Bm] [A] 2p\n\n[Куплет 1, Би-2]:\n[Em]Чёрный чёрствый хлеб туп[G]ой ломает нож, [Bm]\nУставлены глаза в разм[A]ытый горизонт. [Em]\nПрямо с потолка и[G]дёт бесшумный дождь, [Bm]\nБегущая строка у[A]пёрлась в переплёт. [Em]\n\n[Припев, Би-2]:\n[Em]Любовью чужой гор[G]ят города, [Bm]\nИзвилистый путь затян[A]улся петлёй; [Em]\nКогда все дороги вед[G]ут в никуда - [Bm]\nНастала пор[A]а возвращаться дом[Em]ой.\n[Em] [G] [Bm] [A] 2p\n\n[Куплет 2, Би-2]:\n[Em]Шумная толпа зап[G]олнила перрон [Bm]\nИ мальчик за стеклом всё м[A]ашет мне рукой. [Em]\nКаждая судьба зав[G]язана со мной, [Bm]\nИ в памяти живой давн[A]о снесённый дом. [Em]`
+    "id": "song_1794692944497_0",
+    "artist": "Би-2",
+    "title": "Оксимирон - Пора возвращаться домой",
+    "category": "Би-2",
+    "capo": "капо 2 | Бой: Восьмерка",
+    "body": "Рекомендуемый Бой: Восьмерка\n\nвст. [Em] [G] [Bm] [A] 2p\n\n[Куплет 1, Би-2]:\n[Em]Чёрный чёрствый хлеб туп[G]ой ломает нож, [Bm]\nУставлены глаза в разм[A]ытый горизонт. [Em]\nПрямо с потолка и[G]дёт бесшумный дождь, [Bm]\nБегущая строка у[A]пёрлась в переплёт. [Em]\n\n[Припев, Би-2]:\n[Em]Любовью чужой горя[G]т города, [Bm]\nИзвилистый путь зат[A]янулся петлёй; [Em]\nКогда все дороги в[G]едут в никуда - [Bm]\nНастала пора во[A]звращаться домой. [Em]\n[Em] [G] [Bm] [A] 2p\n\n[Куплет 2, Би-2]:\n[Em]Шумная толпа зап[G]олнила перрон [Bm]\nИ мальчик за стеклом всё[A] машет мне рукой. [Em]\nКаждая судьба з[G]авязана со мной, [Bm]\nИ в памяти живой да[A]вно снесённый дом. [Em]\n\n[Припев, Би-2]:\n[Em]Любовью чужой горя[G]т города, [Bm]\nИзвилистый путь зат[A]янулся петлёй; [Em]\nКогда все дороги в[G]едут в никуда - [Bm]\nНастала пора во[A]звращаться домой. [Em]\n[Em] [G] [Bm] [A] 2p\n\n[Куплет 3, Oxxxymiron]:\n[Em]Едва ли спасут летящего на смерть:\n[G]Кипарисы, пальмы, лазурь, загар - не доспех.\n[Bm]Тут муссон прозвали монсун, пейзажи как во сне;\n[A]Но чем замазать тоску по месту, где нас нет?\n\n[Em]Здесь пусть не комфорт, но и не Лефортово,\n[G]А ты упорно ждешь телепорт домой, чтобы торкнуло.\n[Bm]По старой формуле, в дом родной, где нет орднунга!\n[A]Здесь ты видел все: шахты Дортмунда, скалы Корнуэлла.\n\n[Em]Стадо Морлоков из трущоб раннего Оруэлла книг.\n[G]На ладони странника мир, пока связи порваны с точкой \"А\";\n[Bm]Но комом в горле глотку чесало,\n[A]Подработки швейцаром, стакан водки с Cinzano…\n\nХули, ч[Em]то делать, если победа сердца над разумом?\n[G]И всё - надоело среди туземцев быть пасынком!\nП[Bm]озади рай, но раз, увы, камикадзе мы -\n[A]Впереди мир камер газовых, армий Власова,\n\n[Em]Казней массовых, но все же тянет назад, стой,\n[G]Потряхивает, входим в родное антипространство\n[Bm]Что, сказать \"Стоп\"? Остаться, писать в стол?\n[A]Ссать, что умрешь тут, как эмигрантский запас слов?\n\n[Em]Без подпитки живой настоящей речи\n[G]Ты ведь думал, что выживешь без нее, но расстояние нечем\n[Bm]Сократить, думал - пройдет, все - ничего, расстояние лечит,\nНо я[A]зык твой так и не стал ни на грамм онемеченным, камо грядеши?\n\n[Em]Ишь, ладони, Икар, сложил ближе ко лбу.\n[G]За спиной - тараканьи бега, Париж и Стамбул.\n[Bm]Триста коньяка, самолёт все выше - и стал вдруг,\n[A]Описав круг над мысом точкой - дерзай, друг, а там, внизу -\n\n[Припев, Би-2]:\n[Em]Любовью чужой горя[G]т города, [Bm]\nИзвилистый путь зат[A]янулся петлёй; [Em]\nКогда все дороги в[G]едут в никуда - [Bm]\nНастала пора во[A]звращаться домой. [Em]\n\n[Em]Любовью чужой горя[G]т города, [Bm]\nИзвилистый путь зат[A]янулся петлёй; [Em]\nКогда все дороги в[G]едут в никуда - [Bm]\nНастала пора во[A]звращаться домой. [Bm]"
   },
   {
-    id: "s_3",
-    artist: "Би-2",
-    title: "Её глаза",
-    category: "Би-2",
-    capo: "",
-    body: `[Bm]Ее глаза на зв[A]езды непох[D]ожи\nВ них бь[Em]ется мотыльк[D]ом живой ог[A7]онь\nЕще один о[F#m7]бычный вечер пр[G]ожит,\nА с [Bm]ней он к[A]аждый раз друг[G]ой\n\nПрипев\n[Bm]Где-то ангелы крича[G]т\nПрост[F#]и - прощ[Bm]ай\n[Bm7]Плавится душ[G]а\n[F#]Как свеч[Bm]а\n[Bm7]Разлилась по [G]серд[F#]цу печ[Bm]аль\n[Bm7]Я навеки [G]твой, [F#]ты - ничь[Bm]я\n\n[Bm]Ее сиянье за[A]тмевает со[D]лнце\nИ з[Em]амерзает кр[D]овь в ее тен[A(no3)]и\nТакое счастье [F#m7]дорого да[G]ется\nВен[Bm]ец, отк[A(no3)]уда ни взглян[G]и\n\nПроигрыш: [G] [A] [Bm] [Em+7] [Em+7] [A] [F#]`
+    "id": "song_1794692944497_1",
+    "artist": "Би-2",
+    "title": "Молитва",
+    "category": "Би-2",
+    "capo": "капо 2 на 1",
+    "body": "[A]Тише, души на к[E]рыше медленно [F#m]дышат перед прыж[D]ком.\nС[A]лышу все твои м[E]ысли, то, что [F#m]нам близко, всё [D]кувырком.\nК[F#m]ак проще сказ[E]ать, не растер[Bm]ять, не разорв[D]ать,\nМ[F#m]ы здесь на ве[E]ка, словно рек[Bm]а, словно слов[D]а [E]молитвы.\n\nПрипев:\nВс[A]ё,[A] кроме любв[E]и,[E] вся наша ж[F#m]изнь[F#m] так дал[D]ек[D]о.\nЯ,[A] я - не один,[E] но без тебя [F#m]просто никто[D].\n\nП[A]епел легок и св[E]етел, я не зам[F#m]етил, как время [D]прошло.\nЧ[A]ары силу теряют[E] и превращают [F#m]жемчуг в стекло. [D]\nК[F#m]ак пусто в ду[E]ше без миражей[Bm], без волшебст[D]ва.\nМ[F#m]ы здесь лишь [E]на миг, пусть [Bm]он звучит, сло[D]вн[E]о слова молитвы.\n\nПрипев:\nВс[A]ё,[A] кроме любв[E]и,[E] вся наша ж[F#m]изнь[F#m] так дал[D]ек[D]о.\nЯ,[A] я - не один,[E] но без тебя [F#m]просто никто[D]."
   },
   {
-    id: "s_9",
-    artist: "Нервы",
-    title: "Лаэла",
-    category: "Нервы",
-    capo: "капо 0 (Am C F Dm)",
-    body: `[Вступление]:\n[Am] [C] [F] [Dm]\n\n[Куплет 1]:\n[Am]Она любит [C]своего бойфренда.\n[F]И еще она [Dm]тает на моих руках.\n[Am]Мы не ждем[C] с ней хэппи-энда.\n[F]Мы просто [Dm]запутались в облаках.\n[Am]Но, конечн[C]о, я ей не нужен.\n[F]Но забит е[Dm]е письмами телефон.\n[Am]Я устал, я[C] ужасно загружен.\n[F]Я приду к [Dm]ней и мне будет л[Am]егко! [C]\n\n[Припев 1]:\nИ мы [F]будем игр[Dm]ать в волей[Am]бол. [C]\nИ, кон[F]ечно, я б[Dm]уду не пр[Am]ав. [C]\nИ как[F]ая моя [Dm]в этом роль?\n[Am]И чья [C]игр[F]а? [Dm]\nЛаэл[Am]а, [C] [F] [Dm]\nЛаэл[Am]а… [C] [F] [Dm]`
+    "id": "song_1794692944498_2",
+    "artist": "Би-2",
+    "title": "Её глаза",
+    "category": "Би-2",
+    "capo": "",
+    "body": "[Bm]Ее глаза на зв[A]езды непох[D]ожи\nВ них бь[Em]ется мотыльк[D]ом живой ог[A7]онь\nЕще один о[F#m7]бычный вечер пр[G]ожит,\nА с [Bm]ней он к[A]аждый раз друг[G]ой\n\n[Bm]Ее упреки - ве[A]стники про[D]хлады\nКак скош[Em]енная в авгу[D]сте трава [A7]\nИ пусть в [F#m7]ее словах ни ка[G]пли правды\nОна [Bm]божестве[A]нно прав[G]а\n\nПрипев\n [Bm]Где-то ангелы крича[G]т\n Прост[F#]и - прощ[Bm]ай\n [Bm7]Плавится душ[G]а\n [F#]Как свеч[Bm]а\n [Bm7]Разлилась по с[G]ердц[F#]у печ[Bm]аль\n [Bm7]Я навеки тв[G]ой, [F#]ты - ничь[Bm]я\n\n[Bm]Ее сиянье затм[A]евает солн[D]це\nИ з[Em]амерзает кр[D]овь в ее те[A(no3)]ни\nТакое счастье [F#m7]дорого да[G]ется\nВен[Bm]ец, отк[A(no3)]уда ни взгляни [G]\n\n[Bm]Любой валет в [A]ее большой[D] колоде\nПадет, к[Em]ак жертва ре[D]вности слеп[A7]ой\nОна одна и[F#m7] от меня уходит [G]\nДавн[Bm]о протор[A]енной тропо[G]й\n\nПрипев\n [Bm]Где-то ангелы крича[G]т\n Прост[F#]и - прощ[Bm]ай\n [Bm7]Плавится душ[G]а\n [F#]Как свеч[Bm]а\n [Bm7]Разлилась по с[G]ердц[F#]у печ[Bm]аль\n [Bm7]Я навеки тв[G]ой, [F#]ты - ничь[Bm]я\n\nПроигрыш: [G] [A] [Bm] [Em+7] [Em+7] [A] [F#]\n\nПрипев\n [Bm]Где-то ангелы крича[G]т\n Прост[F#]и - прощ[Bm]ай\n [Bm7]Плавится душ[G]а\n [F#]Как свеч[Bm]а\n [Bm7]Разлилась по с[G]ердц[F#]у печ[Bm]аль\n [Bm7]Я навеки тв[G]ой, [F#]ты - ничь[Bm]я"
   },
   {
-    id: "s_12",
-    artist: "Нервы",
-    title: "Вороны",
-    category: "Нервы",
-    capo: "",
-    body: `[Bm]Воля в кулаке, мысли в разные стороны,\nПо моей комнат[Bm]е гул[A]яют ч[G]ёрные вороны.\nНа потолке чувств[F#]а одинокие собраны,\nОни с грохотом [F#7]падают мне на г[Bm]олову.\n\nПрипев:\n[Bm]Мне нужен свежий воздух.\n[Bm]И мне не страшно.\n[G]Билет на поезд,\nКуда не важ[Em]но.\nЯ не боюсь [Em]потерять всё,\nНа[G]чать заново о[Asus4]ттуда, к[A]уда зан[Bm]есёт.\n\nПроигрыш: [Bmadd13-] | [Bmadd13-] [A] | [Gmaj] | [F#] [F#7] }x2\n\nНе [Bm]страш[Bm/D]но, не [Bm]страш[Bm/D]но, не [G]страшно, не [F#m]страшно\nКода: [Bm] [G6] [Asus4] | [Bm]`
+    "id": "song_1794692944498_3",
+    "artist": "Алёна Швец",
+    "title": "Неудачница",
+    "category": "Швец",
+    "capo": "капо 3",
+    "body": "1 куплет:\nЯ кажется п[Am]роклята,\nЯ капец неуд[C]ачница,\nПодо мною всё р[F]ушится,\nИ ничего не получ[E]ается.\nЗасыхают в во[Am]де цветы,\nНе с кем больше дел[C]ить печаль,\nА теперь сюда сл[F]ушай ты,\nБуду плакать и [E]объяснять:\n\nПрипев:\n[Am]Если меня собьёт маш[C]ина - это будет твой от[F]ец,\nНа тебя лишь посмотр[E]ела - поняла, что мне кон[Am]ец.\nЕсли не проснусь на [C]утро - это будет твоя м[F]ать,\nВсё прощу и их не б[E]уду оскорблять.\n\n[Am]Если меня собьёт маш[C]ина - это будет твой от[F]ец,\nНа тебя лишь посмотр[E]ела - поняла, что мне кон[Am]ец.\nНе расстраивайся,[C] детка, не причём твоя семь[F]я,\nВиновата только [E]я, я, я-я-я.\n\n[Am] [C] [F] [E]\n\n[Am]Неу[C]да[F]чн[E]ица\n\n2 куплет:\nОй, да ладно, под[Am]умаешь,\nИзвинения пр[C]иняты.\nЯ всего лишь под[F]охну тут,\nВ этом чёртовом П[E]итере.\nНелюбимая, ст[Am]рашная...\nКак в РФ демокр[C]атия,\nУ тебя через п[F]оцелуй\nЗабрала все прокл[E]ятия.\n\nПрипев:\n[Am]Если меня собьёт маш[C]ина - это будет твой от[F]ец,\nНа тебя лишь посмотр[E]ела - поняла, что мне кон[Am]ец.\nЕсли не проснусь на [C]утро - это будет твоя м[F]ать,\nВсё прощу и их не б[E]уду оскорблять.\n\n[Am]Если меня собьёт маш[C]ина - это будет твой от[F]ец,\nНа тебя лишь посмотр[E]ела - поняла, что мне кон[Am]ец.\nНе расстраивайся, де[C]тка, не причём твоя сем[F]ья,\nВиновата только [E]я, я, я-я-я.\n\n[Am] [C] [F] [E]\n\n[Am]Неу[C]да[F]чн[E]ица"
   },
   {
-    id: "s_58",
-    artist: "Noize MC",
-    title: "Ты не считаешь",
-    category: "Нойз",
-    capo: "",
-    body: `[Вступление]:\n[Cm] [Bb] [Eb] [Gm]\n[Куплет]:\n[Cm]Я написал бы тебе грустную пес[Bb]ню полную фраз пустых\n[Eb]Но зато красивых, как ты люби[Bb]шь, [Gm] - кр[Gm6]аски бы сгустил.\n\n[Припев]:\nТы [Cm]не считаешь, с[Bb]колько дней [Eb]я тебе не з[Gm/D]вонил,\nНе [Cm]отвечаешь ни п[Bb]о одной и[Eb]з своих двух [Gm/D]мобил\nИ з[Cm]асыпаешь рядом[Bb] с тем, кого [Eb]я бы у[Gm/D]бил,\nЕсл[Cm]и только бы вс[Bb]третил и е[Eb]сли хватило б[Gm/D]ы сил!`
+    "id": "song_1794692944498_4",
+    "artist": "Алёна Швец",
+    "title": "Портвейн",
+    "category": "Швец",
+    "capo": "Бой: ↓↓↑↑↓↓↓↑",
+    "body": "Припев:\n\nБой: ↓↓↑↑↓↓↓↑\n\nЯ [F]бросила школу, сожгла тетрадки и портфели,\nЗаку[E]рила сигарету, залила её портвейном.\nПь[Am]яная, полечу через забор,\nТеперь дос[C]таточно крутая, чтобы быть с тобой?\n\nЯ [F]бросила школу, сожгла тетрадки и портфели,\nЗаку[E]рила сигарету, залила её портвейном.\nПь[Am]яная, полечу через забор,\nТеперь дос[C]таточно крутая, чтобы быть с тобой?\n\nКуплет 1:\n\nБой: ↓↓↓ ↓↓↓↓ ↓↑\n\nЯ не [F]слушаю взрослых, мне прощают всю юность,\n[E]Волосы в розовый, красота? Глупость.\nМы же [Am]дети уродливых серых многоэтажек —\nПригла[C]шаю на вписку, ничего не стесняясь.\n\nТы ме[F]ня ощущал ещё за километр\nИ у те[E]бя зима, у меня — запах сирени.\nПомнишь, [Am]что ты сказал, той самой звёздной ночью:\n«Тебе [C]нужно стать плохой, если со мной быть хочешь».\n\nПрипев:\n\nБой: ↓↓↑↑↓↓↓↑\n\nЯ [F]бросила школу, сожгла тетрадки и портфели,\nЗаку[E]рила сигарету, залила её портвейном.\nПь[Am]яная, полечу через забор,\nТеперь дос[C]таточно крутая, чтобы быть с тобой?\n\nЯ [F]бросила школу, сожгла тетрадки и портфели,\nЗаку[E]рила сигарету, залила её портвейном.\nПь[Am]яная, полечу через забор,\nТеперь дос[C]таточно крутая, чтобы быть с тобой?\n\nКуплет 2:\n\nБой: ↓↓↑↑↓↓↓↑\n\nТвои кро[F]ссовки в пыли — встречал закаты на крыше,\nЕсли [E]мёртвый внутри, то почему так громко дышишь?\nЯ е[Am]ё уничтожила, тошнотворно хорошую —\nУче[C]ница гимназии с обрыва канула в прошлое.\n\nЭто [F]ради тебя, тебя-тебя одного —\nЭти [E]красные мальборо, красное вино.\nЯдо[Am]витой улыбкой сверстников провожаю,\nМы с то[C]бою — ошибки, нас уже не исправить.\n\nПрипев:\n\nБой: ↓↓↑↑↓↓↓↑\n\nЯ [F]бросила школу, сожгла тетрадки и портфели,\nЗаку[E]рила сигарету, залила её портвейном.\nПь[Am]яная, полечу через забор,\nТеперь дос[C]таточно крутая, чтобы быть с тобой?\n\nЯ [F]бросила школу, сожгла тетрадки и портфели,\nЗаку[E]рила сигарету, залила её портвейном.\nПь[Am]яная, полечу через забор,\nТеперь дос[C]таточно крутая, чтобы быть с тобой?\n\nБыть с то[F]бой, быть с тобой,\nБыть с то[E]бой, быть с тобой…\nТеперь дос[Am]таточно крутая,\nДостаточно крутая, [C]\n\nЧтобы быть с тобой…"
+  },
+  {
+    "id": "song_1794692944498_5",
+    "artist": "Алёна Швец",
+    "title": "Мальчики не плачут",
+    "category": "Швец",
+    "capo": "",
+    "body": "[Am]Он учился с тобой в одном классе,\nЛюб[C]ил рисовать, не любил одноклассник[Em/B]ов.\n[Em/B]И на портфеле прицеплен значок,\n[D/A]Ждёт в коридоре звонок на урок.\nХули[Am]ганы\nЗатащили после школы обм[C]аном –\nИ на теле снова новые р[Em]аны:\nТушили о его запястья сп[D]ички,\nПодростки – самые жестокие об[Am]идчики.\nНа них синими глазами см[C]отрит\nИ о помощи уже не п[Em]росит,\nНе имеет право даже на сл[D]ёзы.\n\nПрипев:\n     Ведь мальчики не п[Am]лачут,\n     Мальчики не пл[C]ачут,\n     Ведь мальчики не п[Em]лачут,\n     У-о-[D]оу!\n\n     Ты бей и изде[Am]вайся,\n     Ведь мальчики не пл[C]ачут,\n     Ведь мальчики не п[Em]лачут,\n     У-о[D]-оу!\n\n     Ведь мальчики не п[Am]лачут,\n     Мальчики не пл[C]ачут,\n     Ведь мальчики не [Em]плачут.\n     У-о[D]-оу!\n\n     Ты бей и изде[Am]вайся.\n     Не может быть ин[C]аче,\n     Ведь мальчики не п[Em]лачут,\n     У-о[D]-оу!\n\n[Am]Весь истоптан радужный свитер,\nА всл[C]ед прокричат ему: ботан и пидор.\n[Em]Верхний этаж, запирается в ванной:\nМ[D]ама и папа, простите, я странный.\nВлюб[Am]ился,\nНе было ни ночи, где не сн[C]ился\nТот кудрявый парень, что глу[Em]мился.\nОт его ботинка р[D]ана,\nСложно любить своего хули[Am]гана,\nСложно любить своего хулиг[C]ана,\nСложно любить своего хули[Em]гана,\nУ-о[D]-оу!\n\nПрипев:\n     Ведь мальчики не л[Am]юбят,\n     Мальчики не л[C]юбят,\n     Ведь мальчики не л[Em]юбят,\n     У-о[D]-оу!\n\n     Не может быть и[Am]наче,\n     Ты бей и издев[C]айся,\n     Ведь мальчики не п[Em]лачут.\n     У-о[D]-оу!\n\n     Ведь мальчики не п[Am]лачут,\n     Мальчики не пл[C]ачут,\n     Ведь мальчики не п[Em]лачут.\n     У-о[D]-оу,[Am] о."
+  },
+  {
+    "id": "song_1794692944499_6",
+    "artist": "Алёна Швец",
+    "title": "Две девочки",
+    "category": "Швец",
+    "capo": "",
+    "body": "Куплет\n[Em]Да, я знаю, мне нельзя тебя любить\nПоним[G]аю, но я не могу забыть\nТвои [Em]руки, под одеждой горячо\nНе ув[G]идимся ещё две недели, счёт пошёл\nТвоя [Em]мать ненавидит меня, говоря, что я[G] ошибка\nВыгоняет в подъезд, вылетаю вниз с ул[Am]ыбкой\nЯ чего-то нажрусь, может быть не о[C]чнусь\nНо от тебя я никогда не отка[Em]жусь\n\nПрипев\n[Em] Хочешь, я имя твоё набью\n[G] А сверху еловые веточки\n[Am] Мир так жесток, если вдруг любовь\n[C] Чувствуют между две девочки\n[Em] Сердца взрываются в унисон\n[G] В парке завяжем две ленточки\n[Am] Будут сильней, чем закон и зло\n[C] Две запрещённые девочки\n\nКуплет\n[Em]Снег на окнах и наш ледяной балкон\nЧто на з[G]автрак будешь: колу или ром?\nСтеклен[Am]еют вечно пьяные глаза\nНам ост[C]алось полчаса, знаю, ты придёшь назад\nЧерез [Em]день ни звонка ни письма, проверяю все[G] соц.сети\nЯ как будто одна, как без мамы плачут д[Am]ети\nЧую, что-то не так, что беда и ск[C]андал\n\nЧую, надо спасать тебя\nВозле д[Em]ома лишь тяжелые шаги\nКоса см[G]отрят кто то наш секрет спалил\nМне нет д[Am]ела эти сплетни ни о чем\nВ смысле т[C]ы тут не причем против всех с тобой вдвоем\nОттолкн[Em]ула и слилась с тупой толпой\nОбман[G]ула и прикинулась чужой\nВ чем же д[Am]ело Наши радуги цвета вдруг пом[C]еркли навсегда\nЛучше бы ты умерла [Em]а\n\nПрипев\n[Em] Хочешь, я имя твоё набью\n[G] А сверху еловые веточки\n[Am] Мир так жесток, если вдруг любовь\n[C] Чувствуют между две девочки\n[Em] Сердца взрываются в унисон\n[G] В парке завяжем две ленточки\n[Am] Будут сильней, чем закон и зло\n[C] Две запрещённые дево[Em]чки"
+  },
+  {
+    "id": "song_1794692944499_7",
+    "artist": "Алёна Швец",
+    "title": "Расстрел",
+    "category": "Швец",
+    "capo": "капо 7",
+    "body": " Капо 7\n\nВступление: [C] [Em] [G] [D]\n\n[C]Тебя не вытравить из моей головы\n[Em]Ты въелась в кровь как будто самый дешевый дым\n[G]Ты моя девочка, красивей всяких фотографий\n[D]Насилуй мою душу, не закапай кафель.\n[C]Ты в ссоре матом посылаешь далеко пойти,\n[Em]Больная дура, все равно нам  по пути.\n[G]Ликуй и смейся, погибать так рука об руку,\n[D]Лежим в заброшенной квартире, как на облаке.\n[C]На заре, на расстрел\n[Em]От воды, от огня\n[G]Я [D]умру, Я умру, я умру за тебя\n\n[C]Выводишь маркером простые слова,\n[Em]Ты ими разрисуешь всё мое тело:\n[C]«Держаться за руки, встречая рассвет\n[Em]Держаться за руки, во время расстрела»\n[Am]Моя любовь, сегодня нам придётся умереть\n[C]А смерть придёт и будет в карие глаза смотреть.\n[Em]И будет гром, кислотный ливень, ядовитый мрак,\n[G]Когда в тебя влюблялась, было всё примерно так.\n[Am]Мне небо давит на ладони, в невесомости.\n[C]И если упадёшь, я буду на руках нести.\n[Em]Ты моя девочка, красива, как последний выстрел,\n[G]Прошу, не бойся, ведь от пули умирают быстро."
+  },
+  {
+    "id": "song_1794692944500_8",
+    "artist": "Нервы",
+    "title": "Лаэла",
+    "category": "Нервы",
+    "capo": "капо 0 (Am C F Dm)",
+    "body": "               [Вступление]:\n[Am] [C] [F] [Dm]\n\n[Куплет 1]:\n[Am]Она любит [C]своего бойфренда.\n[F]И еще она [Dm]тает на моих руках.\n[Am]Мы не ждем[C] с ней хэппи-энда.\n[F]Мы просто [Dm]запутались в облаках.\n[Am]Но, конечн[C]о, я ей не нужен.\n[F]Но забит е[Dm]е письмами телефон.\n[Am]Я устал, я[C] ужасно загружен.\n[F]Я приду к [Dm]ней и мне будет л[Am]егко! [C]\n\n[Припев 1]:\nИ мы бу[F]дем играт[Dm]ь в волейб[Am]ол. [C]\nИ, коне[F]чно, я бу[Dm]ду не прав[Am]. [C]\nИ как[F]ая моя в[Dm] этом роль?\n[Am]И чья иг[C]ра? [F] [Dm]\nЛаэла[Am], [C] [F] [Dm]\nЛаэла[Am]… [C] [F] [Dm]\n\n[Куплет 2]:\n[Am]Она любит [C]своего бойфренда.\n[F]И еще она [Dm]тает на моих руках.\n[Am]Мы не ждем[C] с ней хэппи-энда.\n[F]Мы просто [Dm]запутались в облаках.\n[Am]Она купит [C]мне тёплый свитер.\n[F]Когда снег[Dm]ом посыпет из облаков.\n[Am]Какие ссор[C]ы? Какие обиды?\n[F]Я приду к [Dm]ней и мне будет л[Am]егко. [C]\n\n[Припев 1]:\nИ мы бу[F]дем играт[Dm]ь в волейб[Am]ол. [C]\nИ, коне[F]чно, я бу[Dm]ду не прав[Am]. [C]\nИ как[F]ая моя в[Dm] этом роль?\n[Am]И чья иг[C]ра? [F] [Dm]\nЛаэла[Am], [C] [F] [Dm]\nЛаэла[Am]… [C] [F] [Dm]\n\n[Куплет 3]:\n[Am]Эта песня [C]не про измену\n[F]Это больше[Dm],чем секс, это глубоко\n[Am]Я вводил е[C]ё прямо в вену\n[F]Эту девочк[Dm]у в худи из облаков\n[Am]Но, конечн[C]о, я был ей нужен\n[F]Она делала[Dm] вид, что ей всё равно\n[Am]И что чувс[C]твами я всё разрушу\n[F]Я порвал с[Dm] ней..Это было да[Am]вно... [C]\n\n[Припев 2]:\nМы не б[F]удем игра[Dm]ть в волей[Am]бол [C]\nИ неваж[F]но кто бы[Dm]л из нас п[Am]рав [C]\nМы др[F]уг другу[Dm] оставили боль\n[Am]Кончилас[C]ь и[F]гр[Dm]а\nЛаэла[Am], [C] [F] [Dm]\nЛаэла[Am]… [C] [F] [Dm]"
+  },
+  {
+    "id": "song_1794692944500_9",
+    "artist": "Нервы",
+    "title": "Да или... (Ты идеальна)",
+    "category": "Нервы",
+    "capo": "капо 3",
+    "body": "[Dm]Ты идеальна,\n[F]Ты ходишь в белом пальто,\n[A#]Неприкасаема как эл[C]ектрический ток.\n[Dm]Ты все зачёты сдаё[F]шь только на 5, [A#]\nТы учишь допоздна, [C]\nТы не ходишь гулять. [Dm]\nМ[Dm]ама – педагог,\n[F]Папа - бизнесмен,\n[A#]Прикид на миллионы е-е-е, [C]\n[Dm]И все, кто, так не смог завидуют[F] тебе;\n[A#]И, если я с тобой, то мне не е[C]…\n[A#]Всё это хорошо, со вкусом белых роз,\nно я задам один вопрос… [C]\n\nПрипев:\n[Dm]А ты целуешься на первом с[F]видании, да или.. [A#]\nДа[C] или… да или… да или…\n[Dm]Если нет, тогда [F]- до свидания, отвали! [A#]\nО[C]твали, отвали, отвали…\n[Dm]  [F]  [A#] [C] [Dm]  [F]  [A#] [C]\n\n[Dm]Я ненормальный:\n[F]Хожу в кедах зимой, [A#]\nКатаюсь дома на скейте, [C]\nРазвод с головой. [Dm]\nВсе мои шмотки - дешевле[F] твоих духов, [A#]\nНе покупаю я их - мо[C]й аромат из слов. [Dm]\n[Dm]Не хожу на пары,\n[F]И ничего не парит,\n[A#]Рисую краской на стене-е-е. [C]\n[Dm]А ты ведь не такая,\n[F]Но я не понимаю,\n[A#]Чего ты снова звонишь мне?! [C]\n[A#]Всё это хорошо, со вкусом белых роз,\nно я задам один вопрос… [C]\n\nПрипев: x2\n[Dm]А ты целуешься на первом с[F]видании, да или.. [A#]\nДа[C] или… да или… да или…\n[Dm]Если нет, тогда [F]- до свидания, отвали! [A#]\nО[C]твали, отвали, отвали…\n[Dm]  [F]  [A#] [C] [Dm]  [F]  [A#] [C]\n[Dm]"
+  },
+  {
+    "id": "song_1794692944500_10",
+    "artist": "Нервы",
+    "title": "Её имя",
+    "category": "Нервы",
+    "capo": "",
+    "body": "[Am]  [G]  [Dm]  [F]  [G] }x2\n\nПромокш[Am]ий день, прозрачный с[G]он,\nТы гре[Dm]ешь меня. Привет, прив[F]ет! [G]\nНаивный[Am] друг в тебя влюблён[G],\nХотел [Dm]бы обнять, но нет... но[F] нет[G]...\n\nПрипев:\nТы любиш[Am]ь его, ты любишь е[Em]го,\nТы пла[Dm]чешь, ведь он с дру[F]го[G]й.\nЯ бы все [Am]для тебя, но ты вся для [Em]него\nНе зна[Dm]чишь, но любишь е[F]го[G].\n\nУже вче[Am]ра, любовь игр[G]а,\nОсколк[Dm]и сердец и докт[F]ора[G].\nЛечу те[Am]бя, сто слез подря[G]д,\nНо кто[Dm] я такой? Все зря... все[F] зря.[G]..\n\nПрипев:\nТы любиш[Am]ь его, ты любишь [Em]его,\nТы пла[Dm]чешь, ведь он с дру[F]го[G]й.\nЯ бы все [Am]для тебя, но ты вся для[Em] него\nНе зна[Dm]чишь, но любишь е[F]го[G].\n\nПроигрыш: [Am] [G] [Dm] [F] [G]\n\nПрипев: x2\nТы любиш[Am]ь его, ты любишь ег[Em]о,\nТы пла[Dm]чешь, ведь он с дру[F]гой[G].\nЯ бы все [Am]для тебя, но ты вся для [Em]него\nНе зна[Dm]чишь, но любиш[F]ь [G]ег[Am]о. [Dm] [F] [G]"
+  },
+  {
+    "id": "song_1794692944500_11",
+    "artist": "Нервы",
+    "title": "Вороны",
+    "category": "Нервы",
+    "capo": "",
+    "body": "[Bm]Воля в кулаке, мысли в разные стороны,\nПо моей комнате гул[Bm]яют чё[A]рные во[G]роны.\nНа потолке чувства одинокие [F#]собраны,\nОни с грохотом [F#7]падают мне на голов[Bm]у.\n\n[Bm]Не сошел с ума и вполне осознанно\nЯ вдыхаю этот яд вм[Bm]есте с[A] воздух[G]ом.\nТуман не уходит с возрасто[F#]м,\nЯ ищу, я кричу [F#7]охрипшим голосо[Bm]м.\n\n[Bm]Эти полосы чёрно-белые,\nЯ нашел любовь, но [Bm]потеря[A]л в неё[G] веру.\nОна жива, и она ещё дыши[F#]т,\nИ я чувствую, о[F#7]на меня тоже ищ[Bm]ет.\n\n[Bm]Болит голова, но нет аспирина.\nТак зачем же я пью [Bm]эти та[A]блетки [G]от кашля?\nНе нужны заменители этого ми[F#]ра -\nЕсть болезнь, о[F#7]т которой нет лекар[Bm]ства.\n\nПрипев:\n     [Bm]Мне нужен свежий воздух.\n     [Bm]И мне не страшно.\n     [G]Билет на поезд,\n     Куда не важ[Em]но.\n     Я не боюсь [Em]потерять всё,\n     На[G]чать заново от[Asus4]туда, куда[A] занес[Bm]ёт.\n\n     [Bm]Мне нужен свежий воздух.\n     [Bm]И мне не страшно.\n     [G]Билет на поезд,\n     Куда не важ[Em]но.\n     Я не боюсь [Em]потерять всё,\n     На[G]чать заново от[Asus4]туда, куда[A] занес[Bm]ёт.\n\n[Bm]Секс расслабляет, но не даёт покоя.\nРаньше я был хороши[Bm]й, теп[A]ерь ска[G]жи, какой я?\nИ насколько амо[F#]рален\nВ этом мире без[F#7]упречном, чистом и [Bm]правильном?\n\n[Bm]Ноль эмоций на лице, как из-под ареста\nЯ молча выхожу из е[Bm]ё подъ[A]езд[G]а.\nВсё честно, мы друг другу не[F#] обязаны,\nНо я чувствую с[F#7]ебя разбитым и гряз[Bm]ным.\n\n[Bm]Мои руки связаны моими же руками,\nСтоя на краю и я вс[Bm]помина[A]ю о мам[G]е.\nДумаю, я бы её огор[F#]чил,\nЕсли б покинул [F#7]этот мир у неё не с[Bm]просив.\n\n[Bm]Но воля в кулаке, воля в кулаке, воля в кулаке!\nВидишь, я не сдамся[Bm] этой [A]тоск[G]е.\nМои мысли, идите на четыре с[F#]тороны,\nНо не трогайте,[F#7] не трогайте меня, [Bm]вороны.\n\nПрипев:\n     [Bm]Мне нужен свежий воздух.\n     [Bm]И мне не страшно.\n     [G]Билет на поезд,\n     Куда не важ[Em]но.\n     Я не боюсь [Em]потерять всё,\n     На[G]чать заново от[Asus4]туда, куда[A] занес[Bm]ёт.\n\n     [Bm]Мне нужен свежий воздух.\n     [Bm]И мне не страшно.\n     [G]Билет на поезд,\n     Куда не важ[Em]но.\n     Я не боюсь [Em]потерять всё,\n     На[G]чать заново от[Asus4]туда, куда[A] занес[Bm]ёт.\n\nПроигрыш: [Bmadd13]- | [Bmadd13]- [A] | [Gm]aj | [F#] [F#7] }x2\n\n     Не [Bm]страшн[Bm/D]о, не [Bm]страшн[Bm/D]о, не [G]страшно, не [F#m]страшно,\n     Не [Bm]страшн[Bm/D]о, не [Bm]страшн[Bm/D]о, не [G]страшно, не [F#m]ааа…\n\n[Bm]Воля в кулаке, мысли в разные стороны,\n[Bm]По моей комнате гуляют чёрные вороны.\n\nКода: [Bm]\n[G6] [Asus4] | [Bm] | [Bm] | [Bm] }x3"
+  },
+  {
+    "id": "song_1794692944500_12",
+    "artist": "Нервы",
+    "title": "Самый дорогой человек",
+    "category": "Нервы",
+    "capo": "",
+    "body": "[Припев]:\n\n[Em7]И пропадает в миллионах на век, когда-то\n[Cadd9]Самый дорогой человек, правда\n[G]Слишком глубокая рана\n[D]Забывать друг друга пора нам\n[Em7]Пропадает в миллионах на век, когда-то\n[Cadd9]Самый дорогой человек, правда\n[G]Слишком глубокая рана\n[D]Забывать друг друга пора нам\n\n[Куплет]:\n[Em]Задержи дыхание на м[C]иг\nОщути какая глубина[G],\nВ моей голове идет войн[D]а\n[Em]Я не принимаю ничег[C]о\nИз того что чувствую сейча[G]с\nпроводив тебя в последний раз [D]\n\n[Припев]:\n(2 раза)\n[Em7]И пропадает в миллионах на век, когда-то\n[Cadd9]Самый дорогой человек, правда\n[G]Слишком глубокая рана\n[D]Забывать друг друга пора нам\n[Em7]Пропадает в миллионах на век, когда-то\n[Cadd9]Самый дорогой человек, правда\n[G]Слишком глубокая рана\n[D]Забывать друг друга...\n\n[Куплет]:\n[Em]Я слышу твое сердце по ноч[C]ам\nТобой пропитан каждый сантиме[G]тр\nЯ нахожу тебя во всех веща[D]х\n[Em]Я тебя никем не заменю [C]\nВнутри меня как будто гаснет св[G]ет\nСрываюсь и опять тебе звон[D]ю\n\n[Бридж]:\n\nТы молчи[Em]шь\nЯ б[C]ольше тебе никто\nТы бо[G]льше мне ничего не прости[D]шь\n\n[Припев]:\n\n[Em]И пропадает в миллионах на век, когда-то\n[C]Самый дорогой человек, правда\n[G]Слишком глубокая рана\n[D]Забывать друг друга пора нам\n[Em]Пропадает в миллионах на век, когда-то\n[C]Самый дорогой человек, правда\n[G]Слишком глубокая рана\n[D]Забывать друг друга пора нам\n\n[Проигрыш]:\n[Em] [C] [G] [D] }x2\n\n[Припев]:\n\n[Em7]Пропадает в миллионах на век, когда-то\n[Cadd9]Самый дорогой человек, правда\n[G]Слишком глубокая рана\n[D]Забывать друг друга..."
+  },
+  {
+    "id": "song_1794692944500_13",
+    "artist": "Нервы",
+    "title": "Слишком влюблён",
+    "category": "Нервы",
+    "capo": "капо у",
+    "body": "Каподастр на 4м ладу\n\nПойм[Am]и, прошу, ты очень-очень мне ну[B7]жна,\nПойми, ведь я тобой ды[Em]шу,\nТы в это вряд ли вл[C]юблена,\nНо я живу, пока де[Am]ржу твою ладонь в своей ру[B7]ке,\nИ трещины на потолк[Em]е\nнапоминают мне о то[C]м,\nчто без тебя я был ни[Am]кем,\nПрошу верни[B7]сь или дай умереть мне[Em].\n\nПрипев:\nНаверное я слишком влю[Am]блен,\nЯ снова начал слушать Зем[B7]фиру, листая твои фото в альб[Em]омах,\nВникая в тебя тысячу [C]раз\nЯ слишком влю[Am]блен, Ты в каждой моей мысли,\nТы[B7] вирус,\nЯ снова буду ждать тебя д[Em]ома,\nВ бессмысленном поиске г[C]лаз\n\nЗаче[Am]м ты врешь? Зачем ты жжешь мои [B7]стихи?\nИ говоришь, что ты уйд[Em]ешь,\nТы не простишь мои [C]грехи,\nЯ сдохну с ними, н[Am]у так что [B7]ж, давай, иди, чего ты ждешь?\nЯ не хочу, чтоб ты [Em]смотрела,\nНа то, как ты меня уб[C]ьешь, давай, ты\nэтого [Am]хотела,\nПрошу ве[B7]рнись, не дай у[Em]мереть мне.\n\nПрипев:\nНаверное я слишком влю[Am]блен,\nЯ снова начал слушать Зем[B7]фиру, листая твои фото в альб[Em]омах,\nВникая в тебя тысячу [C]раз\nЯ слишком влю[Am]блен, Ты в каждой моей мысли,\nТы[B7] вирус,\nЯ снова буду ждать тебя д[Em]ома,\nВ бессмысленном поиске г[C]лаз"
+  },
+  {
+    "id": "song_1794692944501_14",
+    "artist": "Нервы",
+    "title": "Игры больших",
+    "category": "Нервы",
+    "capo": "",
+    "body": "[Куплет 1]:\n[C]А я верю \n[E]Я верю по-прежнему \n[Am]Каждому встре[F]чному \n[C]И я грею, \n[E]Я грею надежду \n[Am]Остывш[F]им огнём \n[C]Назови[F] меня [Am] [F]\n[C]Новым [F]именем [Am] [F]\n\n[Переход]:\n[C]Открой своё сердце \n[E]И я посе[Am]люсь в н[F]ём \n[C]Открой своё сердце \n[E]И я поселю[Am]сь в н[F]ём \n\n[Куплет 2]:\nВсе друзья под во[C]просом \n[E]И где-то по миру разбросаны [Am] [F]\nИ моя терпе[C]ливая девочка [E]\n[E]С кем-то[Am] осозна[F]нно \n[C]Я дышу с то[E]бой \n[Am]Одним возд[F]ухом \n\n[Переход]:\n[C]Открой своё сердце \n[E]И я по[Am]селюсь [F]в нём \n[C]Открой своё сердце \n[E]И я пос[Am]елюсь [F]в нём \n\n[Припев]:\n[C]В горле ком, в сер[E]дце крик \n[Am]Это прошлое бо[F]лит \n[C]Смирись, смирись, сми[E]рись \n[Am]Мы тайком до з[F]ари \n[C]Ни о чём погов[E]орим \n[Am]А потом я по своим, ты по св[F]оим \n\n[Куплет 3]:\nПереплавил б[C]ы в струны ножи, стелл[E]ажи \n[Am]автомат[F]ов \nИз железных ма[C]шин солдаты вернутся [E]\n[Am]домой [F]\nЭто игры бол[C]ьших, ну а мы ни [E]бедны, ни \n[Am]богаты [F]\nЧем смогу — подел[C]юсь, а могу [E]\nподел[Am]иться ду[F]шой \n\n[Куплет 4]:\n[C]Мне нехо[E]рошо \n[Am]Я сам себя сж[F]ёг \n[C]Всё лучшее в нас \n[E]Я взял и стёр в порошок[Am] [F]\nХотя бы сей[C]час \nМеня [E]не вини \nПозвол[Am]ь мне поверить \nЧто я в[F]сё могу изменить \n\n[Припев]:\n[C]В горле ком, в сер[E]дце крик \n[Am]Это прошлое бо[F]лит \n[C]Смирись, смир[E]ись, смирись \n[Am]Мы тайком до за[F]ри \n[C]Ни о чём пого[E]ворим \n[Am]А потом я по своим, ты по [F]своим \n\n[Финал]\n[C]Открой своё сердце и я посе[F]люсь в нём [Am] [F]\n[C]Открой своё сердце и я посе[F]люсь в нём [Am] [F]\n[C]Открой своё сердце и я посе[F]люсь в нём [Am] [F]\n[C]Открой своё сер[F]дце [Am] [F]"
+  },
+  {
+    "id": "song_1794692944501_15",
+    "artist": "Нервы",
+    "title": "(Я не хочу без тебя) спать",
+    "category": "Нервы",
+    "capo": "",
+    "body": "[F]Ничего не снится,\nМне не с[E]пится,\nЧтобы н[Am]е спиться,\nЯ возьму[C] спицы.\n[F]Свяжу любовь из[E] порванных нервов[Am] –\nОна всё-та[C]ки стерва.\nИскус[F]ала,\nТело, ду[E]шу целовала,\nКровь кип[Am]ела,\nНо ей в[C]идимо было мало.\n[F]Убеж[E]ала-[Am]а-а…\nВерни[C]сь!\n\nЯ не хочу без тебя с[F]пать,\nЯ [E]не хочу умереть в кроват[Am]и,\nЯ не[C] хочу без твоих объяти[F]й,\nНе[E]выносимо тебя желат[Am]ь.\nЯ н[C]е хочу без тебя дышать[F],\nЛишь оде[E]яло согреет п[Am]лечи,\nТы знаешь, эт[C]о меня не л[F]ечит,\nЯ не хоч[E]у без тебя спать[Am].\n\nпроигрыш\n[F] [E] [Am] [C]\n\nЯ не спл[F]ю уже три[E] недели,\nКофе[Am] не пью, и так [C]на пределе\nЕс[F]ли сойду [E]с ума –\nВиновата[Am] ты сам[C]а.\nВ полноч[F]ь позвонила,\nЦепи раз[E]орвала,\nСнова во[Am]збудила –\nВсё-таки[C] было мало.\n[F]Убеж[E]ала-[Am]а-а….\nВерн[C]ись!\n\nЯ не хочу без тебя с[F]пать,\nЯ [E]не хочу умереть в кроват[Am]и,\nЯ не[C] хочу без твоих объяти[F]й,\nНе[E]выносимо тебя желат[Am]ь.\nЯ н[C]е хочу без тебя дышать[F],\nЛишь оде[E]яло согреет п[Am]лечи,\nТы знаешь, эт[C]о меня не л[F]ечит,\nЯ не хоч[E]у без тебя спать[Am].\n\n      К[F]ак ты[E] могла, так по[Am]ступить[C],\n      Т[F]ак за[E]вести и отпуст[Am]ить[C],\n      К[F]ак ты[E] могла, ну как[Am] ты мог[C]ла…\n      Е[F]ее… у[E]оуоуо…\n      Я[F] не х[E]очу бе[Am]з теб[C]я….."
+  },
+  {
+    "id": "song_1794692944501_16",
+    "artist": "MORGENSHTERN",
+    "title": "Пустой вокзал",
+    "category": "Моргенштерн",
+    "capo": "0",
+    "body": "[Вступление]:\n[Dm] | [F] | [C] | [G] x2\n\n[Куплет 1]:\n[Dm]Бесконечные слёзы,[F] незакрытые травмы\n[C]Всё оставлю тебе, ведь [Am]я мужчина\n[Dm]Мне звонил твой психолог[F], чуть от счастья не плакал\n[C]Он купил себе дом, ж[Am]ене машину\n\n[Пред-припев]:\n[Dm]Я, ты — две судьбы\n[F]Что одной стать не смогли\n[C]Ты, я — больше не семь[Am]я\n\n[Припев]:\nПустой вок[Dm]зал нам шепчет\nЧто я ст[F]ану завтра ник[C]ем для теб[G]я\nНо где-то ч[Dm]ерез вечность напиш[F]у внезапно\n«Привет[C], как дела?[G]» (Эй, детка, как дела?)\n\n[Куплет 2]:\n[Dm]Я долго притвор[F]ялся, что знаю слово «Сч[C]астье»\nНо моим д[Am]емонам тесно внутри (Хм)\n[Dm]Я буду изгон[F]ять их, и, может быть, одн[C]ажды (М)\nЯ стану т[Am]ем, кто способен любить\n\n[Пред-припев]:\n\n[Dm]Я, ты — две судьбы\n[F]Что одной стать не смогли\n[C]Ты, я — больше не семь[Am]я\n\n[Припев]:\nПустой вок[Dm]зал нам шепчет\nЧто я ст[F]ану завтра ник[C]ем для теб[G]я\nНо где-то ч[Dm]ерез вечность напиш[F]у внезапно\n«Привет[C], как дела?[G]» (Эй, детка, как дела?)\nПустой вок[Dm]зал нам шепчет\nЧто я ст[F]ану завтра ник[C]ем для теб[G]я\nНо где-то ч[Dm]ерез вечность напиш[F]у внезапно\n«Привет[C], как дела?[G]» (Эй, детка, как дела?)\n\n[Кода]:\n[Dm] | [F] | [C]"
+  },
+  {
+    "id": "song_1794692944501_17",
+    "artist": "MORGENSHTERN",
+    "title": "Красный Флаг",
+    "category": "Моргенштерн",
+    "capo": "0",
+    "body": " [Вступление]:\n[C]                  [Am]             [Em]               [Em]\nE|-------------------------------------------------------------------|\nB|-----------------------------5-3-----------------------------------|\nG|----5-5-4-5--5-4-5-----5-5-4----5-4-4--4-2-4--4-2-4--4-2-4-2-4-2-5-|\nD|---5------------------5--------------------------------------------|\nA|--3------------------3---------------------------------------------|\nE|-------------------------------------------------------------------|\n\n[Куплет 1]:\n[C]В доме тихо, вечер будто вечность\n[Am]Ты молчишь, я собираю вещи\n[Em]Время вышло, время нас не лечит\n[Em]Но соври, что завтра станет легче\n[C]Ты найдёшь себе того, кто зажжёт в глазах огонь\n[Am]Кто не будет так жесток с твоей раненной душой\n[Em]Ты достойна быть счастливой\n[Em]Но поверь: со мной не выйдет\n\n[Бридж]:\n[F]Лёгкий дым, сложный шаг\n[Fm]Шрамы на твоих, угу\n\n[Припев]:\n[C]Лёгкий дым, сложный ш[Am]аг\nШрамы на твоих рук[Em]ах\nЗлейший друг, лучший в[Em]раг\nЯ твой личный красный флаг\n\n[Куплет 2]:\n[C]Ты терпела все загоны\n[Am]Ты хотела быть со мною\n[Em]Ты простила все измены\n[Em]Ты любила  — я так не умею\n[C]Так найди себе того, кто зажжёт в глазах огонь\n[Am]Кто не будет так жесток с твоей раненной душой\n[Em]Ты достойна быть счастливой\n[Em]Но поверь: со мной не выйдет\n\n[Бридж]:\n[F]Я всё проебал, я всё проебал\n[Fm]Я всё проебал, я всё проебал, е, хм\n\n[Припев]:\n[C]Лёгкий дым, сложный ш[Am]аг\nШрамы на твоих рук[Em]ах\nЗлейший друг, лучший в[Em]раг\nЯ твой личный красный флаг\n[C]Лёгкий дым, сложный ш[Am]аг\nШрамы на твоих рук[Em]ах\nЗлейший друг, лучший в[Em]раг\nЯ твой личный красный флаг\n\n[Кода]:\n[C] | [Am] | [Em] | [Em]"
+  },
+  {
+    "id": "song_1794692944501_18",
+    "artist": "MORGENSHTERN",
+    "title": "Последняя Любовь",
+    "category": "Моргенштерн",
+    "capo": "",
+    "body": "[Intro]:\n[C#m] | [C#m] | [C#m] | [C#m]\n\n[Verse 1]:\nТы снова к[C#m]уришь, снова слёзы на твоих щеках\nОпять ждал[A]а меня бухого до сем[G#]и утра\nПообещ[C#m]ал, что я всю жизнь буду любить тебя\nЯ рэпер, з[A]ай. Мои слова не стоят н[G#]и хуя\nИ я под[C#m]онок, я изменщик, я газлайтер и абьюзер\nЯ не нр[A]авлюсь твоей маме, да и х[G#]уй с ней, ну, допустим\nДетка, хв[C#m]атит мне уже давать последний шанс\nСч[A]астье — это не для на[G#]с\n\n[Chorus]:\nПоследняя люб[C#m]овь, пепел на простынях\nБери все мои в[A]ещи, выкидывай из окн[G#]а\nПоследняя люб[C#m]овь. Плачешь, а мне плевать\nТы больше не пов[A]еришь никому и никогд[G#]а\n\n[Interlude]:\n[C#m] | [C#m] | [C#m] | [C#m]\n\n[Verse 2]:\nА ты верн[C#m]ула все подарки, отписалась в Инсте\nВ общем, сд[A]елала всю ту хуйню, что д[G#]елают все\nИ я ост[C#m]авлю тебе травмы, когда брошу тебя\nВедь ты же т[A]ак искала парня, что пох[G#]ож на отца\nИ когда б[C#m]удешь ныть подругам то, что я уебан\nПопрос[A]и, чтоб они все мне перест[G#]али писать\nЯ с детства зн[C#m]ал, что все девчонки любят плохих парней\nНо, детка, [A]я не плохой парень, я плох[G#]ой человек\n\n[Bridge]:\nИ я норм[C#m]альным быть пытался, но я заебался\nЯ рождён уёбком, не дост[C#m]ойным любви, извини\n\n[Chorus]:\nПоследняя люб[C#m]овь, пепел на простынях\nБери все мои в[A]ещи, выкидывай из окн[G#]а\nПоследняя люб[C#m]овь. Плачешь, а мне плевать\nТы больше не пов[A]еришь никому и никогд[G#]а\n\n[Coda]:\nПоследняя люб[C#m]овь\nТы больше не пов[A]еришь никому и никогд[G#]а\nПоследняя люб[C#m]овь\nТы больше не пов[A]еришь никому и никогд[G#]а\nПоследняя люб[C#m]овь! [A] [G#]\nПоследняя люб[C#m]овь! [A] [G#]"
+  },
+  {
+    "id": "song_1794692944502_19",
+    "artist": "Noize MC",
+    "title": "Зелёный - мой любимый цвет",
+    "category": "Нойз",
+    "capo": "0",
+    "body": "[Куплет]:\n[Am]  У меня есть три футб[E]олки, две гитары, пара к[G]ед\nИ песенок эдак под сорок[D]ет на болванке в резаке.\n[F] Я тебе их запишу и подпишу там, в уголк[C]е -\nСвой дурацкий псевдон[G]им на иностранном язык[Am]е.\nУ меня есть хитрый пл[E]ан: под гитару тебе сп[G]еть,\nЗатащить тебя в постель,[F] завести с тобой детей\nИ прожить с тобой всю ж[C]изнь...\n[G]  Соглашайся, не роб[Am]ей.\nЯ зову тебя с соб[E]ой в тыщу разных город[G]ов,\nВ тамбур[D]ы всех поездов:\n[F]  На плацкарты, и в СВ, и в наш загородный д[C]ом,\nЧто пока что не гот[G]ов, но он будет, сто пуд[Am]ов.\nИ будут вписки с расклад[E]ушками в однушках,\nБудут л[G]юксы, где три комнаты и дв[D]а душа.\nБудут южные пл[F]яжи, будет полярная стужа -\nМного чего будет.[C] Ты будешь моей жен[G]ой,\n[G]\n\nЯ буду твоим мужем.\n\n[Припев]:\n[Am]  Весь мой см[E]ысл в твоих глаз[G]ах,\nКогда я в[D]ижу его, мне нра[F]вится.\nПлюс зелёный - мой любимый цв[C]ет,\nЗел[G]ёный - мой любимый цвет!\n[Am]  Иногд[E]а они смотрят т[G]ак,\nЧто внутр[D]и меня что-то пл[F]авится,\nНо зелёный - мой любимый цв[C]ет.\n\n[Куплет]:\n[Am]  Я ещё не допис[E]ал эту песню до конц[G]а,\nПолучается попс[D]а, как Антонов или Лоза.\n[F]  Про то, как я смотрю тебе в глаза,\nИ в проц[C]ессе будто бы слышу наши [G]юные, смешные голос[Am]а.\nНаивняк, детский с[E]ад, будто мне 17 л[G]ет,\nБудто ты зашла к Дан[D]илычу распечатать рефер[F]ат,\nМол, привет, Аня - Ваня, Ваня - Аня - очень р[C]ад,\nИ назад дороги н[G]ет, а повороты только в [Am]ад.\nВ одиночку не дойт[E]и, но в палатке будет р[G]ай.\nЧто ты делаешь? Отпуст[D]и! Быстро руки убир[F]ай!\nАлексеев, не пристав[C]ай! Прекрати! Продолж[G]ай.\n[G]  No woman, no cry!\n[Am]  Нет женщины, нет крика -[E] ни крика радости, ни вопля боли,\n[G]  Но без тебя - я ору, как н[D]аш Вася во время колик.\nЗ[Am7]айка моя, ты - мой сп[Am]ирт - [F]я твой алкоголик,\nМоё м[Dm/B]оре, я готов сожрать[E7] пуды твоей горчащей соли.\n\n[Припев]:\n[Am]  Весь мой см[E]ысл в твоих глаз[G]ах,\nКогда я в[D]ижу его, мне нра[F]вится.\nПлюс зелёный - мой любимый цв[C]ет,\nЗел[G]ёный - мой любимый цвет!\n[Am]  Иногд[E]а они смотрят т[G]ак,\nЧто внутр[D]и меня что-то пл[F]авится,\nНо зелёный - мой любимый цв[C]ет."
+  },
+  {
+    "id": "song_1794692944502_20",
+    "artist": "Noize MC",
+    "title": "Жвачка",
+    "category": "Нойз",
+    "capo": "-4",
+    "body": "E|--------------------------------------------------------------------------|\nH|----5--5--5--5--5--5------------------------------------------------------|\nG| --------------------------------1--1--1--1--3----4-4-4-4-6----6-6-6-6-6--|\nD|--------------------------------------------------------------------------|\nA|--4--4--4--4--4--4--------------------------------------------------------|\nE|--------------------------------0--0--0--0--0-----4-4-4-4-4----2-2-2-2-2--|\n\n[C#m]Память о тебе, как жвач[E]ка в волосах\nИ[G#m] видимо слишком глубоко в[F#] башке застряли корни.\nХолодно в а[C#m]ду, нечем дышать на небесах [E]\nВсе[G#m]ленной больше нет, но я о ней[F#] зачем-то помню.\n\n[G#m]Мне бы этот прибор с яркой вспышкой из фильма \"Люди [G#m]в черном\"\n[G#m]Я бы выкрутил реле на максимум и вообще все подчис[Am]тую [G#m]стер бы.\n[G#m]Очутился бы в незнакомом месте, ничего не понимая. Н[G#m]е зная, кто я\n[G#m]Лишившись потребности глушить препаратами фантомые[Am]  бо[G#m]ли.\n\n[G#m]Я бродил бы бесцельно по городу, ставшему вдруг спас[G#m]ительно чужим\n[G#m]Не чувствуя зажимов подреберья, свободный как выпу[Am]щенн[G#m]ый джин.\n[G#m]Которому нет больше нужды рвать на себе волосы, пыта[G#m]ясь осуществить\n[G#m]Невыполнимые желания собственного внутреннего голо[Am]са. [G#m]\n\nЯ [G#m]написал бы себе записку с просьбой не пытаться узн[B]ать о прошлом\nВ[F#]о избежание возможных рисков наврал бы [E]в ней сам себе безбожно.\nа [G#m]если бы вдруг я кого-то встретил, кто напомнил бы [B]мне о забытом\nЯ[F#] нажал бы еще на раз на кнопку. Это так[E] просто: \"вкл\" \"выкл\".\n\n[C#m]Память о тебе, как жвач[E]ка в волосах\nИ[G#m] видимо слишком глубоко в[F#] башке застряли корни.\nХолодно в а[C#m]ду, нечем дышать на небесах [E]\nВсе[G#m]ленной больше нет, но я о ней[F#] зачем-то помню."
+  },
+  {
+    "id": "song_1794692944502_21",
+    "artist": "Noize MC",
+    "title": "Yes Future",
+    "category": "Нойз",
+    "capo": "",
+    "body": "[F#m]Слушай мой прогноз, человечество:\n[A]Отменяются все катаклизмы.\n[D]Все больные успешно излечатся,\n[Bm]Вымрут вредные микроорганизмы.\n\n[F#m]Пришельцы нагрянут не с целью экспансии,\n[A]А чтоб забрать ядерные отходы,\n[D]Для безработных найдутся вакансии,\n[Bm]В Питере будет хорошая погода.\n[F#m]Кто-то хороший у власти окажется\n[A]И всё наладит нежданно-негаданно,\n[D]Гадов накажет, никто не отмажется.\n[Bm]Все ожидания будут оправданы,\n[F#m]Никаких вооружённых конфликтов,\n[A]В МВД одни дяди стёпы,\n[D]На каждого квадратных метров с избытком,\n[Bm]Всё в серьёз, никакого стёба.\n\n[F#m]Что, не верится в мой прогноз?\n[A]Типа, звучит нереалистично?\n[D]Спецом для тебя будет полный пиздос!\n[Bm]У все остальных всё будет отлично.\n\nПрипев:\n          Мил[F#m]лионы правор[A]ульных «жигулей»\n          За[D]полнят про[Bm]странство япон[F#m]ских «хай-вэев»!\n          Россия [A]- впереди планеты всей!\n         “No[D] future” –[Bm] это не н[F#m]аша идея.\n\n          Нам [F#m]скоро стопуд[A]ово повезет,\n          Св[D]ежий ветер[Bm] разгонит все [F#m]черные тучи,\n          Все чер[A]ти кадилом по морде получат!\n          Ye[D]s, future![Bm] Yes, yes, fut[F#m]ure!\n\n[F#m]Слушай мой прогноз, человечество:\n[A]Я в будущее смотрю с оптимизмом,\n[D]РПЦ совладает с нечистью,\n[Bm]У православных отсосут сатанисты.\n[F#m]Дьявол признает ошибки прошлого,\n[A]Папа простит и вернёт на небо,\n[D]Вместо пустого, пошлого, ложного –\n[Bm]Правда, реальная, как буханка хлеба!\n[F#m]Волшебник в голубом вертолёте\n[A]Давно взлетел и вот-вот прибудет,\n[D]Ему тут км всего пару сотен,\n[Bm]Скорей сюда все, кто мечтал о чуде!\n[F#m]Ты говоришь, это все невозможно?!\n[A]На хуй иди, я тебя не спрашивал!!\n[D]Мне от вас, пессимистов, тошно,\n[Bm]Все беды из-за нытья ебучего вашего!\n\nПрипев:\n          [F#m]Пачка евро за монет[A]у в пять рублей,\n          [D]Сто баксов в обмен на [Bm]пятнадцать копеек.\n          [F#m]Россия вперед[A]и планеты всей,\n          [D]No future - это[Bm] не наша идея.\n          [F#m]Нам скоро стопудово[A] повезет,\n          [D]Свежий ветер разгонит вс[Bm]е черные тучи,\n          [F#m]Все черти кадил[A]ом по морде получат.\n          [D]Yes future, yes[Bm], yes future\n          [F#m]Yes, [A]fu[D]ture! Yes, yes, f[Bm]uture!\n[F#m]  [A] [D] [Bm]"
+  },
+  {
+    "id": "song_1794692944502_22",
+    "artist": "Noize MC",
+    "title": "Светлая Полоса",
+    "category": "Нойз",
+    "capo": "",
+    "body": "[Intro]\n[D] [E] [F#m] [A]\n\n[Verse 1]\n[D]В пепельной пустыне полярная н[E]очь\nХолодная зола. Остывшая п[F#m]ечь\nНа грифеле углём накарябанный ске[A]тч\nБудто на глазах в пять слоёв чёрный ск[D]отч\nКаждый зрачок ищет хоть один л[E]уч\nКаждому телу охота прил[F#m]ечь\nНо ты сам знаешь, что это может повл[A]ечь —\nТак что вставай, не канючь [D]\nГоворят, что у правой ноги длинн[E]ее шаги\nИ мы нарезаем круг[F#m]и\nА я говорю — мы дойдём вопре[A]ки\nТам, впереди — огоньки [D]\n\nИх просто не видно пока\nПока р[E]уку упавшего ищет на ощупь рук[F#m]а\nПока копит упавший резерв для рывк[A]а\n\n[Chorus]\nНо я верю в то, что св[D]етлая будет полос[E]а\nВ этой тьме, что беспросв[F#m]етна, как снег на полюса[A]х\nСтебли новые из п[D]епла пробьются к небес[E]ам\nНа листве в лучах рассв[F#m]етных заблестит роса [A]\n\nДа, я верю в то, что св[D]етлая будет полос[E]а\nВ этой тьме, что беспрос[F#m]ветна, как снег на полюса[A]х\nСтебли новые из п[D]епла пробьются к небес[E]ам\nНа листве в лучах рассв[F#m]етных заблестит роса [A]\n\n[Verse 2]\nНам ум[D]ение видеть придётся по новой пост[E]ичь\nКак младенцу – хожденье и р[F#m]ечь\nНам придётся дойти и дост[A]ичь\nА этой ночи — пройти и ист[D]ечь\nОна тоже нас топчет в отв[E]ет своей грязной пятой\nНо я не уступл[F#m]ю ей ни маленькой чёрточки, ни запято[A]й\nЯ вперёд иду как заводн[D]ой\nИ эти ребята со мн[E]ой —\nЕсли там кто-то спросит [F#m]\nТам, где скоро блеснёт под наш клич хоров[A]ой\nГоризонта рассветного про[D]седь\nГде мы тени отбросим оп[E]ять\nКак доставшую в край неудобную но[F#m]шу...\nПоднимайся скорей, твою м[A]ать\nЯ тебя здесь не брошу!\n\n[Chorus]\n[D]Светлая будет полос[E]а\nВ этой тьме, что беспросв[F#m]етна, как снег на полюса[A]х\nСтебли новые из п[D]епла пробьются к небес[E]ам\nНа листве в лучах рассв[F#m]етных заблестит роса [A]\n\nДа, я верю в то, что св[D]етлая будет полос[E]а\nВ этой тьме, что беспрос[F#m]ветна, как снег на полюса[A]х\nСтебли новые из п[D]епла пробьются к небес[E]ам\nНа листве в лучах рассв[F#m]етных заблестит роса [A]\n\nДа, я верю в то, что св[D]етлая будет полос[E]а\nВ этой тьме, что беспрос[F#m]ветна, как снег на полюса[A]х\nСтебли новые из п[D]епла пробьются к небес[E]ам\nНа листве в лучах рассв[F#m]етных заблестит роса [A]\n\nДа, я верю в то, что св[D]етлая будет полос[E]а\nВ этой тьме, что беспрос[F#m]ветна, как снег на полюса[A]х..."
+  },
+  {
+    "id": "song_1794692944502_23",
+    "artist": "Оля Ля",
+    "title": "Мятные конфетки",
+    "category": "Оля Ля",
+    "capo": "0, капо 4",
+    "body": "[Куплет]:\n[Am]Ослепляет солнце, Мы [G]закат встречаем\n[F]На что ты намекаешь, Я н[E]е замечаю\n[Am]Без любви конечно, За[G] руки держались\n[F]Будьте дома в девять и[E] побежали\n[Am]Мы сидим в подъезде, Т[G]ы кусаешь губы\n[F]Неделями в отъезде, Но[E] Больше так не\nбуду\n[Am]Мятные конфетки, Темн[G]еют по не многу\n[F]Брось свои таблетки, Я[E] уйму тревогу\n[Am]Твою\n[G] [F] [E]\n\n[Припев]:\n[Am]Кап кап, вытираешь слезы, [G]я тоже плачу\n[F]Пойдём на свежий воздух, ло[E]вить удачу\n[Am]Если , что-то случится, мы[G] не виноваты\n[F]Вот Это наша не любовь, со[E] вкусом мяты (х2)\n\n[Куплет]:\n[Am]В изумрудных глазках, звё[G]зды засияли,\n[F]Мы ещё не всё друг др[E]угу рассказали\n[Am]Скоро расстаёмся, жа[G]ль, что не до завтра\n[F]Ждёт нас расстояние в1[E]015\n[Am]Я сжигаю письма, пое[G]зда уносят,\n[F]Август остаётся, уез[E]жаю в осень\n[Am]Мятные конфетки, мы[G] сидим в подъезде\n[F]Кажется прошли мы, сли[E]шком много вместе\n[Am]С тобой\n[G] [F] [E]\n\n[Припев]:\n[Am]Кап кап, вытираешь слезы, [G]я тоже плачу\n[F]Пойдём на свежий воздух, ло[E]вить удачу\n[Am]Если , что-то случится, мы[G] не виноваты\n[F]Вот Это наша не любовь, со[E] вкусом мяты (х2)"
+  },
+  {
+    "id": "song_1794692944502_24",
+    "artist": "Оля Ля",
+    "title": "Не забывают",
+    "category": "Оля Ля",
+    "capo": "0, капо 5",
+    "body": "[Куплет]:\n[F]Ты запомнишь меня километрами [C]\n[E]Я теряюсь на перекр[Am]ёстках\n[F]Твоё имя-любовь безответная [C]\n[E]Кто же вытрет теперь мои слё[Am]зы\n[F]Как закончится снег-позвоню т[C]ебе\n[E]И напомню, что я сущес[Am]твую\n[F]Ты, наверное не возьмёшь опят[C]ь,\n[E]Я кричу тебе, всё в пуст[Am]ую\n\n[Припев]:\n[F]Мои слёзы наполнены космосом [C]\n[E]Свитера уже не согр[Am]евают\n[F]Если б было на свете всё прос[C]то так\n[E]То любовь бы съедал[Am]о пламя\n[F]Мои руки холодные связывай [C]\n[E]Ничего больше не по[Am]могает\n[F]Ты сказала забыть навсегда те[C]бя,\n[E]Но ведь люди не заб[Am]ывают\n\n[Куплет]:\n[F]Оплатила билеты до города [C]\n[E]Позвонила, и снова [Am]без повода\n[F]Я посплю-повиси на проводе [C]\n[E]Без тебя мне слишко[Am]м холодно\n[F]Наверное, всё это к лучшему [C]\n[E]Наберу тебе-снова п[Am]ропущенный\n[F]Белый снег добавляет апатии [C]\n[E]Я люблю тебя, как н[Am]е кстати\n\n[Припев]:\n[F]Мои слёзы наполнены космосом [C]\n[E]Свитера уже не согр[Am]евают\n[F]Если б было на свете всё прос[C]то так\n[E]То любовь бы съедал[Am]о пламя\n[F]Мои руки холодные связывай [C]\n[E]Ничего больше не по[Am]могает\n[F]Ты сказала забыть навсегда те[C]бя,\n[E]Но ведь люди не заб[Am]ывают            "
+  },
+  {
+    "id": "song_1794692944503_25",
+    "artist": "Папин Олимпос",
+    "title": "Официантка",
+    "category": "Папин Олимпос",
+    "capo": "5",
+    "body": "[Куплет]:\n[Em]Я с ноги захожу, всех опередив\n[Em]Краем уха услышав прикольный мотив,\n[G]На танцполе толкаются три полутрупа.\n[G]Сегодня играет гаражная группа.\n[Em]Меня все знают, я здесь номер один.\n[Em]Я на бар прорываюсь, всех опередив.\n[G]Бармен, улыбаясь, протирает стакан.\n[G]Он знает, что мне нужно. Он мне как брат.\n[Em]На пятой песне ко мне кто-то подошёл,\n[Em]Я не помню ничего кроме набыченной рожи.\n[G]Положив свою руку мне на плечо, он[B] сказал мне:\n[B]Веди себя проще.\n\n[Припев]:\n[C]Официантка [B]в моем любимо[Em]м баре\n[Am]Наполовину [C]полный ст[B]акан летит,\n[Em]Я падаю [Am]за ним.\n[C]Ты держишь м[B]еня, спасибо.\n[Em]Снизу ты [Am]так красива.\n[C]Жалко немн[B]ого даже,\n[Em]что ты на [Am]семь лет старше\n\n[Проигрыш]:\n[C] [B] [Em] [Am]}x2\n[C] [B] [Em] [Am]\n[C] [B] [Em] [Am]\n\n[Куплет]:\n[Em]Я вскочил, я герой. Слышь, ты че, ахуел?\n[Em]Че ты вылупился, дурень, отвечай на вопрос.\nМне показал[G]ось или ты как-то не так посмотрел\n[G]На обладательницу шикарных синих волос?\nТы под[Em]напрягся нехило. Смотрите, весь покраснел.\n[Em]Ну че, смелый такой? Давай, въеби мне ещё.\nТолько уч[G]ти, у меня есть планы на этот счёт:\nЗдесь раб[B]отает Денис и он пиздец большой.\n\n[Припев]:\n[C]Официантка [B]в моем любимо[Em]м баре\n[Am]Наполовину [C]полный ст[B]акан летит,\n[Em]Я падаю [Am]за ним.\n[C]Ты держишь м[B]еня, спасибо.\n[Em]Снизу ты [Am]так красива.\n[C]Жалко немн[B]ого даже,\n[Em]что ты на [Am]семь лет старше\n\n[Проигрыш]:\n[C] [B] [Em] [Am]}x2\n[C] [B] [Em] [Am]\n[C] [B] [Em] [Am]\n\n[Куплет]:\n[C]Проснувшись утром,\n[B]Как бомж помятый,\n[Em]А в телефоне:\n[Am]Привет, ну как ты?\n[C]Заволновался,\n[B]И участился пульс.\n[Em]Звоню ребятам из[Am] группы\n[Am]Женюсь\n\n[Припев]:\n[C]На официант[B]ке в моем люб[Em]имом баре\n[Am]Наполовину [C]полный ст[B]акан летит,\n[Em]Я падаю [Am]за ним.\n[C]Ты держишь м[B]еня, спасибо.\n[Em]Снизу ты [Am]так красива.\n[C]Жалко немн[B]ого даже,\n[Em]Что ты на [Am]семь лет старше"
+  },
+  {
+    "id": "song_1794692944503_26",
+    "artist": "Папин Олимпос",
+    "title": "Динозаврики",
+    "category": "Папин Олимпос",
+    "capo": "5",
+    "body": "Вся песня: [C] [Am] [Em] [Bm]\n\nКуплет:\n[C]Звезды падаю[Am]т с неба\nЭто всегда[Em] так красиво\nНо когда [Bm]прямо на землю\nДинозав[C]рикам больно\nЯ возвра[Am]щался со школы\nТогда мен[Em]я осенило\nЧто будет [Bm]если не слушать\nЧто будет ес[C]ли попробовать\n\nПре-хорус:\n[C]Ведь сложность заключается [Am]лишь в том\nЧто ты[Em] не можешь дать се[Bm]бе ответ на [C]тот вопрос, который задаёшь\nЗачем[Am] тебе одно и то же каждый день\nЗадумайся[Em] о том, зачем живё[Bm]шь\n\nПрипев(x2) :\n[C]Туда - сюда, [Am]туда-сюда, [Em]туда-сюда\n[Bm]Одно и то же каждый день\n[C]Туда-сюда, [Am]туда-сюда\nС т[Em]обой ходит [Bm]только заеб[C]авшаяся тень\n\n[C] [Am] [Em] [Bm]\n\nКуплет:\n[C]Динозаврики бега[Am]ли, динозавр[Em]ики прятались\nНо кровавый т[Bm]еатр опустил кровавый занав[C]ес\nИ за полтора ме[Am]сяца динозавры попл[Em]авились\nТеперь давай срав[Bm]нивать, чем вы отличает[C]есь\n\nПрипев(x2) :\n[C]Туда - сюда, [Am]туда-сюда, т[Em]уда-сюда\n[Bm]Одно и то же каждый день\n[C]Туда-сюда, [Am]туда-сюда\nС т[Em]обой ходит т[Bm]олько заеб[C]авшаяся тень\n\n[C] [Am] [Em] [Bm]\n\nБридж(x2) :\n[C]Я динозавр, [Am]и я решил не пос[Em]тупать как все[Bm], не умирать\n[C]Метеорит упал[Am], похоронив под собой[Em] всех\nА я забрался прям нав[Bm]ерх, я посмо[C]трел это кино\n\nПрипев(x2) :\n[C]Туда - сюда, [Am]туда-сюда, [Em]туда-сюда\n[Bm]Одно и то же каждый день\n[C]Туда-сюда, т[Am]уда-сюда\nС т[Em]обой ходит т[Bm]олько заеба[C]вшаяся тень\n\n[C] [Am] [Em] [Bm]"
+  },
+  {
+    "id": "song_1794692944503_27",
+    "artist": "Папин Олимпос",
+    "title": "Goodbye",
+    "category": "Папин Олимпос",
+    "capo": "капо 5",
+    "body": "[G5]Ты улыбаешься наверное ярче,\n[B5]Чем звёзды светятся, когда умирают\n[C5]Ты шелковая как одеяло\n[G5]Я не опрятный, но хочу что-то менять\n\nФужер[G5]ы на стол\n[G5]Несите мой фрак\nСух[B5]ое вино\n[B5]И чтобы ты п[C5]отанцевала\n[C5]Я спою\n[C5]Меня разбудят успокоив, скажут ты кричал:\n\nТе[G5]бя нет!\n[G5]Ты ушла\nЯ остыв[B5]аю и\n[B5]Не вижу не одной причины быть [C5]теплей\nДля [G5]кого?\n\nВижу б[G5]оль\nСлышу [C5]сны\n[C5]И в каждом стольк[B5]о нас\n[B5]Что меня просто не хватает, на всю н[G5]очь, я устал\n\n[Бридж]:\n[G5]Соб[B5]ако[C5]й вою Луну\n\n[Припев]:\n[G5]Все[B5] пр[C5]ойдёт\n[G5]Goo[B5]dby[C5]e\nИ чтобы ты по[G5]танцевала\n[B5]Я с[C5]пою\n[G5]Теб[B5]е о[C5] том, как я сошёл с ума, когда ты мне сказала\n[G5]Goo[B5]dby[C5]e\n[G5]Goo[B5]dby[C5]e\n[G5]Ты [B5]мне[C5] сказала\n\n[Куплет 2]:\n[G5]Ты улыбаешься наверное где-то\n[B5]Я перед зеркалом и вижу лишь то, что за спиной ст[C5]оит\n[C5]И так одиноко в нем с[G5]мотрится все, нужно что-то менять\n\nФужеры [G5]на стол\n[G5]Несите мой фрак\nЯ пр[B5]оиграл\n[B5]Смотрите, вот белый[C5] флаг\n[C5]Я готов ненавидеть тебя всю жизнь\n[C5]Перестать бы больше жизни любить\n\nТеб[G5]я нет!\n[G5]Ты ушла\nЯ остыва[B5]ю и\n[B5]Не вижу не одной причины быть т[C5]еплей\nДля кого?\n\nВижу боль [G5]\n[G5]Слышу сны\nИ в каждом с[B5]только нас\n[B5]Что меня просто не хватает, на [C5]всю ночь, я устал\n\n[Бридж]:\n[G5]Соб[B5]ако[C5]й вою Луну\n\n[Припев]:\n[G5]Все[B5] пр[C5]ойдёт\n[G5]Goo[B5]dby[C5]e\nИ чтобы ты потанцев[G5]ала\n[B5]Я с[C5]пою\n[G5]Теб[B5]е о[C5] том, как я сошёл с ума, когда ты мне сказала\n[G5]Goo[B5]dby[C5]e\n[G5]Goo[B5]dby[C5]e\n[G5]Ты [B5]мне[C5] сказала"
+  },
+  {
+    "id": "song_1794692944503_28",
+    "artist": "Папин Олимпос",
+    "title": "Самолёт",
+    "category": "Папин Олимпос",
+    "capo": "",
+    "body": "[Припев]:\nЯ забуду даже твоё им[Eb]я и номер автобуса [D]\nЗабуду всё, что люби[Gm]ли, и как пахнут воло[F]сы\nСнова в кресло прижмё[Eb]т, иллюминаторы в ине[D]е\nНеси меня, самолёт, п[Gm]орхай железными крыль[F]ями\n[Eb]В небо синее-син[D]ее\n[Постприпев]\n[Eb]Синее-си[D]нее, с[Gm]инее-сине[F]е\n[Eb]Синее-си[D]нее, с[Gm]инее-сине[F]е\n[Куплет 1]:\n[Eb]Что если всё это игра[D], и по итогу изнутри\n[Gm]Останется только дыра[F] и пьяные календари?\n[Eb]Вдруг, не дождавшись [D]до конца, где-то внутри остынет всё\n[Gm]В небе останется звезда [F]— её никто не принесет\n[Eb]Когда кровь остановит бег, [D]кардиограмма замолчит\n[Gm]Любовь умрёт, а её смерть[F] законстатируют врачи\n[Eb]Снимут халат, выключат све[D]т, накроет её с головой\n[Gm]И через год или [F]другой…\n[Припев]:\nЗабудут даже твоё и[Eb]мя и номер автоб[D]уса\nЗабуду всё, что лю[Gm]били и как пахнут во[F]лосы\nСнова в кресло прижм[Eb]ёт, иллюминаторы[D] в инее\nНеси меня, самолёт, [Gm]порхай железными[F] крыльями\n[Eb]В небо синее-син[D]ее\n[Постприпев]\n[Eb]Синее-си[D]нее, с[Gm]инее-сине[F]е\n[Eb]Синее-си[D]нее, с[Gm]инее-сине[F]е\n[Куплет 2]:\n[Eb]Будешь мерещиться везде, [D]твой образ в голове как танк\n[Gm]Застрявший в грязной коле[F]е — он навсегда оставлен там\n[Eb]Ты для меня играешь роль, [D]по важности примерно как\n[Gm]В двоичной: единице — нол[F]ь; аквалангисту — акваланг\n[Eb]Всё это в моей голове, ты [D]растворишься в ней и всё\n[Gm]Врач снова выпишет рецепт [F]и все печати нанесёт\n[Eb]Потуже затянув ремень, я с[D]оберу всю свою боль\n[Gm]И через год или друго[F]й…\n[Припев]:\nЗабуду даже твоё и[Eb]мя и номер автобуса [D]\nЗабуду всё, что лю[Gm]били и как пахнут вол[F]осы\nСнова в кресло при[Eb]жмёт, иллюминаторы в и[D]нее\nНеси меня, самолёт[Gm], порхай железными кры[F]льями\n[Eb]В небо синее-син[D]ее\n[Постприпев]\n[Eb]Синее-си[D]нее, с[Gm]инее-сине[F]е\n[Eb]Синее-си[D]нее, с[Gm]инее-сине[F]е"
+  },
+  {
+    "id": "song_1794692944503_29",
+    "artist": "Папин Олимпос",
+    "title": "День, когда мы все встретились",
+    "category": "Папин Олимпос",
+    "capo": "",
+    "body": "[F#m]Я пропитан обидой,\n[F#m]Но к обеду буду\n[A]Ты чиста, я залитый\nНо я не забуду д[D]ень,\nКогда мы все встретились с[A] то[Bm]бой\n[F#m]Поцарапайся бритвой,\n[F#m]Заставь мыть посуду\n[A]Я не кто-то элита,\nНо я не забуду д[D]ень,\nКогда мы встретились с [A]то[Bm]бой\nПрипев:\n[D]Желание дарить [A]улыбку по утрам\nНе исчез[F#m]нет никогда\nИз моих [E]ран\nТечёт любовь к св[D]иданиям с тобой\nИ тв[A]оим бывшим парнем\nТы л[F#m]учшее что было у м[E]еня\n[D] [A] [D] [A]\nКуплет 2:\n[A]И сколько бы про нас не говорили:\n- «Мол о[D]н такой, она сякая»\nПусть зн[F#m]ают -\nМы са[E]ми знаем,\n[F#m]Что нам делать нужно\n[A]Беруши в уши, что бы не слушать\nЦе[D]ловаться в душе\n[D]Даже если душно,\nДаже [F#m]если дружно, все:\nОтвернутся от н[E]ас\nМы будем танцева[A]ть,\n[A]Непонятно шевелится,\nНев[D]нятно говорить:\nРаз, два, три, [F#m]раз, раз, три, три, два, раз\n[E]А сейчас, давай припев ещё раз, ещё раз\nПрипев:\n[D]Желание дарить [A]улыбку по утрам\nНе исчез[F#m]нет никогда\nИз моих [E]ран\nТечёт любовь к св[D]иданиям с тобой\nИ тв[A]оим бывшим парнем\nТы л[F#m]учшее что было у м[E]еня\nOutro: [D] [A] [D] [A]"
+  },
+  {
+    "id": "song_1794692944504_30",
+    "artist": "Папин Олимпос",
+    "title": "Ненавижу вас всех",
+    "category": "Папин Олимпос",
+    "capo": "капо 5",
+    "body": "Куплет 1:\n[D]Обжечься так, чтобы больн[G]о было смотреть\nВсе фо[D]тографии голимые — сжечь ее на кост[G]ре\nИ чтобы и[D]мя не забыть — набить его на рук[G]е\nПотом, пр[C]оплакав три дня перечеркнут[G]ь\nВсе оди[D]наковые, все как две ка[G]пли похожи\nКто-то по[D]выше, кто меньше, кто старше, к[G]то помоложе\nУ-а[D]-у, у-а-у,[C] я на своем дн[G]е\n[G]Я ненавижу одинаково всех\nПрипев:\n[D]Все люди — спичк[G]и, горят и тухну[Bm]т\nВ одной коро[A]бке довольно тесн[D]о\nВ один моме[G]нт кто-то захочет вый[Bm]ти\nТы хочешь вы[A]йти? Ну, и пизду[D]й!\n[D]Все люди — спичк[G]и, горят и тухн[Bm]ут\nВ одной коро[A]бке довольно тесн[D]о\nВ один мом[G]ент кто-то захочет вы[Bm]йти\nТы хочешь вы[A]йти? Ну, и пизд[D]уй!\n[D] [G] [Bm] [A] }x2\nКуплет 2:\n[D]Гуляя вече[Bm]ром поздним в сети\n[D]Мой взгляд[Bm] упал на одну из реклам\n[D]О распрода[Bm]же крутых dvd\n[G]Мне хорошо, когда я оди[D]н\n[D]Не хочу говорить[Bm] ни о чем, ты — крет[G]ин\nУходи, захвати все свои мысли о то[D]м\nЧто потом, впере[Bm]ди кто-то ждет, что ты жде[G]шь\n[G]Я ненавижу одинаково всех\nПрипев:\n[D]Все люди — спич[G]ки, горят и тухну[Bm]т\nВ одной кор[A]обке довольно тесн[D]о\nВ один моме[G]нт кто-то захочет вый[Bm]ти\nТы хочешь вы[A]йти? Ну, и пизду[D]й!\n[D]Все люди — спич[G]ки, горят и тухну[Bm]т\nВ одной кор[A]обке довольно тесн[D]о\nВ один моме[G]нт кто-то захочет вый[Bm]ти\nТы хочешь вы[A]йти? Ну, и пизду[D]й!\n[D] [G] [Bm] [A] }x2\n[D]Все люди — спич[G]ки, горят и тухн[Bm]ут\nВ одной кор[A]обке довольно тесн[D]о\nВ один моме[G]нт кто-то захочет вый[Bm]ти\nТы хочешь вы[A]йти? Ну, и пизду[D]й!\n[D]Я нена[G]вижу вас все[Bm]х\nЯ нена[A]вижу вас всех\n[D]Я нена[G]вижу вас все[Bm]х\nЯ нена[A]вижу вас всех\n[D]Я ненави[G]жу вас всех\n[D]Я ненави[G]жу вас всех\n[D]Я ненави[G]жу вас всех\n[D]Я ненави[A]жу вас всех"
+  },
+  {
+    "id": "song_1794692944504_31",
+    "artist": "gigi perez",
+    "title": "Sailor Song",
+    "category": "Разное",
+    "capo": "капо 3",
+    "body": "[Вступление]:\n[Cm]aj7 [Cm]aj7 [Em] [Em]  x2\n[Куплет]:\n[Cmaj7]I saw her in the[Em] rightest way\n[G]Looking like Anne Hathaway\n[Cmaj7]Laughing while sh[Em]e hit her pen\n[G]And coughed, and coughed\n[Cmaj7]And then, she came up[Em] to my knees\n[G]Begging, baby, would you please?\n[Cmaj7]Do the things yo[Em]u said you'd do\n[G] to me, to me\n[Припев]:\n[Cmaj7]Oh, won't you kiss me on the mouth\nAnd lov[Em]e me like a sailor?\nAnd w[G]hen you get a taste,\nCan y[G]ou tell me what's my flavor?\n[Cmaj7]I don't believe in God,\nBut I b[Em]elieve that you're my savior\nMy m[G]om says that she's worried,\nBut [G]I'm covered in this favor\n[Cmaj7]And when we're getting dirty,\n[Em]I forget all that is wrong\n[G]I sleep so I can see you 'cause\n[G]I hate to wait so long\n[Cmaj7]I sleep so I can see you\n[Em]And I hate to wait so l[G]on(2x)g\n[Куплет]:\n[Cmaj7]She took my fingers[Em] to her mouth\n[G]The kind of thing\n[G]That makes you proud\n[Cmaj7]That nothing els[Em]e had ever\n[G]Worked out, worked out\n[Cmaj7]And lately, I've [Em]tried other things\n[G]But nothing can [G]capture the sting\n[Cmaj7]Of the venom she's[Em] gonna spit\n[G]Out r[G]ight now\n[Припев]:\n[Cmaj7]Oh, won't you kiss me on the mouth\nAnd lov[Em]e me like a sailor?\nAnd w[G]hen you get a taste,\nCan y[G]ou tell me what's my flavor?\n[Cmaj7]I don't believe in God,\nBut I b[Em]elieve that you're my savior\nMy m[G]om says that she's worried,\nBut [G]I'm covered in this favor\n[Cmaj7]And when we're getting dirty,\n[Em]I forget all that is wrong\n[G]I sleep so I can see you 'cause\n[G]I hate to wait so long\n[Cmaj7]I sleep so I can see you\n[Em]And I hate to wait so l[G]ong\n[Кода]:\n[Cmaj7]And we can run away\nTo the [Em]walls inside your house\n[G]I can be the cat, baby,\n[G]You can be the mouse\n[Cmaj7]And we can laugh off things\nThat we k[Em]now nothing about\n[G]We can go forever until\n[G]you wanna sit it out"
+  },
+  {
+    "id": "song_1794692944504_32",
+    "artist": "Billie Eilish",
+    "title": "Bellyache",
+    "category": "Разное",
+    "capo": "",
+    "body": "Intro:\n[C]My [Am] [Em]\n[C]My [Am] [Em]\n[C] [Am] [Em]\nVerse 1:\n[C]Sitting all alone\n[Am]Mouth full of gum\n[Em]In the driveway\n[C]My friends aren't far\n[Am]In the back of my car\n[Em]Lay their bodies\nPre-Chorus:\n[C]Wh[Am]ere's my mind\n[Em]Where's my mind\nVerse 2:\n[C]They'll be here pretty soon\n[Am]Looking through my room\n[Em]For the money\n[C]I'm biting my nails\n[Am]I'm too young to go to jail\n[Em]It's kinda funny\nPre-Chorus:\n[C]Wh[Am]ere's my mind\n[Em]Where's my mind\n[C]Wh[Am]ere's my mind\n[Em]Where's my mind\nChorus:\n[C]Maybe it's in the gutter\n[Am]Where I left my lover\n[Em]What an expensive fate\n[C]My V is for Vendetta\n[Am]Thought that I'd feel better\n[Em]But now I got a bellyache\nVerse 3:\n[C]Everything I do\n[Am]The way I wear my noose\n[Em]Like a necklace\n[C]I wanna make 'em scared\n[Am]Like I could be anywhere\n[Em]Like I'm reckless\nBridge:\n[C]I [Am]lost my mind\n[Em]I don't mind\n[C]Wh[Am]ere's my mind\n[Em]Where's my mind\nChorus:\n[C]Maybe it's in the gutter\n[Am]Where I left my lover\n[Em]What an expensive fate\n[C]My V is for Vendetta\n[Am]Thought that I'd feel better\n[Em]But now I got a bellyache\n[C]Maybe it's in the gutter\n[Am]Where I left my lover\n[Em]What an expensive fate\n[C]My V is for Vendetta\n[Am]Tho[Em]ught that I'd feel better"
+  },
+  {
+    "id": "song_1794692944504_33",
+    "artist": "Монеточка",
+    "title": "Это было в России",
+    "category": "Разное",
+    "capo": "кап 1",
+    "body": "[Вступление]:\n[F#m]\n\n[Куплет]:\nСтёрся в [Dmaj]памяти адрес и н[E]омер с тех пор\nНо я [F#m]помню рекламы и п[C#m]литки узор\nПродав[Dmaj]щицу смешную в отд[E]еле колбас\nИ как [F#m]Витя меня цело[C#m]вал в первый раз\nКак толк[Dmaj]нула ногой самок[E]ат, оседлав\nИ как [F#m]дура к нему пока[C#m]тилась стремглав\nПомню п[Dmaj]ластырь на содранной к[E]оже в локте\nИ за[F#m]каты, каких не б[C#m]ывает нигде\n\n[Припев]:\nПомню, [Dmaj]как моросило, а я шл[E]а из кино\nЭто [F#m]было в России, значит, [C#m]было давно\nЭто [Dmaj]было в России, значит, б[E]ыло во сне\nСон укр[F#m]асть не под силу, он ос[C#m]танется мне\nПомню, [Dmaj]как моросило, а я шл[E]а из кино\nЭто [F#m]было в России, значит, [C#m]было давно\nЭто [Dmaj]было в России, значит, б[E]ыло во сне\nСон ук[F#m]расть не под силу, он ос[C#m]танется мне\n\n[Куплет]:\nИ ка[Dmaj]кой бы теперь ни куп[E]ила билет\nСв[F#m]оего уже нет, и св[C#m]оих уже нет\nБольше н[Dmaj]екому встретить с табл[E]ичкой в руке\nИ п[F#m]оют там теперь на дру[C#m]гом языке\nТак нес[Dmaj]быточно, что беспол[E]езно мечтать\nВсе отк[F#m]рыты замки, а на г[C#m]лавном печать\nИ не [Dmaj]жалко совсем, не х[E]очется, но\nНе за[F#m]быть бы в пути мой расп[C#m]лывчатый сон\n\n[Припев]:\nПомню, [Dmaj]как моросило, а я шл[E]а из кино\nЭто [F#m]было в России, значит, [C#m]было давно\nЭто [Dmaj]было в России, значит, б[E]ыло во сне\nСон укр[F#m]асть не под силу, он ос[C#m]танется мне\nПомню, [Dmaj]как моросило, а я шл[E]а из кино\nЭто [F#m]было в России, значит, [C#m]было давно\nЭто [Dmaj]было в России, значит, б[E]ыло во сне\nСон ук[F#m]расть не под силу, он ос[C#m]танется мне\n\n[Проигрыш]:\n[Dm]aj [E] [F#m] [C#m]\n\n[Кода]:\nСтёрся в [Dmaj]памяти адрес и н[E]омер с тех пор\nНо я [F#m]помню рекламы и п[C#m]литки узор\nПродав[Dmaj]щицу смешную в отд[E]еле колбас\nИ как [F#m]Витя меня цело[C#m]вал в первый раз\nСтёрся в [Dmaj]памяти адрес и н[E]омер с тех пор\nНо я [F#m]помню рекламы и п[C#m]литки узор\nПродав[Dmaj]щицу смешную в отд[E]еле колбас\nИ как [F#m]Витя меня цело[C#m]вал в первый раз\nСтёрся в [Dmaj]памяти адрес и н[E]омер с тех пор\nНо я [F#m]помню рекламы и п[C#m]литки узор\nПродав[Dmaj]щицу смешную в отд[E]еле колбас\nИ как [F#m]Витя меня... [C#m]"
+  },
+  {
+    "id": "song_1794692944504_34",
+    "artist": "Валентин Стрыкало",
+    "title": "Кладбище самолетов",
+    "category": "Разное",
+    "capo": "капо 0",
+    "body": "[C]Вспомни тот вид, ко[G]торый [D]нам открывался с [C]мыса,\n[C]Ярким пятном над мо[G]рем [D]восход\n[C]И все, что я должен[G] видет[D]ь, маленький глуп[C]ый смысл.\n[C]Когда-нибудь я прод[G]олжу пол[D]ет\n[C]Прости мне мои расс[G]просы,[D] но это невыносим[C]о\n[C]Так быстро проходит о[G]сень, так т[D]янутся долго[C] зимы\n[C]Съедают мои дета[G]ли вете[D]р и снег, да[C]вай\n[C]Куда бы мы ни лет[G]али [D]\n[C]Вс[G]по[D]минай, вспоминай, вспоминай, вспоминай... Иногда\n[C]Город из тех, что х[G]очешь,[D] хочешь быстрей п[C]окинуть.\n[C]Песни полярной ночи[G] во сн[D]е.\n[C]Я рассекаю небо над[G] ледян[D]ой пустын[C]ей.\n[C]Я рассекаю небо во [G]сне[D].\n[C]Прости мне мои расс[G]просы,[D] но это невыноси[C]мо.\n[C]Так быстро проходит[G] осень[D], так тянутся дол[C]го зимы.\n[C]Съедают мои детали [G]ветер [D]и снег, да[C]вай,\n[C]Куда бы мы ни лета[G]ли, [D]\n[C]Вс[G]по[D]минать, вспоминать, вспоминать, вспоминать,\n[C]Вс[G]по[D]минать, вспоминать, вспоминать, вспоминать,\n[C]Вс[G]по[D]минай, вспоминай, вспоминай, вспоминай... Иногда\n[C]Кладбище самолетов.[G] Я ник[D]огда не стан[C]у\n[C]Частью больших исто[G]рий и [D]пусть.\n[C]Солнце утонет в мор[G]е где-[D]то там за домам[C]и.\n[C]Я непременно вскоре[G] просн[D]усь.\n[C]Прости мне мои расс[G]просы,[D] но это невыносим[C]о.\n[C]Так быстро проходит[G] осень[D], так тянутся дол[C]го зимы.\n[C]Съедают мои детали [G]ветер [D]и снег, дава[C]й,\n[C]Куда бы мы ни лета[G]ли, [D]\n[C]Вс[G]по[D]минать, вспоминать, вспоминать, вспоминать,\n[C]Вс[G]по[D]минать, вспоминать, вспоминать, вспоминать,\n[C]Вс[G]по[D]минай, вспоминай, вспоминай, вспоминай... Иногда"
+  },
+  {
+    "id": "song_1794692944504_35",
+    "artist": "Beautiful Boys",
+    "title": "Нежная Любовь",
+    "category": "Разное",
+    "capo": "капо 3",
+    "body": "[Куплет]:\n[C]Тёмные дворы\nЗабывают ночь [Em]\nНаши голоса[Am] лица и мост[F]ы\nКто из нас не врет [C]\nКапли се[Em]ребра\nНаши имен[Am]а\nНе озвучив[F]ай\nВ глянцевой тоске [C]\n[Припев]:\n[C]Такая нежная любо[Em]вь\nТ[Am]акая нежная любовь [F]\n[C]Такая нежная любов[Em]ь\nТа[Am]кая нежная любовь [F]\nВ глянцевой тоске [C]\n[Куплет]:\n[F]Мягкие тела[C] где то без о[Em]дежд подарю теб[Am]е\nЛистья и тетрадь [F]\n[F]Где писал твое [C]\n[C]Пару тысяч раз [Em]\nИмя на с[Am]текле\nНо не уга[F]дал\nВ глянцевой тоске [C]\nВ глянцев[C]ой тоск[Em]е\nМультики смотрел[Am]и мы\nСвет покажет нам [F]\n[Припев]:\nКакая нежна люб[C]овь\n[Em]Какая нежная любов[Am]ь\nК[F]акая нежная любовь [C]\n[Em]Какая нежная любов[Am]ь\n[F]Какая нежная люб[C]овь\n[Em]Тёмный дворы [Am]\n[F]Завывают ночь [C]\n[Em]Наши голоса [Am]\n[F]В глянцевой тоске [C]"
+  },
+  {
+    "id": "song_1794692944505_36",
+    "artist": "Zhanulka",
+    "title": "Портреты",
+    "category": "Разное",
+    "capo": "капо 0",
+    "body": "Вступление: [C] [C] [C] [C] | [Am]\n[Em] | [Em]\n[C]Мне сегодня восемнадцать лет,\n[Am]Дай зажигалку и выключи свет,\n[Em]Некого звать, тут никого нет,\nЗадуваю свечи под свист ракет.\nЯ [C]так давно бегу, что не [Am]знаю, от чего.\nЯ [Em]так молода, и не знаю всего,\nИ тебе тоже противно от себя самого.\n   Поце[C]луй на прощание и[Am] дай обещание:\n   Мы [Em]встретимся дома, в Киеве[Em], в мае.\nПрипев:\n     Я бы мо[C]гла писать портреты,\n     Жить [Amadd9]ради кого-то,\n     Знать, где [Em]я проснусь завтра,\n     И не бе[Em]жать от жчего-то.\n     Де[C]лить сигареты,\n     Честно лю[Am]бить идиота,\n     Спать [Em]и не бояться,\n     Не ждать кон[Em]ца эпизода.\n     Я бы мо[C]гла писать портреты,\n     Жить [Am]ради кого-то,\n     Знать, где [Em]я проснусь завтра,\n     И не бе[Em]жать от чего-то.\n     Де[C]лить сигареты,\n     Честно лю[Am]бить идиота,\n     Спать [Em]и не бояться,\n     Не ждать кон[Em]ца эпизода.\nПроигрыш: [C] | [Am] | [Em] | [Em]\n[C]Так много лет у меня нет дома,\nВся [Am]жизнь в рюкзаке – это уже основа,\nДав[Em]но раскрошен мой родной город,\nЯ кричу в пустоту, я пою глухому.\nЯ [C]так давно бегу, что не [Am]знаю, от чего.\nМне [Em]негде остаться, у меня нет ничего,\nЯ пишу про любовь, даже когда тяжело.\n   Забей [C]на расстояни[Am]е, я точно знаю:\n   Мы [Em]встретимся дома, в [Em]Киеве, в мае.\nПрипев:\n     Я бы мо[C]гла писать портреты,\n     Жить [Am]ради кого-то,\n     Знать, где [Em]я проснусь завтра,\n     И не бе[Em]жать от чего-то.\n     Де[C]лить сигареты,\n     Честно лю[Am]бить идиота,\n     Спать [Em]и не бояться,\n     Не ждать кон[Em]ца эпизода.\n     Я бы мо[C]гла писать портреты,\n     Жить [Am]ради кого-то,\n     Знать, где [Em]я проснусь завтра,\n     И не бе[Em]жать от чего-то.\n     Де[C]лить сигареты,\n     Честно лю[Am]бить идиота,\n     Спать [Em]и не бояться,\n     Не ждать кон[Em]ца эпизода.\nКода: [C] | [Am] | [Em] | [Em]\n[C] | [Am]"
+  },
+  {
+    "id": "song_1794692944505_37",
+    "artist": "pyrokinesis",
+    "title": "Да что романтичного в птичках?",
+    "category": "Разное",
+    "capo": "капо +4, +2",
+    "body": "[Fm]С неб[C#]а падают на землю птицы\nМ[C7]не понадобится потрудиться\nЧ[Fm]тобы суть поймать, как Марко П[C#]оло\nАх, вы птица еще [C7]та\nНо жаль, что я не орнитолог\nНо гнётся ваша в[Fm]етка, тучи пузыр[C#]ятся\nДождь слюны течет по п[C7]ерьям, а те пенятся в ответ\nНо только вместо п[Fm]енья птиц вы слышите хи-х[C#]и\nХоть убей - не поним[C7]аю как вы пишете стихи - где вы?\nПрипев\n    В небе как си[Fm]ничка, отлично ([C#]тоже мне)\n    Да что роман[C7]тичного в птичках?\n    Можете мне не объяс[Fm]нять\n    И ваша мне бы[C#]ла скучна ласточка\n    М[C7]не как ни крути - вас не понять, и вы\n    В небе как си[Fm]ничка, отлично ([C#]тоже мне)\n    Да что роман[C7]тичного в птичках?\n    Можете мне не объяс[Fm]нять\n    И ваша мне бы[C#]ла скучна ласточка\n    М[C7]не как ни крути - вас не понять\n    И вы в небе как син[Fm]ичка\n[C#]Я очень рад, но на люб[C7]ого журавля\nНайдется м[C7]альчуган с рогаткой\nТак что л[Fm]учше птичку все таки в рук[C#]ах\nИ вам бы тоже, мисс, не ст[C7]оило витать бы в облаках\n(ах-ах-ха-ха-ха)\n[Fm]А мне бы перед т[C#]ем, хотелось знать\nКто вам на[C7]врал о том, что небо не предел?\n(допустим может быть и так)\n[Fm]Но там вы рухните бал[C#]ластом\nАх, ну кто же вам ска[C7]зал, мадам\nЧто небо безопасно? (и вы)\nПрипев"
+  },
+  {
+    "id": "song_1794692944505_38",
+    "artist": "Торба-на-круче",
+    "title": "Пока, целую, снишься",
+    "category": "Разное",
+    "capo": "",
+    "body": "[Em]Последняя дверь второго вагона,\n[C]Как страшно в метро не встретить тебя,\n[Am]Осталась минута до нового года -\n[B7]Нового дня...\n[G]Отсчет идет с момента встречи,\n[D]Ведь больше ничего не лечит,\n[Em]Больше ничего не важно\n[Am]Для [B7]меня...\nПрипев:\n[Em]Через минуту ты уйдешь,\n[Cmaj7]И в переходах растворишься,\n[Am]По Невскому гуляет дождь,\nпо [C]Невскому гуляет дождь,\n[Am]И в[B7]се...\n[Em]Пока. Целую. Снишься[C]..[Am]. С[B7]нишься...\n[Em]Пока. Целую. Снишься[C]..[Am]. С[B7]нишься...\n[G]От этих правил я болею [D]кругом голова:\nКто так [Em]придумал?\n[Am]Все кругом. И [D]кругом\n[G]Твоего общенья я не [D]принят, ты права,\nНо в тыщу [Am]раз важней - мы [B7]приняты друг другом...\nПрипев:\n[Em]Через минуту ты уйдешь,\n[Cmaj7]И в переходах растворишься,\n[Am]По Невскому гуляет дождь,\nпо [C]Невскому гуляет дождь...\n[F]Физика и химия прои[Em]сходят между нами,\nТолько [Am]солнце ниже, [B7]вечер ближе.\n[F]Время пролетело быстрой[Em] птицей над волнами,\nЯ ле[Am]чу фанерой над Пар[B7]ижем...\nПрипев:\n[Em]Через минуту ты уйдешь,\n[Cmaj7]И в переходах растворишься,\n[Am]По Невскому гуляет дождь,\nпо [C]Невскому гуляет дождь,\n[Am]И в[B7]се...\nПрипев:\n[Em]Через минуту ты уйдешь,\n[Cmaj7]И в переходах растворишься,\nПо [Am]Невскому гуляет дож[Dm]дь,\nп[Dm]о Питеру рыдает дождь,\nЯ п[Em]огуляю вместе с ним[B7] пока...\n[Em]Пока. Целую. Снишься[C]..[Am]. С[B7]нишься...\n[Em]Пока. Целую. Снишься[C]..[Am]. С[B7]нишься..."
+  },
+  {
+    "id": "song_1794692944505_39",
+    "artist": "Ночные Снайперы",
+    "title": "31-я весна",
+    "category": "Разное",
+    "capo": "",
+    "body": "[Em]1. Большой, широкий город магистрали и [C]дома\nГусары в окнах, бесполезная тюрь[Am]ма\nЗеленым яблоком железо запо[Em]ет\nТы станешь сл[B7]аще.\nА [Em]я пропала без вести в японских лагер[C]ях\nПропала голубем, синицею в рук[Am]е\nЯ застывала в ожидании теб[Em]я\nНеблагод[B7]арна.\nПрипев:\nС тоб[C]ой проводит ночи 31-я весн[Am]а\nИ без сомнения ревнует ко всем[G]у\nИ без сомнения ревнует ко всем[B7]у\nБьет стекла.\nА [C]я прощаюсь с городом просоленым\nТуд[Am]а в любое время не доходят поезд[G]а\nИ губы часто здесь обветрены мо[B7]и, бывали\n2. [Em]Рассвет, в салоне крылья паутина, прово[C]да\nЯ мягким тигром сторожу тебя в о[Am]кне\nИ обалдевшая от нежности во[Em]да\nНесовершенн[B7]а.\nА [Em]я к тебе стремлюсь, я нагибаюсь до з[C]емли\nЯ в этом марте в этом марте на[Am]всегда\nИ одуревшие дрейфуют кораб[Em]ли\nНеблагод[B7]арна.\nПрипев:\nС тоб[C]ой проводит ночи 31-я весн[Am]а\nИ без сомнения ревнует ко всем[G]у\nИ без сомнения ревнует ко всем[B7]у\nБьет стекла.\nА [C]я прощаюсь с городом просоленым\nТуд[Am]а в любое время не доходят поезд[G]а\nИ губы часто здесь обветрены мо[B7]и, бывали\nПроигрыш.\nПрипев:\nС тоб[C]ой проводит ночи 31-я весн[Am]а\nИ без сомнения ревнует ко всем[G]у\nИ без сомнения ревнует ко всем[B7]у\nБьет стекла.\nА [C]я прощаюсь с городом просоленым\nТуд[Am]а в любое время не доходят поезд[G]а\nИ губы часто здесь обветрены мо[B7]и, бывали"
+  },
+  {
+    "id": "song_1794692944505_40",
+    "artist": "Radiohead",
+    "title": "Creep",
+    "category": "Разное",
+    "capo": "",
+    "body": "[C]When you were here before,\ncouldn't look you in the e[E]ye.\nYou're just like an an[F]gel,\nyour skin makes me c[Fm]ry.\nYou float like a fea[C]ther,\nin a beautiful wo[E]rld\nI wish I was spe[F]cial,\nyou're so fucking sp[Fm]ecial.\n[C]But I'm a creep, I'm a w[E]eirdo.\nWhat the hell am I doing [F]here?\nI don't belong her[Fm]e.\n[C]I don't care if it hurts,\nI want to have contro[E]l.\nI want a perfect bod[F]y,\nI want a perfect sou[Fm]l.\nI want you to not[C]ice,\nwhen I'm not ar[E]ound.\nYou're so fucking spec[F]ial,\nI wish I was special[Fm].\n[C]But I'm a creep, I'm a w[E]eirdo.\nWhat the hell am I doing [F]here?\nI don't belong her[Fm]e.\n[C]She's running out the door,\nshe's runn[E]ing,\nshe[F] run, run[Fm], run, run, run.\n[C]Whatever makes you happy,\nwhatever you w[E]ant.\nYou're so fucking [F]special,\nI wish I was sp[Fm]ecial,\n[C]But I'm a creep, I'm a w[E]eirdo.\nWhat the hell am I doing [F]here?\nI don't belong her[Fm]e,\nI don't belong [Fm]here."
+  },
+  {
+    "id": "song_1794692944506_41",
+    "artist": "Nautilus Pompilius",
+    "title": "Я Хочу Быть С Тобой",
+    "category": "Разное",
+    "capo": "",
+    "body": "[Verse]\nЯ пыт[Am]ался уйт[G7]и от любви [C]\nЯ брал [C]острую б[G7]ритву и пр[Am]авил себ[E7]я\nЯ ук[Am]рылся в под[G7]вале я ре[C]зал\nК[C]ожан[G7]ые рем[Am]ни стянувшие сл[E7]абую грудь\n\n[Chorus]\n[C]Я хо[G7]чу быть с тобо[C]й\n[C]Я хо[G7]чу быть с тобо[Am]й\nЯ т[C]ак хо[G7]чу быть с тобо[C]й\n[C]Я хо[G7]чу быть с тобо[Am]й\nИ я б[F]уду с тоб[E7]ой\n\n[Verse]\nТвое[Am] имя дав[G7]но стало д[C]ругим\nГлаза н[C]авсегда [G7]потеряли с[Am]вой цвет [E7]\nПьян[Am]ый врач [G7]мне сказал[C] тебя больше нет\nПожарны[C]й выдал [G7]мне справк[Am]у что до[E7]м твой сгорел\n\n[Interlude]\n[Am] [Am]\n\n[Chorus]\n[C]Я хо[G7]чу быть с тобо[C]й\n[C]Я хо[G7]чу быть с тобо[Am]й\nЯ т[C]ак хо[G7]чу быть с тобо[C]й\n[C]Я хо[G7]чу быть с тобо[Am]й\nИ я б[F]уду с тоб[E7]ой\n\n[Verse]\nВ к[Am]омнате с б[G7]елым потолко[F]м\nС пр[E7]авом на над[Am]ежду\nВ к[Am]омнате с в[G7]идом на огни [F]\nС в[E7]ерою в люб[Am]овь\n\n[Verse]\nЯ ло[Am]мал стек[G7]ло как[G7] шокол[C]ад в руке\nЯ рез[C]ал [C]эти п[G7]альц[G7]ы за т[Am]о чт[Am]о они [E7]не мо[E7]гут прикоснуться к тебе\nЯ см[Am]отрел в [G7]эти ли[G7]ца и н[C]е мог им простить\nТого чт[C]о у них [G7]нет тебя и[Am] они [Am]могут[E7] жить\n\n[Chorus]\n[C]Но я[G7] хочу быть с т[C]обой\n[C]Я хо[G7]чу быть с тобо[Am]й\nЯ т[C]ак хо[G7]чу быть с тобо[C]й\n[C]Я хо[G7]чу быть с тобо[Am]й\nИ я б[F]уду с тоб[E7]ой\n\n[Verse]\nВ к[Am]омнате с б[G7]елым потолко[F]м\nС пр[E7]авом на над[Am]ежду\nВ к[Am]омнате с в[G7]идом на огни[F]  x2\nС в[E7]ерою в люб[Am]овь"
+  },
+  {
+    "id": "song_1794692944506_42",
+    "artist": "Nautilus Pompilius",
+    "title": "Дыхание",
+    "category": "Разное",
+    "capo": "",
+    "body": "[Intro]\n[Bm]  [A]  [Bm]  [G] (x2)\n\n[Verse 1]\nЯ[D] просыпаюсь  в [A] холодном поту. [Bm]\nЯ просыпаюсь [F#]в кошмарном бреду[G].\nКак будто дом наш[D] залило вод[Em]ой,\nИ что в живых остались тол[Bm]ько мы с тобой.\n[D]И что над нами к[A]илометры воды, [Bm]\nИ что над нами б[F#]ьют хвостами киты, [G]\nИ кислорода н[D]е хватит на двоих.\n[Em]Я лежу в темноте. [Bm]\n\n[Chorus]\n[Bm]Слушая наше дых[A]ание, я сл[Bm]ушаю наше дых[G]ание.\nЯ раньш[Bm]е и не думал, что y нас [A]\nНа двоих с[Bm] тобой одно лишь дыхание[G], дыханье[Bm].\n\n[Bridge]\n[A]  [Bm]  [G]  [Bm]  [A]  [Bm]  [G]\n\n[Verse 2]\n[D]Я пытаюсь разуч[A]иться дыша[Bm]ть,\nЧтоб тебе хоть[F#] на минуту отда[G]ть\nТого газа, что не у[D]мели цени[Em]ть.\nНо ты спишь и не зн[Bm]аешь,\n[D]Что над нами кил[A]ометры вод[Bm]ы,\nИ что над нами б[F#]ьют хвостами ки[G]ты,\nИ кислорода н[D]е хватит на двоих.\n[Em]Я лежу в темно[Bm]те.\n\n[Chorus]\nС[Bm]лушая наше дых[A]ание, я сл[Bm]ушаю наше дых[G]ание.\nЯ р[Bm]аньше и не думал, что y н[A]ас\nНа дво[Bm]их с тобой одно лишь дых[G]ание[B].\n\nС[Bm]лушая наше дых[A]ание, я сл[Bm]ушаю наше дых[G]ание.\nЯ р[Bm]аньше и не думал, что y н[A]ас\nНа дво[Bm]их с тобой одно лишь дых[G]ание[B].\n\nН[Bm]о слушая наше д[A]ыхание, я [Bm]слушаю наше д[G]ыхание.\nЯ р[Bm]аньше и не думал, что y н[A]ас\nНа дво[Bm]их с тобой одно лишь дых[G]ание[Bm].\n\nН[Bm]о слушая наше д[A]ыхание, я [Bm]слушаю наше д[G]ыхание.\nЯ р[Bm]аньше и не думал, что y н[A]ас\nНа дво[Bm]их с тобой одно лишь дых[G]ание[Bm].\n\nД[Bm]ыханье..."
+  },
+  {
+    "id": "song_1794692944506_43",
+    "artist": "KSB muzic",
+    "title": "Я вытащу тебя со дна",
+    "category": "Разное",
+    "capo": "",
+    "body": "Проигрыш: [Em] [C] [G] [D]\nКуплет 1:\nТы прекр[Em]асней первых дв[C]ух глотков хол[G]одного пивк[D]а\nНо в твоей [Em]дурной голо[C]ве проблем бе[G]зумно до[D]хуя\nЧто-то ло[Em]мается вну[C]три, ты девоч[G]ка-авар[D]ия\nТы даже[Em] до конца не в[C]еришь, дура, [G]реален ли[D] я\nПрипев:\nА я [Em]вытащ[C]у тебя со дн[G]а\nВедь т[D]олько лишь од[Em]на\nМне т[C]ы нужна, чтоб [G]чувствовать се[D]бя живым\n[Em]Блять!\n[C]Я сгорю до тл[G]а\n[D]Лишь бы ты мог[Em]ла\nХоть н[C]а крупицу бы[G]ть еще со м[D]ной счастливе[Em]й\nПроигрыш: [Em] [C] [G] [D]\nКуплет 2:\nНа тво[Em]ей белой, как [C]мазик, коже б[G]лядские по[D]резы\nДай мне в[Em]ремя и пр[C]иручу всех тв[G]оих диких б[D]есов\nЕсли н[Em]адо, стану тв[C]оим личным пс[G]ом-поводыр[D]ем\nИ если [Em]ты упадешь в [C]яму, в яме м[G]ы сгнием вдво[D]ем\nПрипев:\nА я [Em]вытащ[C]у тебя со дн[G]а\nВедь т[D]олько лишь од[Em]на\nМне т[C]ы нужна, чтоб [G]чувствовать се[D]бя живым\n[Em]Блять!\n[C]Я сгорю до тл[G]а\n[D]Лишь бы ты мог[Em]ла\nХоть н[C]а крупицу бы[G]ть еще со м[D]ной счастливе[Em]й\nКуплет 3:\nЯ спу[Em]щу с небес о[C]гонь в твои по[G]тухшие гла[D]за\nЯ за т[Em]ебя хоть в пиздо[C]рез, хоть в рай\nХоть в [G]ад я тоже з[D]а\nПоверну в[Em]ремя вспять, отк[C]рою все сож[G]женные мос[D]ты\nЯ нау[Em]чу тебя о[C]пять ждать от лю[G]бимого цв[D]еты\nПрипев:\nА я [Em]вытащ[C]у тебя со дн[G]а\nВедь т[D]олько лишь од[Em]на\nМне т[C]ы нужна, чтоб [G]чувствовать се[D]бя живым\n[Em]Блять!\n[C]Я сгорю до тл[G]а\n[D]Лишь бы ты мог[Em]ла\nХоть н[C]а крупицу бы[G]ть еще со м[D]ной счастливе[Em]й\nПроигрыш: [Em] [C] [G] [D]"
+  },
+  {
+    "id": "song_1794692944506_44",
+    "artist": "Пошлая молли",
+    "title": "Нон Стоп",
+    "category": "Разное",
+    "capo": "",
+    "body": "[Am]Девчата пляшут под спидами, (Девчата пляшут под спидами)\n[F]А ты стоишь как вкопанный. (А[Am] ты стоишь как вкопанный)\n[Am]Кроссовками ломают пол. (Кроссовками ломают пол)\n[F]А ты стоишь как вкопанный.\n[Am]Ну что за мать его дерьмо?\n[Am]Я знаю, что ты хочешь,\n[Am]Ты хочешь танцевать.\n[F]Ну-ну же, ну давай же,\n[C]Ну-ну же, ну давай же.\n[Am]Я знаю, что ты знаешь этот трек,\n[Am]Готовься подпевать.\n[Am]Раз, два, [C]три, чет[C]ыре.\nМузыка г[Am]ромче, глаза закры[F]ты\nЭто! нон [C]стоп! ночью откр[E7]ытий\nДелай, что [Am]хочешь я забыва[F]юсь\nЭто! нон [C]стоп! Не прекраща[E7]ясь!\nМузыка [Am]громче, глаза закры[F]ты\nЭто! нон [C]стоп! ночью откр[E7]ытий\nБуду с [Am]тобой самой приме[F]рною\nУтро в окн[C]е и мы будем пе[E7]рвые!\n[Am]Этот трек делает тебя сильней,\n[F]Он прикольней, чем колеса и р[Am]однее, чем портвейн.\n[Am]Раза в три круче, чем самый первый секс-партнер.\n[F]И все девчата в таком трипе, [Am]что аж мама не горюй.\n[Am]Прыгай так, прыгай так, будто ты совсем дурак.\n[F]Прыгай так, так и так и так, [Am]так, ты же воздух как никак.\n[Am]Прыгай так, прыгай так, будто ты чу покемон.\n[F]Будто бы вся твоя жизнь не та[Am]кое уж дерьмо.\nНу что за мать его дерьмо?\nМузыка г[Am]ромче, глаза закры[F]ты\nЭто! нон [C]стоп! ночью откр[E7]ытий\nДелай, что [Am]хочешь я забыва[F]юсь\nЭто! нон [C]стоп! Не прекраща[E7]ясь!\nМузыка [Am]громче, глаза закры[F]ты\nЭто! нон [C]стоп! ночью откр[E7]ытий\nБуду с [Am]тобой самой приме[F]рною\nУтро в окн[C]е и мы будем пе[E7]рвые!\nЯ забы[Am]ваюсь, помог[F]и мне.\nЯ задыхаю[C]сь, помоги [E7]мне.\nДелай, что хочешь я задыхааааюссь"
+  },
+  {
+    "id": "song_1794692944506_45",
+    "artist": "LIZER",
+    "title": "Между нами (Давай останемся друзьями)",
+    "category": "Разное",
+    "capo": "",
+    "body": "Припев:\n[F#]Каждый сантиметр [D#m]твоего тела\n[A#m]Станет километрами между нами\nСк[F#]ажи мне эти три слова, чт[D#m]о ты так давно хотела\n[A#m]Давай останемся друзьями\n[F#]   [D#m]    [A#m]  Давай останемся друзьями\n[F#]   [D#m]    [A#m]  Давай останемся друзьями\nКуплет 1:\n[F#]Я напьюсь, я сильно напьюсь\n[D#m]Я так хочу позвонит[A#m]ь тебе, но, пожалуй, воздержусь\nЯ ненавижу т[F#]воих бывших, ненавижу н[D#m]астоящих\nНенавижу [A#m]твою глупую собаку, но почему всё еще [F#]люблю тебя.\n[D#m]Я всё еще люб[A#m]лю тебя\nНу [F#]где ты там? Как ты там? Н[D#m]апиши хоть слово\nС[A#m] кем ты там,кто с тобой? Сиди почаще дома\nДа, я [F#]не буду больше писать\nЯ ведь ска[D#m]зал всё, что я хотел сказать\n[A#m]Моя рука у телефона\n[F#] [D#m] [A#m]\nПрипев:\n[F#]Каждый сантиметр твоего те[D#m]ла\n[A#m]Станет километрами между нами\nСк[F#]ажи мне эти три слова, что ты так д[D#m]авно хотела\n[A#m]Давай останемся друзьями\n[F#]   [D#m]    [A#m]  Давай останемся друзьями\n[F#]   [D#m]    [A#m]  Давай останемся друзьями\nКуплет 2:\nУ[F#] тебя там давно уже своя жизнь,[D#m] у тебя там,\n[D#m]Наверное, новый парень\n[A#m]С кем ты тусуешься на выходных,\n[A#m]Я вторую неделю один по району гуляю\n\"[F#]Давай останемся друзьями\" — [D#m]а, тебе легко говорить\n[A#m]Как можно дружить с тем, кто из головы,\n[A#m]Б**ть, не вылезает\nТ[F#]ы разбила сердце пацана, с[D#m]ердце пацана\n[A#m]Я тебя ненавижу также сильно как лю[F#]блю\nЕщё один стакан, в[D#m]сего один стакан, и я[A#m] тебе позвоню\n[F#]Давай, мы будем г[D#m]оворить как настоящие др[A#m]узья:\n[A#m]\"Алло, привет, ну как дела?\"\n[F#]Ничего не изменилось с[D#m] тех пор, как ты ушла\nН[A#m]у как там твоя псина? Я всё ещё люблю тебя\nПрипев:\n[F#]Каждый сантиметр т[D#m]воего тела\n[A#m]Станет километрами между нами\nСк[F#]ажи мне эти три слова, ч[D#m]то ты так давно хотела\n[A#m]Давай останемся друзьями\n[F#]Каждый сантиметр т[D#m]воего тела\n[A#m]Станет километрами между нами\nСк[F#]ажи мне эти три слова, [D#m]что ты так давно хотела\n[A#m]Давай останемся друзьями\n[F#]   [D#m]    [A#m]  Давай останемся друзьями\n[F#]   [D#m]    [A#m]  Давай останемся друзьями"
+  },
+  {
+    "id": "song_1794692944506_46",
+    "artist": "Гражданская Оборона",
+    "title": "Солнце взойдет",
+    "category": "Разное",
+    "capo": "",
+    "body": "[Вступление]:\n[E]\n[Куплет]:\n[E]Луч солнца золо[G#m]того [C#m]тьмы скрыла пеле[E]на.\n[E]И между нами [B]снова [A]вдруг выросла сте[G#]на. [C#m] [A] [F#m] [B]\n[Припев]:\n[E]Ночь пройдет, наступит [A]утро [F#m]ясное[B].\n[E]Знаю, [C#m]счастье нас с то[F#m]бой [B]ждет!\n[E]Ночь пройдет, пройдет [A]пора [G#7]ненастная,-\n[C#m]Солнце взойд[F#]ет! [A] [B]\n[E]Солнце взой[C#m]дет! [F#m] [B]\n[Куплет]:\n[E]Петь птицы пере[G#m]стали, [C#m]cвет звезд коснулся [E]крыш.\n[E]В час грусти и [B]печали, [A]ты голос мой ус[G#]лышь! [C#m] [A] [F#m] [B]\n[Припев]:\n[E]Ночь пройдет, наступит [A]утро [F#m]ясное[B].\n[E]Знаю, [C#m]счастье нас с то[F#m]бой [B]ждет!\n[E]Ночь пройдет, пройдет [A]пора [G#7]ненастная,-\n[C#m]Солнце взойд[F#]ет! [A] [B]\n[E]Солнце взой[C#m]дет! [F#m] [B]\n[Проигрыш]:\n[E] [G#m] [C#m] [E]\n[E] [B] [A] [G#] [C#m] [A] [F#m] [B]\n[Припев]:\n[E]Ночь пройдет, наступит [A]утро [F#m]ясное[B].\n[E]Знаю, [C#m]счастье нас с то[F#m]бой [B]ждет!\n[E]Ночь пройдет, пройдет [A]пора [G#7]ненастная,-\n[C#m]Солнце взойд[F#]ет! [A] [B]\n[E]Солнце взой[C#m]дет! [F#m] [B]\n[Проигрыш]:\n[E] [C#m] [F#m] [B]\n[E] [C#m] [F#m] [B] [E]"
+  },
+  {
+    "id": "song_1794692944507_47",
+    "artist": "Электрофорез",
+    "title": "По разбитым зеркалам",
+    "category": "Разное",
+    "capo": "",
+    "body": "[Em]Целует утр[D]о в спину. Т[G]вой лоб упё[C]рся мне в ладо[Em]нь\nСкорей умру,[D] чем двинусь. Ес[C]ли только ост[G]орожно\n[Em]Рассыпали[D]сь по мне[G] пряди тво[C]их волос [Em]\nЯ не мог[D]у понять, ко[C]гда, зачем и [G]как,\nТы [Am]стала, ты стала, ты[B7] стала мне близк[Em]а\nПрипев:\nПо разби[D]тым зеркала[G]м, по кудр[C]явым воло[Em]сам\nТы г[D]адаешь в чем же[C] выйти нару[G]жу\n[Em]Доверяя, [D]как себе н[G]ездоро[C]вой худоб[Em]е\nДо конц[D]а не поним[C]аешь, кт[G]о тебе нуже[Em]н\nКуплет:\n[Em]Изобража[D]ла жертву,[G] как геро[C]иня мело[Em]драм\nТы поло[D]мала пальцы,[C] обновляя[G] инстаграм\n[Em]Меня уже [D]тошнит о[G]т твоего[C] вранья, [Em]\nВедь тело - э[D]то храм,[C] не чеш[G]уя\nЯ[Am] не буду притворяться,[B7] будто мы с тобой друзья\nЯ[Am] и ты теперь чужие. Т[B7]ы довольна, я о[Em]дна.\nПрипев:\nПо разби[D]тым зеркала[G]м, по кудр[C]явым воло[Em]сам\nТы г[D]адаешь в чем же[C] выйти нару[G]жу\n[Em]Доверяя, [D]как себе н[G]ездоро[C]вой худоб[Em]е\nДо конц[D]а не поним[C]аешь, кт[G]о тебе нуже[Em]н\n[Am] [G] [C] [Am] [Em] [C] [D] [G]\nПрипев:\n[Em]По разбиты[D]м зеркалам,[G] по кудряв[C]ым волоса[Em]м\nТы г[D]адаешь как бы с[C]делать мне [G]хуже\n[Em]Доверяя, [D]как себе н[G]ездоро[C]вой худоб[Em]е\nДо конц[D]а не поним[C]аешь, кт[G]о тебе нуже[Em]н"
+  },
+  {
+    "id": "song_1794692944507_48",
+    "artist": "Ария",
+    "title": "Потерянный рай",
+    "category": "Разное",
+    "capo": "",
+    "body": "[Am]От края до края\n[D]Небо в огне сгорает,\n[F]И в нем исчезают\nВсе над[C]ежды [G]и мечты.\n[Am]Но ты засыпаешь,\nИ [D]ангел к тебе слетает,\n[F]Смахнет твои слезы,\nИ во с[C]не смеешься [G]ты!\nПрипев:\nЗ[F]асыпай,\nНа ру[G]ках y меня засы[Am]пай,\nЗасы[F]пай\n[G]Под пенье дож[Am]дя...\nДале[F]ко,\nтам, где [G]неба кончается к[Am]рай[G], [C] [D]\nТы най[F]дешь\n[G]Потерянный [Am]рай.\n[Am]Во сне хитрый демон\n[D]Может пройти сквозь стены,\n[F]Дыханье y спящих\nОн умее[C]т п[G]охищать.\n[Am]Бояться не надо,\n[D]Душа моя будет рядом,\n[F]Твои сновиденья\nДо расс[C]вет[G]а охранять.\nПрипев:\nЗ[F]асыпай,\nНа ру[G]ках y меня засы[Am]пай,\nЗасы[F]пай\n[G]Под пенье дож[Am]дя...\nДале[F]ко,\nтам, где [G]неба кончается к[Am]рай[G], [C] [D]\nТы най[F]дешь\n[G]Потерянный [Am]рай.\nПодставлю ладони[Bm] -\nИх [E]болью своей наполни,\n[G]Наполни печалью,\nСтрахом [D]гулкой темно[A]ты,\n[Bm]И ты не узнаешь,\nКак [E]небо в огне сгорает,\n[G]И жизнь разбивает\nВсе на[D]дежды и меч[A]ты.\nПрипев:\nЗасы[G]пай,\nНа ру[A]ках y меня засы[Bm]пай,\nЗасы[G]пай\n[A]Под пенье дожд[Bm]я...\nДале[G]ко,\nтам, где [A]неба кончается к[Bm]рай[A], [D] [E]\nТы най[G]дешь\nПотерянн[A]ый [Bm]рай."
+  },
+  {
+    "id": "song_1794692944507_49",
+    "artist": "Альянс",
+    "title": "На заре",
+    "category": "Разное",
+    "capo": "",
+    "body": "[Em]1)Ровный[C] бег[G] моей с[Bm]удьбы,\n  [Em]Ночь, пе[C]чаль и [G]блеск д[Bm]уши,\n  [Am]Лунный с[Am]вет и ма[Dsus]йский д[D]ождь\n  [Em]В н[C]еб[G]ес[D]ах.\nПрипев:\n[Em]На [C]за[G]ре[D] г[Em]оло[C]са[G] з[D]овут меня.\n[Em]На [C]за[G]ре[D] небес[Em]а зову[C]т [G]ме[D]ня.\n2)[Em]Долгий в[C]ек м[G]оей зве[Bm]зды,\n  [Em]Сонный б[C]леск[G] земной[Bm] росы,\n  [Am]Громкий [Am]смех и р[Dsus]айский [D]мед\n  [Em]В н[C]еб[G]ес[D]ах.\nПрипев:\n[Em]На [C]за[G]ре[D] г[Em]оло[C]са[G] з[D]овут меня.\n[Em]На [C]за[G]ре[D] небес[Em]а зову[C]т [G]ме[D]ня.\n3)[Em]Солнца с[C]вет [G]и сердц[Bm]а звук,\n  [Em]Робкий в[C]згля[G]д и сил[Bm]а рук,\n  [Am]Звездный[Am] час мое[Dsus]й мечт[D]ы\n  [Em]В н[C]еб[G]ес[D]ах.\nПрипев:\n[Em]На [C]за[G]ре[D] г[Em]оло[C]са[G] з[D]овут меня.\n[Em]На [C]за[G]ре[D] небес[Em]а зову[C]т [G]ме[D]ня."
+  },
+  {
+    "id": "song_1794692944507_50",
+    "artist": "ЛСП",
+    "title": "Тело",
+    "category": "Разное",
+    "capo": "",
+    "body": "[C#m]Я бы хотел путешествов[E]ать много\nС природой слив[A]аясь, лежать на п[G#]еске\nИли п[C#m]ридти уже всё-таки к Б[E]огу\nНе стесняя[A]сь дырки в нос[G#]ке\nХочу днями гля[C#m]деть на капризное со[E]лнце\nНа небесную с[A]инь облаков к[G#]удрявый парад\n[C#m]И улыбаться, когда засм[E]еётся\nНерождённый мой сы[A]н, будто я ему [G#]рад\nНо я просто [C#m]тело, что тупо боли[E]т\nНелепое те[A]ло, что тупо бол[G#]ит\nМне бы стат[C#m]ь сигаретой\nИ развеяться пеплом [E]по ветру\nИли просто лучиком св[A]ета — и сиять\nНо бл[G#]ядь, не верится в это\nВедь я[C#m] просто тело, что тупо[E] болит\nНелепое тело, ч[A]то тупо бол[G#]ит\nМне бы[C#m] ракетой улететь на др[E]угую планету\nИли болеть пере[A]стало б на эт[G#]ой\nНелепо[C#m]е тело, что тупо болит [E]\nКогда-то я дума[A]л, что тело желез[G#]ное\nКушал,[C#m] кирял и курил, что хо[E]тел\nСейчас мы с бра[A]том ходим по лез[G#]вию\nНа пов[C#m]оду наших тел, что раз[E]лагаются изнутри\nЖить с этим так[A] муторн[G#]о\nСловно[C#m] ночь интернетить в ко[E]мпьютерном клубе\nА дождь отсека[A]ет от ут[G#]ра\nТы ждё[C#m]шь, и лагает ебучий ст[E]рим (сука)\nКоторый ты смот[A]ришь от скуки за [G#]мамины бабки\nРади н[C#m]их читаешь книжки, рад[E]и них кладёшь закладки\nВроде бы, всё и[A] в порядк[G#]е\nНо на [C#m]похоронах бабкиной мам[E]ки очень давно\nЯ понял одно: я[A] просто тело, так[G#]ое же\n[C#m]Тело, что тупо боли[E]т\nНелепое те[A]ло, что тупо бол[G#]ит\nМне бы стат[C#m]ь сигаретой\nИ развеяться пеплом [E]по ветру\nИли просто лучиком св[A]ета — и сиять\nНо бл[G#]ядь, не верится в это\n[C#m]Ведь я просто тело,[E] что тупо болит\nНелепое те[A]ло, что тупо бол[G#]ит\nМне бы раке[C#m]той улететь\nна другую плане[E]ту\nИли болеть перестало [A]б на этой\nНелеп[G#]ое тело, что тупо болит\n[C#m]Тело, что тупо боли[E]т\nНелепое те[A]ло, что тупо бол[G#]ит\nМне бы стат[C#m]ь сигаретой\nИ развеяться пеплом [E]по ветру\nИли просто лучиком св[A]ета — и сиять\nНо бл[G#]ядь, не верится в это\n[C#m]Ведь я просто тело,[E] что тупо болит\nНелепое те[A]ло, что тупо бол[G#]ит\nМне бы раке[C#m]той улететь\nна другую план[E]ету\nИли болеть перестало [A]б на этой\nНелеп[G#]ое тело, что тупо болит"
+  },
+  {
+    "id": "song_1794692944507_51",
+    "artist": "Город 312",
+    "title": "Останусь",
+    "category": "Разное",
+    "capo": "",
+    "body": "[Em]В конце туннеля яркий свет с[Am]лепой звезды,\n[C]Подошвы на сухой листве о[Am]ставят с[B7]леды,\n[Em]Еще под кожей бьётся пульс и[Am] надо жить,\n[C]Я больше может не вернусь, а[Am] может... я с[B7] тобой останусь.\nПрипев:\n[Am]Останусь [D]пеплом на губах[G],\nОстанусь [C]пламенем в глаз[Am]ах,\nВ твоих р[D]уках дыханьем в[G]етра.[D].. [E]\n[Am]Останусь [D]снегом на щеке[G],\nОстанусь [C]светом вдалеке[Am],\nЯ для теб[B7]я останусь - с[Em]ветом.\nПроигрыш: [Em] [Em] [Am] [Am] [C] [C] [Am] [B7]\n[Em]В конце туннеля яркий свет и[Am] я иду,\n[C]Иду по выжженной траве, п[Am]о тонком[B7]у льду.\n[Em]Не плачь, я боли не боюсь, е[Am]е там нет.\n[C]Я больше может не вернусь[Am], а може[B7]т... я с тобой останусь.\nПрипев:\n[Am]Останусь [D]пеплом на губах[G],\nОстанусь [C]пламенем в глаз[Am]ах,\nВ твоих р[D]уках дыханьем в[G]етра.[D].. [E]\n[Am]Останусь [D]снегом на щеке[G],\nОстанусь [C]светом вдалеке[Am],\nЯ для теб[B7]я останусь - с[Em]ветом.\n[Em]Светом....\n[Am]Останусь [D]пеплом на губах[G],\nОстанусь [C]пламенем в глаз[Am]ах,\nВ твоих р[D]уках дыханьем в[G]етра.[D].. [E]\n[Am]Останусь [D]снегом на щеке[G],\nОстанусь [C]светом вдалеке[Am],\nЯ для теб[B7]я останусь - с[Em]ветом"
+  },
+  {
+    "id": "song_1794692944507_52",
+    "artist": "Комсомольск",
+    "title": "Глаза (прилипли)",
+    "category": "Разное",
+    "capo": "",
+    "body": "[C]Здравствуйте, друзь[E]я, битые ос[Am]колки\nЗабытый [F]сон, беско[G]нечное в[C]чера, а-[E]а-а, а\nОпять гу[Am]дит бутылкой сердце\nНаждак[F]ом затёрто[G]е до бл[C]еска\nДа здравствуй[E]те, друзья\nОбла[Am]ка в зубах обиды\nМилли[F]оны вза[G]имных про[C]щаний, а-[E]а-а, а\nМне [Am]нежно и тревожно, мне так [F]нежно и тре[G]вожно\nМо[C]и глаза о[E]пять к тебе при[Am]липли ([F]м-[G]м-м)\nМо[C]и глаза о[E]пять к тебе при[Am]липли ([F]м-[G]м-[C]м)\nНо пока, де[E]сятый, я была вам [Am]рада\nМежду пальцев уте[F]кает отклю[G]чённая [C]вода, а-[E]а-а, а\nМеч[Am]танья и метанья, время — [F]это дым меж[G]ду [C]руками\nГлотают сл[E]ёзы фонари\nИ впере[Am]ди целая вечность без [F]местои[G]мения[C] мы,[E] а-а-а, а\nМне [Am]нежно и тревожно, мне так [F]нежно и тре[G]вожно\nМо[C]и глаза о[E]пять к тебе при[Am]липли ([F]м-[G]м-м)\nМо[C]и глаза о[E]пять к тебе при[Am]липли ([F]м-[G]м-м)\nМо[C]и глаза\n[C]Мои глаза при[E]липли, твои — блес[Am]тят\nИ всё по[F]нятно ста[G]новится [C]резко\nЯ го[E]това за тобой хоть ку[Am]да\nРади этого ст[F]ранного б[G]леска\nМо[C]и глаза о[E]пять к тебе при[Am]липли ([F]м-[G]м-м)\nМо[C]и глаза о[E]пять к тебе при[Am]липли ([F]м-[G]м-м)\nМо[C]и глаза о[E]пять к тебе при[Am]липли ([F]м-[G]м-м)\nМо[C]и глаза о[E]пять к тебе при[Am]липли-и[F]-и [G]\nМне так [C]нежно и тревожно, мне так [E]нежно и тревожно\nМне так [Am]нежно и тревожно, мне так [F]нежно и тре[G]вожно\n[C]Нежно и тревожно, мне так [E]нежно и тревожно\nМне так [Am]нежно и тревожно, мне так [F]не[G]жно\nМо[C]и глаза о[E]пять к тебе при[Am]липл[F]и-[G]и-[C]и"
+  },
+  {
+    "id": "song_1794692944507_53",
+    "artist": "МУККА",
+    "title": "Девочка с каре",
+    "category": "Разное",
+    "capo": "",
+    "body": "Припев:\n[F]А у меня во дворе, [E]ходит девочка с ка[Am]ре,\nОна любит мефедрон, она[G] любит мефедр[F]он,\nА у меня во дворе, х[E]одит девочка с ка[Am]ре,\nИ я так в неё влюбле[G]н, и я так в неё влюбл[F]ен.\nКуплет 1:\n[F]Я глаза уберу с[E] потолка в голо[Am]ве,\nЯ касаюсь твоих г[G]уб, языка - никог[F]да,\nМеня мама убедит, ты[E] того, но я зн[Am]аю,\nОна врёт - она врёт - он[G]а врёт, все равн[F]о\nПочему ты не хочешь [E]с нами движ?\nПросто ходиш[Am]ь и молчишь,\nПросто ходишь и молчиш[G]ь - не тупи[F]шь,\nПочему ты не хочешь с на[E]ми движ?\nПросто ходиш[Am]ь и молчишь,\nПросто ходишь и молчиш[G]ь - не туп[F]ишь\nПрипев:\n[F]А у меня во дворе, [E]ходит девочка с ка[Am]ре,\nОна любит мефедрон, она[G] любит мефедро[F]н,\nА у меня во дворе, х[E]одит девочка с ка[Am]ре,\nИ я так в неё влюбле[G]н, и я так в неё влюб[F]лен.\n[F]А у меня во дворе, [E]ходит девочка с ка[Am]ре,\nОна любит мефедрон, она[G] любит мефедро[F]н,\nА у меня во дворе, х[E]одит девочка с ка[Am]ре,\nИ я так в неё влюбле[G]н, и я так в неё влюб[F]лен.\nКуплет 2:\n[F]Я всегда думал, дым в[E] облаках - в гол[Am]ове,\nТы сигаешь на меня, с в[G]ысока - навсегд[F]а,\nМеня мама убедит, ты [E]того, но я зн[Am]аю,\nОна врет и я вижу твой [G]полёт - твой пол[F]ёт,\nА у меня во дворе, т[E]ело девочки с каре -\nТело д[Am]евочки с кар[G]е,\nОбнимаю, как бар[F]ре.\nА у меня во дворе, т[E]ело девочки с каре -\nТело де[Am]вочки с кар[G]е,\nОбнимаю, как ба[F]рре\nПрипев:\n[F]А у меня во дворе, [E]ходит девочка с ка[Am]ре,\nОна любит мефедрон, она[G] любит мефедр[F]он,\nА у меня во дворе, х[E]одит девочка с ка[Am]ре,\nИ я так в неё влюбле[G]н, и я так в неё влюбл[F]ен."
+  },
+  {
+    "id": "song_1794692944508_54",
+    "artist": "Кис-Кис",
+    "title": "Молчи",
+    "category": "Разное",
+    "capo": "",
+    "body": "Припев:\nМол[A]чи, когда бухой сос[G#m]ед на свою телку\nКри[C#m]чит, когда в подъезде [B]снова кто-то мрачно\nТор[A]чит, когда в квартиру на[G#m]против приезжают\nВра[C#m]чи, эта песня зву[B]чит, моя песня зву[A]чит\nПроигрыш: [A] [G#m] [C#m] [B] | [A] [G#m] [C#m] [B]\nКуплет 1:\n[A]     Я пишу себе это из [G#m]комнаты,\nСобирая слова по вок[C#m]залам,\nМои мысли, горечи [G#m]полные,\nНа листке и под оде[A]ялом;\n[A]Моя юность кажется вечно[G#m]стью,\nЧерез призму стеклянных[C#m] бутылок\nВидно улицы бесконеч[G#m]ные,\nИ фасады панельных мог[A]илок\n[A]Все мои друзья по парадн[G#m]ым\nКоротают беспечную моло[C#m]дость;\nЗдесь бушующий скверный ха[G#m]рактер\nДа наивная детская пох[A]оть\n[A]Дома проще должно быть, [G#m]казалось, -\nБыт съедает всё самое л[C#m]учшее\nНе смотри, опусти глаза [G#m]вниз,\nНе слуш[A]ай,\nПрипев:\nМол[A]чи, когда бухой сос[G#m]ед на свою телку\nКри[C#m]чит, когда в подъ[B]езде кто-то снова мрачно\nТор[A]чит, когда в кварти[G#m]ру напротив приезжают\nВра[C#m]чи, эта песня зву[B]чит, моя песня зву[A]чит\nКуплет 2:\n[A]Иногда мне становится ст[G#m]рашно,\nЧто со мной никогда не сл[C#m]учится\nУбежать, и в кого-то одн[G#m]ажды\nДо беспамятства просто влюб[A]иться\n[A]Моё счастье - в том, что[G#m]бы вырасти,\nИ уехать подальше отс[C#m]юда,\nНету поводов больше для гру[G#m]сти,\nЗдесь я точно счастливой не [A]буду\n[A]Здесь меня никто не удер[G#m]жит,\nНе заставит с собою быть р[C#m]ядом,\nТут покоятся чь-то наде[G#m]жды,\nМне такого исхода не н[A]адо\n[A]А пока - наплевать на жа[G#m]лость,\nЗадыхаясь вновь от уд[C#m]ушья,\nНе смотри, опусти глаза [G#m]вниз,\nНе слуш[A]ай\nПрипев:\nМол[A]чи, когда бухой сос[G#m]ед на свою телку\nКри[C#m]чит, когда в подъ[B]езде кто-то снова мрачно\nТор[A]чит, когда в кварти[G#m]ру напротив приезжают\nВра[C#m]чи, эта песня зву[B]чит, моя песня зву[A]чит\nМол[A]чи, когда бухой сос[G#m]ед на свою телку\nКри[C#m]чит, когда в подъ[B]езде кто-то снова мрачно\nТор[A]чит, когда в кварти[G#m]ру напротив приезжают\nВра[C#m]чи, эта песня зву[B]чит, моя песня зву[A]чит\nБридж:\n[A]Если стало [B]тише ([C#m]молчи)\nЗначит все в по[G#m]рядке (мол[A]чи)\nЗавтра будет [B]легче ([C#m]молчи)\n[C#m]Навряд ли\nСоло: [A] [G#m] [C#m] [B] | [A] [G#m] [C#m] [B] }x2\nПрипев:\nМол[A]чи, когда бухой сос[G#m]ед на свою телку\nКри[C#m]чит, когда в подъ[B]езде кто-то снова мрачно\nТор[A]чит, когда в кварти[G#m]ру напротив приезжают\nВра[C#m]чи, эта песня зву[B]чит, моя песня зву[A]чит"
+  },
+  {
+    "id": "song_1794692944508_55",
+    "artist": "Папин Олимпос",
+    "title": "Снежинка",
+    "category": "Папин Олимпос",
+    "capo": "",
+    "body": "[D]364[Bm] дня в году я пе[A]л и пил\nЛюбил людей, те[G]рял людей, новых н[A]аходил [Bm]\nЯ видел, что я пр[D]авильно иду\nЯ не про[A]гадал, я понял что к ч[G]ему\nЯ видел сотни р[D]аз, как люди прого[Bm]рали изнутри\nНо я был сил[A]ьным, я не оставался та[G]м\nНе веришь – [A]посмот[Bm]ри\nВедь я уже на[D] полпути к мечте\nИ всё, что б[A]ыло лишним уже отпуст[G]ил\nПрипев:\n[G]Лети снежинка, л[A]ети под облака\n[Bm]И передай всем остальн[D]ым\nЧто мы немного заждал[G]ись\nЛети снежинка, ког[A]да ты будешь т[Bm]ам\nПусть дирижер махнёт р[D]укой\nПусть наконец начнется ва[G]льс\n[G]Когда-то танцевали до ут[A]ра\nПомню ты поцеловал её в ли[Bm]цо\nТы говорил нам про лю[D]бовь\nБратан, ты видел её первый [G]раз\nПомню, заломав руки наза[A]д\nНас приняли на станции [Bm]метро\nДа, охуительный был [D]год\nДавай ещё раз, что л[G]и?\n[G] [A] [Bm] [D] }x4\n[D]А завтра Новый[Bm] год, под ёлкой пусто\nЧерез месяц[A] 18, отвали[G]те, мне не грустно\nПр[A]осто выро[Bm]с, просто школа\nПросто водк[D]а, водка с колой\nВ голов[A]е всё время крутится одн[G]о\nПоходу повзросл[D]ел\nВедь мне уже не [Bm]так смешно с того\nЧто ты зал[A]ез куда никто из нас не см[G]ог\nБратан, хо[A]рош трещ[Bm]ать\nСегодня крайний д[D]ень в этом году\nДавай обн[A]имемся с тобой, давай крич[G]ать\nЯ [D]так не х[Bm]очу взросле[G]ть\nЯ [D]так не х[Bm]очу взросле[G]ть\nПрипев:\n[G]Лети снежинка, л[A]ети под облака\n[Bm]И передай всем остальн[D]ым\nЧто мы немного заждал[G]ись\nЛети снежинка, ког[A]да ты будешь т[Bm]ам\nПусть дирижер махнёт р[D]укой\nПусть наконец начнется ва[G]льс\n[G]Когда-то танцевали до ут[A]ра\nПомню ты поцеловал её в ли[Bm]цо\nТы говорил нам про лю[D]бовь\nБратан, ты видел её первый [G]раз\nПомню, заломав руки наза[A]д\nНас приняли на станции [Bm]метро\nДа, охуительный был [D]год\nДавай ещё раз, что л[G]и?\nOutro: [G] [A] [Bm] [D] }4\n[D] [Bm] [A] [G]\n[Bm] [D] [A] [G]\n[D] [Bm] [A] [G]\n[Bm] [D] [A] [G]"
+  },
+  {
+    "id": "song_1794692944508_56",
+    "artist": "Папин Олимпос",
+    "title": "Тёмно-оранжевый",
+    "category": "Папин Олимпос",
+    "capo": "",
+    "body": "[Куплет 1]:\n[A#m]Темно-оранжевый закат, на[F#] фоне потресканных дом[C#]ов,\nТы так хотела рассказать ем[G#]у насколько тяжело,\nТ[A#m]ы так хотела показа[F#]ть ему прокуренный балкон [C#]\nУ тебя слезы на глазах, у не[G#]го целый горизонт,\n[Припев]:\nН[A#m]е пл[F#]ачь [C#]прошу, я т[G#]оже не вывожу [A#m]\nДержис[F#]ь, держу[C#].\n[Проигрыш]:\n[A#m] [F#] [C#] [G#] }x2\n[Куплет 2]:\nС[A#m]ветло-голубой рассв[F#]ет снова укладывает спат[C#]ь,\nЛожится смысла уже нет он вынуждает[G#] закрывать\nГ[A#m]лаза чтобы не видеть все чт[F#]о ты успела потеря[C#]ть\nКогда проснешься тебя ждет темно-ор[G#]анжевый зак[A#m]ат\n[Припев]:\nН[A#m]е пла[F#]чь п[C#]рошу, я то[G#]же не вывожу [A#m]\nДержис[F#]ь, держу[C#].\n[Кода]:\n[A#m] [G#] [C#] [F#] }x4\n[A#m] [F#] [C#] [G#]"
+  },
+  {
+    "id": "song_1794692944508_57",
+    "artist": "Noize MC",
+    "title": "Ты не считаешь",
+    "category": "Нойз",
+    "capo": "",
+    "body": "[Вступление]:\n[Cm] [Bb] [Eb] [Gm]\n[Куплет]:\n[Cm]Я написал бы тебе грустную пес[Bb]ню полную фраз пустых\n[Eb]Но зато красивых, как ты люби[Bb]шь,[Gm] - кр[Gm6]аски бы сгустил.\n[Cm]Расписал бы, как без тебя плох[Bb]о, как хорошо с тобой:\n[Eb]Наплакал бы реку и не был бы [Bb]сам[Gm]им со[Gm6]бой.\n[Cm]Шел бы дождь за окном, занят б[Bb]ыл бы твой телефон -\n[Eb]Короче говоря, у нас зовется [Bb]пес[Gm]ней э[Gm6]тот стон.\n[Cm]Думаешь, тебя не задели б те с[Bb]лова и ноты? Да что ты!\n[Eb]Рифмовать сантименты - тоже м[Bb]не [Gm]работ[Gm6]а...\n[Cm]Наверно, та песня тебе бы понр[Bb]авилась больше\n[Eb]И на повторе в \"Винампе\" крут[Bb]ила[Gm]сь бы[Gm6] втрое дольше.\n[Cm]Прости, что не написал - я неп[Bb]ременно б это сделал,\n[Eb]Если бы только не любил тебя [Bb]на [Gm]самом[Gm6] деле.\n[Cm]А на самом деле телефон не зан[Bb]ят, а отключен -\n[Eb]Лежит на тумбочке, пока тебя [Bb]там[Gm] кто-[Gm6]то дрючит.\n[Cm]И я из этого кого-то сделал бы[Bb] котлету.\n[Eb]И я мусолю тему эту еще два к[Bb]упл[Gm]ета! [Gm6]\n[Припев]:\nТы[Cm] не считаешь, ско[Bb]лько дней я[Eb] тебе не звон[Gm/D]ил,\nНе[Cm] отвечаешь ни по [Bb]одной из св[Eb]оих двух моби[Gm/D]л\nИ [Cm]засыпаешь рядом с[Bb] тем, кого [Eb]я бы уби[Gm/D]л,\nЕс[Cm]ли только бы встр[Bb]етил и если[Eb] хватило бы с[Gm/D]ил!\n[Куплет]:\n[Cm]Я ничего не исправлю ни этой п[Bb]есней, ни любой другой,\n[Eb]Я сам не знаю, для чего мне э[Bb]тот[Gm] гемо[Gm6]ррой.\n[Cm]Но \"Ворд\" уже открыт, клавиши [Bb]уже стучат,\n[Eb]И пальцы по грифу скользят ту[Bb]да-[Gm]сюда,[Gm6] с лада на лад:\n[Cm]В чьей-то руке - твой зад, в ч[Bb]ьей-то - медиатор старый.\n[Eb]Каждому свое: одному - пизда,[Bb] др[Gm]угому[Gm6] - гитара.\n[Cm]И, пока я тут давлюсь \"Балтико[Bb]й-девяткой\",\n[Eb]Ты на блядках. И у тебя, по х[Bb]оду[Gm], все[Gm6] в порядке.\n[Cm]Скулю, как раненый кобель, ною[Bb], как тряпка;\n[Eb]Тараканы чешут череп изнутри [Bb]- н[Gm]е раз[Gm6]давишь тапком.\n[Cm]Нервы все в заплатках - с кажд[Bb]ым, кто заходит в гости,\n[Eb]Трясясь от злости, тебе перем[Bb]ыва[Gm]ю кос[Gm6]ти:\n[Cm]Ненавидеть проще, чем прощать,[Bb] как ни крути,\n[Eb]А я заебался выбирать сложные[Bb] пу[Gm]ти. [Gm6]\n[Cm]Хочу опять уметь засыпать рань[Bb]ше пяти утра,\n[Eb]Не думая о том, чьим болтом з[Bb]аня[Gm]та тв[Gm6]оя дыра\n[Припев]:\nТы[Cm] не считаешь, ско[Bb]лько дней я[Eb] тебе не звон[Gm/D]ил,\nНе[Cm] отвечаешь ни по [Bb]одной из св[Eb]оих двух моби[Gm/D]л\nИ [Cm]засыпаешь рядом с[Bb] тем, кого [Eb]я бы уби[Gm/D]л,\nЕс[Cm]ли только бы встр[Bb]етил и если[Eb] хватило бы с[Gm/D]ил!\n[Куплет]:\n[Cm]Эта песня могла бы быть другой[Bb]. Но не смогла.\n[Eb]Так же, как ты могла бы быть [Bb]со [Gm]мной.[Gm6] Но ты ушла.\n[Cm]Поэтому не будет розовых сопле[Bb]й - будут зеленые.\n[Eb]Настоящие. Противные. На вкус[Bb] со[Gm]леные[Gm6].\n[Cm]Меня тошнит, как от паленой ос[Bb]етинской водки\n[Eb]С кривой этикеткой и надписью[Bb] не[Gm]четко[Gm6]й.\n[Cm]Я не пою - я блюю этими словам[Bb]и сейчас.\n[Eb]Уберите микрофон - скажите лу[Bb]чше[Gm], где[Gm6] тут унитаз!\n[Cm]Не будет идиотских фраз про лю[Bb]бовь до гроба:\n[Eb]Здесь только боль, обида, неф[Bb]иль[Gm]трова[Gm6]нная злоба.\n[Cm]Над строчками этого текста кру[Bb]жатся мухи,\n[Eb]Как птицы у кормухи, как у тр[Bb]асс[Gm]ы шлю[Gm6]хи.\n[Cm]И дальше все в том же духе - д[Bb]о конца не слушай,\n[Eb]Мои терзания - всего лишь бур[Bb]я в[Gm] гряз[Gm6]ной луже.\n[Cm]Я не сумел придумать лучше, да[Bb] и не хотел:\n[Eb]Мне просто легче от того, что[Bb] я [Gm]все э[Gm6]то спел!\n[Припев]:\nТы[Cm] не считаешь, ско[Bb]лько дней я[Eb] тебе не звон[Gm/D]ил,\nНе[Cm] отвечаешь ни по [Bb]одной из св[Eb]оих двух моби[Gm/D]л\nИ [Cm]засыпаешь рядом с[Bb] тем, кого [Eb]я бы уби[Gm/D]л,\nЕс[Cm]ли только бы встр[Bb]етил и если[Eb] хватило бы с[Gm/D]ил!"
+  },
+  {
+    "id": "song_1794692944508_58",
+    "artist": "Нервы",
+    "title": "Твоим морем",
+    "category": "Нервы",
+    "capo": "",
+    "body": "[Am]Если б[C]ы я был [Dm]твоим море[F]м\n[Am]Я б никогда[C] бы не б[E]ыл спокоен\n[Am]Если б[C]ы я был [Dm]твоим море[F]м\n[Am]Я б никогда[C] бы не бы[E]л спокоен\n[Am]Горы заверну,[C] горы заверн[Dm]у в красные н[F]ити\n[Am]Я в тебе тону,[C] вдоль и в глуби[E]ну, в сердце-магните\n[Am]Он с тобой игр[C]ал, он - мой зле[Dm]йший враг, он д[F]елал больно\n[Am]Я б его убрал, [C]правой от бедра и[E] бесконтрольно\n[Am]Если б[C]ы я был [Dm]твоим море[F]м\n[Am]Я б никогда[C] бы не б[E]ыл спокоен\n[Am]Если б[C]ы я был [Dm]твоим море[F]м\n[Am]Я б никогда[C] бы не бы[E]л спокоен\n[Am]Горы заверну,[C] горы заверн[Dm]у в красные н[F]ити\n[Am]Я в тебе тону,[C] вдоль и в глуби[E]ну, в сердце-магните\n[Am]Он с тобой игр[C]ал, он - мой зле[Dm]йший враг, он д[F]елал больно\n[Am]Я б его убрал, [C]правой от бедра и[E] бесконтрольно\n[Am]Если б[C]ы я был [Dm]твоим море[F]м\n[Am]Я б никогда[C] бы не б[E]ыл спокоен\n[Am]Если б[C]ы я был [Dm]твоим море[F]м\n[Am]Я б никогда[C] бы не бы[E]л спокоен\n[Am]Если бы..."
   }
 ];
 /*__DEFAULT_SONGS_END__*/
@@ -1932,5 +2905,6 @@ currentSongId = songs[0]?.id || null;
 renderCurrentSong();
 requestWakeLock();
 </script>
-</body>
-</html>
+
+
+</body></html>
