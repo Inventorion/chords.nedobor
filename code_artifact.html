@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#18110d" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Сетлист & Аккорды</title>
+  <style>
+    :root {
+      --bg-main: #160f0b;
+      --bg-panel: #221711;
+      --bg-card: #2c1e16;
+      --bg-hover: #3a281e;
+      --text-main: #f5eadc;
+      --text-muted: #b59b84;
+      --accent-gold: #f5c451;
+      --accent-orange: #e06324;
+      --accent-red: #c93b2b;
+      --chord-color: #f7c95c;
+      --chord-bg: rgba(224, 99, 36, 0.22);
+      --border: #422e22;
+      --font-size-lyrics: 17px;
+    }
+
+    body.light-theme {
+      --bg-main: #f5ecdc;
+      --bg-panel: #eadbc4;
+      --bg-card: #fdf8ef;
+      --bg-hover: #dec9aa;
+      --text-main: #24160e;
+      --text-muted: #6e523e;
+      --accent-gold: #b55414;
+      --accent-orange: #c84b15;
+      --accent-red: #a82318;
+      --chord-color: #b32616;
+      --chord-bg: rgba(200, 75, 21, 0.14);
+      --border: #cbb493;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      background: var(--bg-main);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100dvh;
+      overscroll-behavior-y: none;
+    }
+
+    /* ВЕРХНЯЯ ПАНЕЛЬ (ПОРТРЕТНЫЙ ANDROID) */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+      padding: 6px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .top-row-1, .top-row-2 {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .top-row-1::-webkit-scrollbar, .top-row-2::-webkit-scrollbar { display: none; }
+
+    .btn {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      padding: 7px 10px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      white-space: nowrap;
+      touch-action: manipulation;
+      user-select: none;
+      min-height: 36px;
+      transition: transform 0.08s ease, background 0.15s ease;
+    }
+    .btn:active { transform: scale(0.96); background: var(--bg-hover); }
+    .btn.primary { background: var(--accent-orange); color: #fff; border-color: #f07b3f; }
+    .btn.gold { background: var(--accent-gold); color: #1b110b; border-color: var(--accent-gold); font-weight: 800; }
+    .btn.active { background: var(--accent-red); color: #fff; border-color: #e55343; }
+
+    .control-pill {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 1px 3px;
+      gap: 2px;
+      min-height: 36px;
+      white-space: nowrap;
+    }
+    .control-pill .btn-sm {
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 5px 8px;
+      border-radius: 7px;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .control-pill .btn-sm:active { background: var(--bg-hover); }
+    .control-pill .val {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      min-width: 34px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    /* ЗАКРЕПЛЕННАЯ КАРУСЕЛЬ АППЛИКАТУР */
+    .chord-strip-wrapper {
+      position: sticky;
+      top: 85px;
+      z-index: 90;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      padding: 6px 8px;
+    }
+    .chord-strip-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .chord-strip {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+      scroll-snap-type: x proximity;
+    }
+    .chord-strip::-webkit-scrollbar { display: none; }
+    .chord-strip.grid-mode {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+      max-height: 44dvh;
+      overflow-y: auto;
+    }
+    .chord-strip.collapsed { display: none; }
+
+    .chord-card {
+      flex: 0 0 96px;
+      scroll-snap-align: start;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 5px 4px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .chord-card.highlight {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 2px rgba(245, 196, 81, 0.35);
+    }
+    .chord-card-name {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--chord-color);
+      line-height: 1.1;
+    }
+    .chord-card-pos {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+      text-align: center;
+      max-width: 88px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .chord-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 4px;
+      margin-top: 2px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .chord-nav button {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      border-radius: 5px;
+      width: 22px;
+      height: 20px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    /* ОСНОВНАЯ ОБЛАСТЬ ПЕСНИ */
+    .song-container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 12px 12px 115px;
+    }
+
+    .song-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .song-title {
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--text-main);
+    }
+    .song-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(201, 59, 43, 0.22);
+      color: var(--accent-gold);
+      border: 1px solid var(--accent-red);
+    }
+    .badge.capo-suggest {
+      background: rgba(245, 196, 81, 0.15);
+      border-color: var(--accent-gold);
+      cursor: pointer;
+    }
+
+    /* РЕНДЕР ТЕКСТА И АККОРДОВ (CHORDPRO) */
+    .lyrics-area {
+      font-size: var(--font-size-lyrics);
+      line-height: 1.42;
+      user-select: text;
+    }
+    .lyric-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      min-height: 1.4em;
+      margin-bottom: 3px;
+    }
+    .lyric-empty {
+      height: 12px;
+    }
+    .section-tag {
+      display: inline-block;
+      margin: 12px 0 4px;
+      padding: 2px 8px;
+      border-left: 3px solid var(--accent-orange);
+      background: rgba(224, 99, 36, 0.12);
+      color: var(--accent-gold);
+      font-weight: 800;
+      font-size: 0.9em;
+      border-radius: 0 6px 6px 0;
+    }
+    .pair {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      vertical-align: bottom;
+    }
+    .ch {
+      color: var(--chord-color);
+      background: var(--chord-bg);
+      padding: 0 5px;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 0.92em;
+      line-height: 1.25;
+      margin-right: 3px;
+      margin-bottom: 1px;
+      cursor: pointer;
+      user-select: none;
+      border: 1px solid rgba(245, 196, 81, 0.22);
+    }
+    .ch:active { transform: scale(1.08); background: var(--accent-orange); color: #fff; }
+    .ch-empty {
+      height: 1.15em;
+    }
+    .wd {
+      white-space: pre-wrap;
+      font-weight: 500;
+    }
+    .guitar-tab {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 12px;
+      line-height: 1.25;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      overflow-x: auto;
+      margin: 6px 0;
+      color: var(--accent-gold);
+    }
+
+    /* НАВИГАЦИЯ ПРЕД/СЛЕД ПЕСНЯ ВНИЗУ */
+    .song-footer-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 26px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ПЛАВАЮЩАЯ КНОПКА АВТОСКРОЛЛА ПОД БОЛЬШОЙ ПАЛЕЦ */
+    .fab-scroll {
+      position: fixed;
+      right: 14px;
+      bottom: 16px;
+      z-index: 95;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-panel);
+      border: 2px solid var(--accent-orange);
+      border-radius: 999px;
+      padding: 6px 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+    .fab-play {
+      background: var(--accent-orange);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .fab-play.playing { background: var(--accent-red); }
+
+    /* БОКОВАЯ ШТОРКА ТРЕКЛИСТА */
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.68);
+      z-index: 200;
+      display: none;
+    }
+    .backdrop.open { display: block; }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: min(90vw, 390px);
+      background: var(--bg-panel);
+      border-right: 1px solid var(--border);
+      z-index: 210;
+      transform: translateX(-102%);
+      transition: transform 0.22s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .drawer.open { transform: translateX(0); }
+
+    .drawer-head {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .search-input, .form-input, .form-textarea {
+      width: 100%;
+      background: var(--bg-main);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 9px 11px;
+      font-size: 14px;
+      outline: none;
+    }
+    .search-input:focus, .form-input:focus, .form-textarea:focus {
+      border-color: var(--accent-gold);
+    }
+
+    .cat-chips {
+      display: flex;
+      gap: 5px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+    .cat-chips::-webkit-scrollbar { display: none; }
+    .chip {
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--bg-card);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .chip.active {
+      background: var(--accent-orange);
+      color: #fff;
+      border-color: var(--accent-orange);
+    }
+
+    .song-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .song-item {
+      padding: 9px 10px;
+      border-radius: 9px;
+      background: var(--bg-card);
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .song-item.active {
+      border-color: var(--accent-gold);
+      background: var(--bg-hover);
+    }
+    .song-item-title { font-size: 14px; font-weight: 700; color: var(--text-main); }
+    .song-item-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .song-item-capo {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      background: rgba(201, 59, 43, 0.22);
+      border: 1px solid var(--accent-red);
+      padding: 2px 6px;
+      border-radius: 5px;
+      white-space: nowrap;
+    }
+
+    .drawer-foot {
+      padding: 10px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    /* МОДАЛЬНОЕ ОКНО РЕДАКТОРА / ПАКЕТНОГО ИМПОРТА / АККОРДА */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(0,0,0,0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+    .modal.open { display: flex; }
+    .modal-box {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      width: min(96vw, 640px);
+      max-height: 92dvh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .modal-head {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 800;
+    }
+    .modal-body {
+      padding: 12px 14px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .modal-foot {
+      padding: 10px 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .form-textarea {
+      min-height: 220px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .import-banner {
+      background: linear-gradient(135deg, rgba(224,99,36,0.22), rgba(201,59,43,0.25));
+      border: 1px solid var(--accent-orange);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    /* ВСТРОЕННЫЕ УВЕДОМЛЕНИЯ (ВМЕСТО ALERT) */
+    .toast-box {
+      position: fixed;
+      bottom: 78px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 400;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      pointer-events: none;
+      width: max-content;
+      max-width: 92vw;
+    }
+    .toast-item {
+      background: var(--accent-gold);
+      color: #18110d;
+      border: 2px solid var(--accent-orange);
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.65);
+      text-align: center;
+      transition: opacity 0.2s ease;
+    }
+    .toast-item.error {
+      background: var(--accent-red);
+      color: #fff;
+      border-color: #ff8a80;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+  <header class="top-bar">
+    <div class="top-row-1">
+      <button class="btn primary" onclick="toggleDrawer(true)">☰ Треклист (<span id="songCount">0</span>)</button>
+      <button class="btn gold" onclick="document.getElementById('txtFileInput').click()" title="Загрузить 53 штуки+.txt">📂 Загрузить 53 штуки+.txt</button>
+      <button class="btn" onclick="openQuickPasteModal()">📋 Вставить песню</button>
+      <button class="btn" onclick="openEditModal(currentSongId)">✎ Изм.</button>
+      <button class="btn" onclick="toggleTheme()" id="themeBtn">☀️</button>
+    </div>
+    <div class="top-row-2">
+      <!-- Транспонирование -->
+      <div class="control-pill">
+        <button class="btn-sm" onclick="changeTranspose(-1)">♭ -1</button>
+        <span class="val" id="transVal" onclick="resetTranspose()" title="Сбросить тональность">0</span>
+        <button class="btn-sm" onclick="changeTranspose(1)">+1 ♯</button>
+      </div>
+      <!-- Умный каподастр -->
+      <button class="btn" id="smartCapoBtn" onclick="applySmartCapo()">🎸 Капо?</button>
+      <!-- Упрощение аккордов -->
+      <button class="btn" id="simplifyBtn" onclick="toggleSimplify()">Упростить</button>
+      <!-- Размер шрифта -->
+      <div class="control-pill">
+        <button class="btn-sm" onclick="changeFontSize(-1)">A-</button>
+        <span class="val" id="fontVal">17</span>
+        <button class="btn-sm" onclick="changeFontSize(1)">A+</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ЗАКРЕПЛЕННАЯ КАРУСЕЛЬ АППЛИКАТУР -->
+  <section class="chord-strip-wrapper">
+    <div class="chord-strip-header">
+      <span>Аппликатуры песни (тап — звук, ◀ ▶ — варианты):</span>
+      <div style="display:flex; gap:6px;">
+        <button class="btn" style="padding:2px 7px; min-height:24px; font-size:11px;" onclick="toggleChordGrid()" id="gridModeBtn">Сетка</button>
+        <button class="btn" style="padding:2px 7px; min-height:24px; font-size:11px;" onclick="toggleChordStrip()" id="hideChordsBtn">Скрыть ▲</button>
+      </div>
+    </div>
+    <div class="chord-strip" id="chordStrip"></div>
+  </section>
+
+  <!-- ОСНОВНОЙ ЭКРАН ПЕСНИ -->
+  <main class="song-container" id="songMain" ondblclick="toggleAutoscroll()">
+    <div class="import-banner" id="importBanner">
+      <div style="font-size:13px;">
+        <b>Исправлено чтение переносов строк Windows (`\r\n`)!</b> Нажми <b>«📂 Загрузить 53 штуки+.txt»</b> — парсер разложит файл ровно на все <b>59 треков</b> со всеми каподастрами и перестановкой `Am C F Dm` в «Лаэла».
+      </div>
+      <button class="btn gold" onclick="document.getElementById('txtFileInput').click()">📂 Выбрать 53 штуки+.txt</button>
+    </div>
+
+    <div class="song-header">
+      <div class="song-title" id="songTitle">Загрузка...</div>
+      <div class="song-meta" id="songMeta"></div>
+    </div>
+
+    <div class="lyrics-area" id="lyricsArea"></div>
+
+    <div class="song-footer-nav">
+      <button class="btn" onclick="stepSong(-1)">⏮ Предыдущий трек</button>
+      <button class="btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">⬆ Наверх</button>
+      <button class="btn primary" onclick="stepSong(1)">Следующий трек ⏭</button>
+    </div>
+  </main>
+
+  <!-- ПЛАВАЮЩИЙ ПУЛЬТ АВТОСКРОЛЛА (ПОД БОЛЬШОЙ ПАЛЕЦ) -->
+  <div class="fab-scroll">
+    <button class="fab-play" id="scrollBtn" onclick="toggleAutoscroll()">▶ Скролл</button>
+    <div class="control-pill" style="border:none; background:transparent;">
+      <button class="btn-sm" onclick="changeScrollSpeed(-0.2)">−</button>
+      <span class="val" id="speedVal">0.8x</span>
+      <button class="btn-sm" onclick="changeScrollSpeed(0.2)">+</button>
+    </div>
+  </div>
+
+  <!-- БОКОВАЯ ШТОРКА ТРЕКЛИСТА -->
+  <div class="backdrop" id="drawerBackdrop" onclick="toggleDrawer(false)"></div>
+  <aside class="drawer" id="drawer">
+    <div class="drawer-head">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <b style="font-size:16px; color:var(--accent-gold);">🎸 Сетлист группы (<span id="drawerCount">0</span>)</b>
+        <button class="btn" style="padding:4px 8px; min-height:28px;" onclick="toggleDrawer(false)">✕</button>
+      </div>
+      <input type="text" class="search-input" id="searchInput" placeholder="Поиск по названию, артисту или тексту..." oninput="renderSetlist()" />
+      <div class="cat-chips" id="catChips"></div>
+    </div>
+    <div class="song-list" id="songList"></div>
+    <div class="drawer-foot">
+      <button class="btn gold" style="grid-column: span 2;" onclick="exportSelfContainedHtml()">📦 Скачать готовый index.html (для GitHub)</button>
+      <button class="btn primary" onclick="openEditModal(null)">+ Новый трек</button>
+      <button class="btn" onclick="document.getElementById('txtFileInput').click()">📂 Импорт .txt/.json</button>
+      <button class="btn" onclick="exportJsonBackup()">💾 Бэкап .json</button>
+      <button class="btn" id="deleteSongBtn" onclick="deleteCurrentSong()" style="color:#ff8a80;">🗑 Удалить трек</button>
+    </div>
+  </aside>
+
+  <!-- СКРЫТЫЙ INPUT ДЛЯ ФАЙЛА 53 штуки+.txt ИЛИ JSON -->
+  <input type="file" id="txtFileInput" accept=".txt,.json" style="display:none" onchange="handleFileImport(event)" />
+
+  <!-- МОДАЛКА РЕДАКТОРА / БЫСТРОЙ ВСТАВКИ -->
+  <div class="modal" id="editModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <span id="modalTitle">Добавить / Изменить трек</span>
+        <button class="btn" onclick="closeEditModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+          <input type="text" class="form-input" id="editArtist" placeholder="Исполнитель / Группа (напр. Нервы)" />
+          <input type="text" class="form-input" id="editTitle" placeholder="Название песни" />
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+          <input type="text" class="form-input" id="editCapo" placeholder="Капо / Строй (напр. капо 2, -4)" />
+          <button class="btn gold" onclick="pasteFromClipboardAndParse()">📋 Вставить из буфера и распознать</button>
+        </div>
+        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+          <button class="btn primary" onclick="convertTextareaToChordPro()">⚡ Склеить двухстрочные аккорды в [ChordPro]</button>
+          <button class="btn" onclick="transposeTextarea(1)">Трансп. текст +1♯</button>
+          <button class="btn" onclick="transposeTextarea(-1)">Трансп. текст -1♭</button>
+        </div>
+        <textarea class="form-textarea" id="editBody" placeholder="Вставь сюда текст песни с аккордами над строками (с mytabs / amdm) или сразу целый файл с несколькими песнями через -----"></textarea>
+      </div>
+      <div class="modal-foot">
+        <button class="btn" onclick="closeEditModal()">Отмена</button>
+        <button class="btn primary" onclick="saveEditedSong()">💾 Сохранить</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛКА КРУПНОЙ АППЛИКАТУРЫ ПРИ ТАПЕ НА АККОРД В ТЕКСТЕ -->
+  <div class="modal" id="chordModal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal-box" style="max-width:420px;">
+      <div class="modal-head">
+        <span id="popupChordTitle" style="color:var(--accent-gold); font-size:18px;">Аккорд</span>
+        <button class="btn" onclick="document.getElementById('chordModal').classList.remove('open')">✕</button>
+      </div>
+      <div class="modal-body" id="popupChordBody" style="display:flex; flex-direction:row; flex-wrap:wrap; justify-content:center; gap:10px;"></div>
+    </div>
+  </div>
+
+  <!-- КОНТЕЙНЕР УВЕДОМЛЕНИЙ -->
+  <div class="toast-box" id="toastBox"></div>
+
+<script>
+/* ============================================================================
+   0. УВЕДОМЛЕНИЯ БЕЗ БЛОКИРУЮЩИХ ОКОН ALERT/CONFIRM
+   ============================================================================ */
+function showToast(msg, isError = false) {
+  const box = document.getElementById('toastBox');
+  if (!box) return;
+  const item = document.createElement('div');
+  item.className = 'toast-item' + (isError ? ' error' : '');
+  item.textContent = msg;
+  box.appendChild(item);
+  setTimeout(() => {
+    item.style.opacity = '0';
+    setTimeout(() => item.remove(), 220);
+  }, 2800);
+}
+
+/* ============================================================================
+   1. ПОЛНАЯ ПРОВЕРЕННАЯ БАЗА АППЛИКАТУР (ВСЕ 56 АККОРДОВ ИЗ ФАЙЛА + ГЕНЕРАТОР)
+   Формат frets: [6-я(E), 5-я(A), 4-я(D), 3-я(G), 2-я(B), 1-я(e)], -1 = глушится (X)
+   ============================================================================ */
+const NOTES_SHARP = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+const NOTES_FLAT  = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+const NOTE_INDEX = {
+  'C':0, 'B#':0, 'C#':1, 'Db':1, 'D':2, 'D#':3, 'Eb':3, 'E':4, 'Fb':4,
+  'F':5, 'E#':5, 'F#':6, 'Gb':6, 'G':7, 'G#':8, 'Ab':8, 'A':9,
+  'A#':10, 'Bb':10, 'B':11, 'Cb':11, 'H':11
+};
+
+const CHORD_LIBRARY = {
+  // МАЖОРНЫЕ
+  'C':  [{n:'Откр.', f:[-1,3,2,0,1,0]}, {n:'Баррэ III', f:[-1,3,5,5,5,3]}, {n:'Баррэ VIII', f:[8,10,10,9,8,8]}],
+  'C#': [{n:'Баррэ IV', f:[-1,4,6,6,6,4]}, {n:'Баррэ IX', f:[9,11,11,10,9,9]}],
+  'D':  [{n:'Откр.', f:[-1,-1,0,2,3,2]}, {n:'Баррэ V', f:[-1,5,7,7,7,5]}, {n:'Баррэ X', f:[10,12,12,11,10,10]}],
+  'D#': [{n:'Баррэ VI', f:[-1,6,8,8,8,6]}, {n:'Малое III', f:[-1,-1,1,3,4,3]}, {n:'Баррэ XI', f:[11,13,13,12,11,11]}],
+  'E':  [{n:'Откр.', f:[0,2,2,1,0,0]}, {n:'Баррэ VII', f:[-1,7,9,9,9,7]}],
+  'F':  [{n:'Баррэ I', f:[1,3,3,2,1,1]}, {n:'Малое I', f:[-1,-1,3,2,1,1]}, {n:'С басом C', f:[-1,3,3,2,1,1]}],
+  'F#': [{n:'Баррэ II', f:[2,4,4,3,2,2]}, {n:'Баррэ IX', f:[-1,9,11,11,11,9]}],
+  'G':  [{n:'Откр.', f:[3,2,0,0,0,3]}, {n:'Откр. (4п)', f:[3,2,0,0,3,3]}, {n:'Баррэ III', f:[3,5,5,4,3,3]}],
+  'G#': [{n:'Баррэ IV', f:[4,6,6,5,4,4]}, {n:'Баррэ XI', f:[-1,11,13,13,13,11]}],
+  'A':  [{n:'Откр.', f:[-1,0,2,2,2,0]}, {n:'Баррэ V', f:[5,7,7,6,5,5]}],
+  'A#': [{n:'Баррэ I (5стр)', f:[-1,1,3,3,3,1]}, {n:'Баррэ VI (6стр)', f:[6,8,8,7,6,6]}],
+  'B':  [{n:'Баррэ II (5стр)', f:[-1,2,4,4,4,2]}, {n:'Баррэ VII (6стр)', f:[7,9,9,8,7,7]}],
+
+  // МИНОРНЫЕ
+  'Cm':  [{n:'Баррэ III', f:[-1,3,5,5,4,3]}, {n:'Баррэ VIII', f:[8,10,10,8,8,8]}],
+  'C#m': [{n:'Баррэ IV', f:[-1,4,6,6,5,4]}, {n:'Откр. упр.', f:[-1,4,6,6,5,0]}, {n:'Баррэ IX', f:[9,11,11,9,9,9]}],
+  'Dm':  [{n:'Откр.', f:[-1,-1,0,2,3,1]}, {n:'Баррэ V', f:[-1,5,7,7,6,5]}],
+  'D#m': [{n:'Баррэ VI', f:[-1,6,8,8,7,6]}, {n:'Малое', f:[-1,-1,1,3,4,2]}],
+  'Em':  [{n:'Откр.', f:[0,2,2,0,0,0]}, {n:'Баррэ VII', f:[-1,7,9,9,8,7]}],
+  'Fm':  [{n:'Баррэ I', f:[1,3,3,1,1,1]}, {n:'Малое I', f:[-1,-1,3,1,1,1]}],
+  'F#m': [{n:'Баррэ II', f:[2,4,4,2,2,2]}, {n:'Откр. упр.', f:[-1,4,4,2,0,0]}],
+  'Gm':  [{n:'Баррэ III', f:[3,5,5,3,3,3]}, {n:'Баррэ X', f:[-1,10,12,12,11,10]}],
+  'G#m': [{n:'Баррэ IV', f:[4,6,6,4,4,4]}, {n:'Баррэ XI', f:[-1,11,13,13,12,11]}],
+  'Am':  [{n:'Откр.', f:[-1,0,2,2,1,0]}, {n:'Баррэ V', f:[5,7,7,5,5,5]}],
+  'A#m': [{n:'Баррэ I (5стр)', f:[-1,1,3,3,2,1]}, {n:'Баррэ VI (6стр)', f:[6,8,8,6,6,6]}],
+  'Bm':  [{n:'Баррэ II (5стр)', f:[-1,2,4,4,3,2]}, {n:'Упрощ.', f:[-1,2,0,2,3,2]}, {n:'Баррэ VII', f:[7,9,9,7,7,7]}],
+
+  // ДОМИНАНТСЕПТАККОРДЫ (7)
+  'C7':  [{n:'Откр.', f:[-1,3,2,3,1,0]}, {n:'Баррэ III', f:[-1,3,5,3,5,3]}],
+  'D7':  [{n:'Откр.', f:[-1,-1,0,2,1,2]}, {n:'Баррэ V', f:[-1,5,7,5,7,5]}],
+  'E7':  [{n:'Откр. 1', f:[0,2,0,1,0,0]}, {n:'Откр. 2', f:[0,2,2,1,3,0]}],
+  'F#7': [{n:'Баррэ II', f:[2,4,2,3,2,2]}, {n:'Упрощ.', f:[2,4,4,3,2,0]}],
+  'G7':  [{n:'Откр.', f:[3,2,0,0,0,1]}, {n:'Баррэ III', f:[3,5,3,4,3,3]}],
+  'G#7': [{n:'Баррэ IV', f:[4,6,4,5,4,4]}],
+  'A7':  [{n:'Откр.', f:[-1,0,2,0,2,0]}, {n:'Откр. 2', f:[-1,0,2,2,2,3]}, {n:'Баррэ V', f:[5,7,5,6,5,5]}],
+  'B7':  [{n:'Откр.', f:[-1,2,1,2,0,2]}, {n:'Баррэ II', f:[-1,2,4,2,4,2]}],
+
+  // МИНОРНЫЕ СЕПТАККОРДЫ (m7)
+  'Am7':  [{n:'Откр.', f:[-1,0,2,0,1,0]}, {n:'Откр. с G', f:[-1,0,2,2,1,3]}, {n:'Баррэ V', f:[5,7,5,5,5,5]}],
+  'Bm7':  [{n:'Откр. упр.', f:[-1,2,0,2,0,2]}, {n:'Баррэ II', f:[-1,2,4,2,3,2]}],
+  'Em7':  [{n:'Откр. 1', f:[0,2,2,0,3,0]}, {n:'Откр. 2', f:[0,2,0,0,0,0]}, {n:'С D и G', f:[0,2,2,0,3,3]}],
+  'F#m7': [{n:'Баррэ II', f:[2,4,2,2,2,2]}, {n:'Акуст.', f:[2,0,2,2,2,0]}],
+
+  // БОЛЬШИЕ СЕПТАККОРДЫ (maj7 / maj)
+  'Cmaj7': [{n:'Откр.', f:[-1,3,2,0,0,0]}, {n:'Баррэ III', f:[-1,3,5,4,5,3]}],
+  'Dmaj7': [{n:'Откр.', f:[-1,-1,0,2,2,2]}, {n:'Баррэ V', f:[-1,5,7,6,7,5]}],
+  'Fmaj7': [{n:'Откр.', f:[-1,-1,3,2,1,0]}, {n:'С басом F', f:[1,3,3,2,1,0]}],
+  'Gmaj7': [{n:'Откр.', f:[3,2,0,0,0,2]}, {n:'Джаз.', f:[3,-1,4,4,3,-1]}],
+
+  // ЗАДЕРЖАННЫЕ И ДОБАВОЧНЫЕ (sus4, add9, 6, m6, +7, add13-)
+  'Asus4':    [{n:'Откр.', f:[-1,0,2,2,3,0]}, {n:'Баррэ V', f:[5,7,7,7,5,5]}],
+  'Dsus4':    [{n:'Откр.', f:[-1,-1,0,2,3,3]}, {n:'Баррэ V', f:[-1,5,7,7,8,5]}],
+  'Cadd9':    [{n:'Откр. 1', f:[-1,3,2,0,3,3]}, {n:'Откр. 2', f:[-1,3,2,0,3,0]}],
+  'Amadd9':   [{n:'Акуст. (Портреты)', f:[-1,0,2,4,1,0]}, {n:'Широкая', f:[-1,0,7,5,5,7]}],
+  'G6':       [{n:'Откр. 1', f:[3,2,0,0,0,0]}, {n:'Откр. 2', f:[3,2,0,0,3,0]}],
+  'Gm6':      [{n:'В связке с Gm', f:[3,5,5,3,5,3]}, {n:'Компакт.', f:[3,-1,2,3,3,3]}, {n:'Верх.', f:[-1,-1,2,3,3,3]}],
+  'Em+7':     [{n:'Em(maj7) откр.', f:[0,2,1,0,0,0]}, {n:'На VII ладу', f:[-1,7,9,8,8,7]}],
+  'Bmadd13-': [{n:'Ориг. (Вороны)', f:[-1,2,4,4,3,3]}, {n:'С откр. G', f:[-1,2,4,0,3,2]}],
+
+  // КВИНТЫ (POWER CHORDS) И (no3)
+  'G5':     [{n:'Квинта III', f:[3,5,5,-1,-1,-1]}, {n:'Полная', f:[3,5,5,0,0,3]}],
+  'B5':     [{n:'Квинта II', f:[-1,2,4,4,-1,-1]}, {n:'Квинта VII', f:[7,9,9,-1,-1,-1]}],
+  'C5':     [{n:'Квинта III', f:[-1,3,5,5,-1,-1]}, {n:'Квинта VIII', f:[8,10,10,-1,-1,-1]}],
+  'A(no3)': [{n:'A5 откр.', f:[-1,0,2,2,-1,-1]}, {n:'Полная A5', f:[-1,0,2,2,5,5]}, {n:'Квинта V', f:[5,7,7,-1,-1,-1]}],
+
+  // ДРОБНЫЕ АККОРДЫ (С БАСОМ)
+  'Em/B': [{n:'Бас B (5стр)', f:[-1,2,2,0,0,0]}, {n:'Баррэ VII', f:[7,7,9,9,8,7]}],
+  'D/A':  [{n:'Бас A (5стр)', f:[-1,0,0,2,3,2]}, {n:'Баррэ V', f:[5,5,7,7,7,5]}],
+  'Bm/D': [{n:'Бас D (4стр)', f:[-1,-1,0,4,3,2]}, {n:'Бас D (5стр)', f:[-1,5,4,4,3,2]}],
+  'Dm/B': [{n:'Бас B (5стр)', f:[-1,2,0,2,3,1]}, {n:'Полная', f:[-1,2,3,2,3,1]}],
+  'Gm/D': [{n:'Бас D (4стр)', f:[-1,-1,0,3,3,3]}, {n:'Бас D (5стр)', f:[-1,5,5,3,3,3]}],
+  'Am/G': [{n:'Бас G (6стр)', f:[3,0,2,2,1,0]}],
+  'C/G':  [{n:'Бас G (6стр)', f:[3,3,2,0,1,0]}],
+  'D/F#': [{n:'Бас F# (6стр)', f:[2,0,0,2,3,2]}]
+};
+
+function getChordVoicings(rawChord) {
+  let clean = rawChord.trim().replace(/\s+/g, '');
+  if (CHORD_LIBRARY[clean]) return CHORD_LIBRARY[clean];
+
+  const m = clean.match(/^([A-GH][#b]?)(.*?)(?:\/([A-GH][#b]?))?$/);
+  if (!m) return [{n:'Аккорд', f:[0,0,0,0,0,0]}];
+
+  let [, root, qual, bass] = m;
+  const rIdx = NOTE_INDEX[root] ?? 0;
+  const sharpRoot = NOTES_SHARP[rIdx];
+
+  let normQual = qual;
+  if (normQual === 'maj') normQual = 'maj7';
+  if (normQual === 'sus') normQual = 'sus4';
+
+  const sharpBass = bass ? '/' + NOTES_SHARP[NOTE_INDEX[bass] ?? 0] : '';
+  const canonical = sharpRoot + normQual + sharpBass;
+  if (CHORD_LIBRARY[canonical]) return CHORD_LIBRARY[canonical];
+
+  if (bass) {
+    const baseVoicings = getChordVoicings(sharpRoot + normQual);
+    const bIdx = NOTE_INDEX[bass] ?? 0;
+    const fret6 = (bIdx - 4 + 12) % 12;
+    const fret5 = (bIdx - 9 + 12) % 12;
+    const baseF = [...baseVoicings[0].f];
+    const custom1 = [...baseF];
+    if (fret6 <= 7) custom1[0] = fret6;
+    const custom2 = [...baseF];
+    if (fret5 <= 7) { custom2[0] = -1; custom2[1] = fret5; }
+    return [
+      {n: `С басом ${bass}`, f: custom1},
+      {n: `Бас на 5 стр`, f: custom2},
+      ...baseVoicings
+    ];
+  }
+
+  let f6 = (rIdx - 4 + 12) % 12; if (f6 === 0) f6 = 12;
+  let f5 = (rIdx - 9 + 12) % 12; if (f5 === 0) f5 = 12;
+
+  if (normQual === '5' || normQual === '(no3)') {
+    return [
+      {n: `Квинта (6 стр, ${f6}л)`, f: [f6, f6+2, f6+2, -1, -1, -1]},
+      {n: `Квинта (5 стр, ${f5}л)`, f: [-1, f5, f5+2, f5+2, -1, -1]}
+    ];
+  }
+  if (normQual === 'maj7') {
+    return [
+      {n: `Баррэ ${f5} лад`, f: [-1, f5, f5+2, f5+1, f5+2, f5]},
+      {n: `На 6 стр (${f6} лад)`, f: [f6, -1, f6+1, f6+1, f6, -1]}
+    ];
+  }
+  if (normQual === 'm7') {
+    return [
+      {n: `Баррэ ${f6} лад`, f: [f6, f6+2, f6, f6, f6, f6]},
+      {n: `Баррэ ${f5} лад`, f: [-1, f5, f5+2, f5, f5+1, f5]}
+    ];
+  }
+  if (normQual === '7') {
+    return [
+      {n: `Баррэ ${f6} лад`, f: [f6, f6+2, f6, f6+1, f6, f6]},
+      {n: `Баррэ ${f5} лад`, f: [-1, f5, f5+2, f5, f5+2, f5]}
+    ];
+  }
+  if (normQual === 'sus4') {
+    return [
+      {n: `Баррэ ${f6} лад`, f: [f6, f6+2, f6+2, f6+2, f6, f6]},
+      {n: `Баррэ ${f5} лад`, f: [-1, f5, f5+2, f5+2, f5+3, f5]}
+    ];
+  }
+  if (normQual === 'add9') {
+    return [
+      {n: `Позиция ${f5} лад`, f: [-1, f5, f5-1 > 0 ? f5-1 : f5+2, f5, f5, f5]},
+      {n: `Баррэ ${f6} лад`, f: [f6, f6+2, f6+4, f6+1, f6, f6]}
+    ];
+  }
+  if (normQual === 'madd9') {
+    return [
+      {n: `Позиция ${f5} лад`, f: [-1, f5, f5+2, f5+4, f5+1, f5]},
+      {n: `На 6 стр (${f6} лад)`, f: [f6, f6+2, f6+4, f6, f6, f6]}
+    ];
+  }
+  if (normQual === '6') {
+    return [
+      {n: `Позиция ${f6} лад`, f: [f6, f6+2, f6+2, f6+1, f6+2, f6]},
+      {n: `Позиция ${f5} лад`, f: [-1, f5, f5+2, f5+2, f5+2, f5+2]}
+    ];
+  }
+  if (normQual === 'm6') {
+    return [
+      {n: `Баррэ ${f6} лад`, f: [f6, f6+2, f6+2, f6, f6+2, f6]},
+      {n: `Баррэ ${f5} лад`, f: [-1, f5, f5+2, f5+2, f5+1, f5+2]}
+    ];
+  }
+  if (normQual === '+7' || normQual === 'mmaj7') {
+    return [
+      {n: `m(maj7) ${f6} лад`, f: [f6, f6+2, f6+1, f6, f6, f6]},
+      {n: `m(maj7) ${f5} лад`, f: [-1, f5, f5+2, f5+1, f5+1, f5]}
+    ];
+  }
+  if (normQual === 'madd13-') {
+    return [
+      {n: `m(b13) ${f5} лад`, f: [-1, f5, f5+2, f5+2, f5+1, f5+1]},
+      {n: `m(b13) ${f6} лад`, f: [f6, f6+2, f6+2, f6, f6+1, f6]}
+    ];
+  }
+  if (normQual.startsWith('m')) {
+    return [
+      {n: `Баррэ ${f6} лад`, f: [f6, f6+2, f6+2, f6, f6, f6]},
+      {n: `Баррэ ${f5} лад`, f: [-1, f5, f5+2, f5+2, f5+1, f5]}
+    ];
+  }
+  return [
+    {n: `Баррэ ${f6} лад`, f: [f6, f6+2, f6+2, f6+1, f6, f6]},
+    {n: `Баррэ ${f5} лад`, f: [-1, f5, f5+2, f5+2, f5+2, f5]}
+  ];
+}
+
+/* ============================================================================
+   2. ОТРИСОВКА SVG-СХЕМ АППЛИКАТУР И СИНТЕЗАТОР ГИТАРНОГО БОЯ
+   ============================================================================ */
+function renderChordSvg(frets, width = 84, height = 96) {
+  const active = frets.filter(f => f > 0);
+  const maxF = active.length ? Math.max(...active) : 0;
+  const minF = active.length ? Math.min(...active) : 1;
+  const baseFret = maxF <= 4 ? 1 : minF;
+
+  const padL = 16, padR = 10, padT = 18, padB = 8;
+  const w = width - padL - padR;
+  const h = height - padT - padB;
+  const dx = w / 5;
+  const dy = h / 4;
+
+  let svg = `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`;
+  if (baseFret === 1) {
+    svg += `<line x1="${padL}" y1="${padT}" x2="${padL+w}" y2="${padT}" stroke="currentColor" stroke-width="3.2"/>`;
+  } else {
+    svg += `<text x="2" y="${padT + dy*0.65}" fill="#f5c451" font-size="10" font-weight="800">${baseFret}fr</text>`;
+  }
+
+  for (let i = 0; i <= 4; i++) {
+    const y = padT + i * dy;
+    svg += `<line x1="${padL}" y1="${y}" x2="${padL+w}" y2="${y}" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>`;
+  }
+  for (let s = 0; s < 6; s++) {
+    const x = padL + s * dx;
+    svg += `<line x1="${x}" y1="${padT}" x2="${x}" y2="${padT+h}" stroke="currentColor" stroke-opacity="0.55" stroke-width="${1.5 - s*0.14}"/>`;
+  }
+
+  for (let s = 0; s < 6; s++) {
+    const x = padL + s * dx;
+    const f = frets[s];
+    if (f === -1) {
+      svg += `<text x="${x}" y="${padT-5}" text-anchor="middle" fill="#e55343" font-size="10" font-weight="800">×</text>`;
+    } else if (f === 0) {
+      svg += `<circle cx="${x}" cy="${padT-8}" r="3.2" fill="none" stroke="#f5c451" stroke-width="1.5"/>`;
+    } else {
+      const rel = f - baseFret + 1;
+      if (rel >= 1 && rel <= 4) {
+        const y = padT + (rel - 0.5) * dy;
+        svg += `<circle cx="${x}" cy="${y}" r="5.2" fill="#e06324" stroke="#f5c451" stroke-width="1.2"/>`;
+        svg += `<text x="${x}" y="${y+3.2}" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800">${f}</text>`;
+      }
+    }
+  }
+  svg += `</svg>`;
+  return svg;
+}
+
+let audioCtx = null;
+function playGuitarChord(frets) {
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const openMidi = [40, 45, 50, 55, 59, 64];
+    const now = audioCtx.currentTime;
+    frets.forEach((f, idx) => {
+      if (f < 0) return;
+      const freq = 440 * Math.pow(2, (openMidi[idx] + f - 69) / 12);
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, now + idx * 0.035);
+      gain.gain.setValueAtTime(0.001, now + idx * 0.035);
+      gain.gain.linearRampToValueAtTime(0.16, now + idx * 0.035 + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0008, now + idx * 0.035 + 1.35);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now + idx * 0.035);
+      osc.stop(now + idx * 0.035 + 1.4);
+    });
+  } catch (e) {}
+}
+
+/* ============================================================================
+   3. ТРАНСПОНИРОВАНИЕ, УПРОЩЕНИЕ И УМНЫЙ КАПОДАСТР
+   ============================================================================ */
+function transposeSingleChord(chord, semitones, preferFlats = false) {
+  let clean = chord.trim();
+  if (simplifyMode) {
+    clean = clean.replace(/\/[A-GH][#b]?$/, '')
+                 .replace(/(maj7?|add9|add13-?|\+7?|sus[24]?|6|7|\(no3\))$/, '');
+  }
+  if (semitones % 12 === 0) return clean;
+  const m = clean.match(/^([A-GH][#b]?)(.*?)(?:\/([A-GH][#b]?))?$/);
+  if (!m) return clean;
+  const [, root, qual, bass] = m;
+  const useFlats = preferFlats || root.includes('b') || (bass && bass.includes('b'));
+  const scale = useFlats ? NOTES_FLAT : NOTES_SHARP;
+  const newRoot = scale[(NOTE_INDEX[root] + semitones + 120) % 12];
+  const newBass = bass ? '/' + scale[(NOTE_INDEX[bass] + semitones + 120) % 12] : '';
+  return newRoot + qual + newBass;
+}
+
+const EASY_OPEN_ROOTS = new Set(['Am', 'Em', 'C', 'G', 'D', 'Dm', 'E', 'A', 'A7', 'E7', 'B7', 'D7', 'G7', 'Cmaj7', 'Em7', 'Am7']);
+function findBestCapo(chords) {
+  if (!chords.length) return null;
+  let bestShift = 0, bestScore = -1;
+  for (let capo = 0; capo <= 7; capo++) {
+    const shift = -capo;
+    let score = 0;
+    chords.forEach(ch => {
+      const tr = transposeSingleChord(ch, shift);
+      const base = tr.replace(/\/.*$/, '');
+      if (EASY_OPEN_ROOTS.has(base)) score += 2;
+      else if (!base.includes('#') && !base.includes('b') && base !== 'F' && base !== 'Bm' && base !== 'B') score += 1;
+    });
+    if (score > bestScore) { bestScore = score; bestShift = shift; }
+  }
+  return { capo: -bestShift, shift: bestShift };
+}
+
+/* ============================================================================
+   4. АВТОМАТИЧЕСКИЙ ПАРСЕР ФАЙЛА 53 штуки+.txt (С ФИКСОМ CRLF \r\n)
+   ============================================================================ */
+const CHORD_TOKEN_REGEX = /^[A-GH][#b♯♭]?(?:m|maj7?|min|sus[24]?|dim|aug|add\d+|\+7?|\d+|m7|m6|maj9|add9|add13-?|\(no3\))*(?:\/[A-GH][#b♯♭]?)?$/;
+
+const PRESET_CAPO_MAP = {
+  "Пора возвращаться домой": "капо 2 | Бой: Восьмерка",
+  "Молитва": "капо 2 на 1",
+  "Неудачница": "капо 3",
+  "Портвейн": "Бой: ↓↓↑↑↓↓↓↑",
+  "Расстрел": "капо 7",
+  "Лаэла": "капо 0 (Am C F Dm)",
+  "Да или": "капо 3",
+  "Слишком влюблён": "капо 4",
+  "Пустой вокзал": "капо 0",
+  "Красный Флаг": "капо 0",
+  "Зелёный": "капо 0",
+  "Жвачка": "-4",
+  "Мятные конфетки": "0, капо 4",
+  "Не забывают": "0, капо 5",
+  "Официантка": "капо 5",
+  "Динозаврики": "капо 5",
+  "Goodbye": "капо 5",
+  "Ненавижу вас всех": "капо 5",
+  "Sailor Song": "капо 3",
+  "Это было в России": "капо 1 (F G Am Em — нажми +3♯)",
+  "Кладбище самолетов": "капо 0",
+  "Нежная Любовь": "капо 3",
+  "Портреты": "капо 0",
+  "Да что романтичного в птичках": "капо +4, +2"
+};
+
+function normalizeChordLinePreserveLength(line) {
+  return line
+    .replace(/([A-G][#b]?)\s\(no3\)/g, '$1(no3) ')
+    .replace(/\(([A-G][#b]?m?)\)\s*\*\*/g, (m, c) => c.padEnd(m.length, ' '))
+    .replace(/\(([A-G][#b]?(?:m|m6|m7|7|maj7)?)\)/g, (m, c) => c.padEnd(m.length, ' '))
+    .replace(/\*/g, ' ');
+}
+
+function isGuitarTabLine(line) {
+  return /^[EBGDAHe]\s*\|[-0-9\s|hpbs/\\~x]+/.test(line.trim());
+}
+
+function isSectionOrMetaLine(line) {
+  const s = line.trim();
+  if (!s || isGuitarTabLine(s)) return true;
+  if (/^\[?(Вступление|Куплет|Припев|Пред-припев|Пре-хорус|Постприпев|Бридж|Переход|Финал|Проигрыш|Кода|Соло|Verse|Chorus|Pre-Chorus|Bridge|Coda|Interlude|Intro|Outro|\d+\s*куплет)/i.test(s)) return true;
+  if (/^(Рекомендуемый Бой|Бой|Капо|Каподастр|Вся песня|вст\.)/i.test(s)) return true;
+  if (/^\(\d+\s*раза?\)$/i.test(s)) return true;
+  return false;
+}
+
+function extractInlinePrefixChords(line) {
+  const s = line.trim();
+  const m = s.match(/^(\[?(?:Вступление|Проигрыш|Кода|Соло|Intro|Outro|Interlude|Bridge|вст\.|Вся песня)\]?\s*:?\s+)(.+)$/i);
+  if (!m) return null;
+  const [, prefix, rest] = m;
+  const norm = normalizeChordLinePreserveLength(rest);
+  const cleaned = norm.replace(/(\}\s*[xх]?\d+|\([xх]\d+\)|\b[xх]\d+\b|\b\d+[pрxх]\b|\|)/gi, ' ');
+  const tokens = cleaned.split(/\s+/).filter(Boolean);
+  if (tokens.length && tokens.every(t => CHORD_TOKEN_REGEX.test(t))) {
+    return { prefix: prefix.trim(), rest };
+  }
+  return null;
+}
+
+function isPureChordLine(line) {
+  const s = line.trim();
+  if (!s || isGuitarTabLine(s) || extractInlinePrefixChords(s) || isSectionOrMetaLine(s)) return false;
+  const norm = normalizeChordLinePreserveLength(s);
+  const cleaned = norm.replace(/(\}\s*[xх]?\d+|\([xх]\d+\)|\b[xх]\d+\b|\b\d+[pрxх]\b|\|)/gi, ' ');
+  const tokens = cleaned.split(/\s+/).filter(Boolean);
+  return tokens.length > 0 && tokens.every(t => CHORD_TOKEN_REGEX.test(t));
+}
+
+function wrapProgressionChords(line, semi = 0) {
+  const norm = normalizeChordLinePreserveLength(line);
+  return norm.replace(/[A-GH][#b♯♭]?(?:m|maj7?|min|sus[24]?|dim|aug|add\d+|\+7?|\d+|m7|m6|maj9|add9|add13-?|\(no3\))*(?:\/[A-GH][#b♯♭]?)?/g, tok => {
+    if (CHORD_TOKEN_REGEX.test(tok)) {
+      return `[${transposeSingleChord(tok, semi)}]`;
+    }
+    return tok;
+  }).trim();
+}
+
+function mergeTwoLinesToChordPro(chordLine, lyricLine, semi = 0) {
+  const normC = normalizeChordLinePreserveLength(chordLine);
+  const items = [];
+  const regex = /\S+/g;
+  let match;
+  while ((match = regex.exec(normC)) !== null) {
+    const tok = match[0];
+    const col = match.index;
+    if (CHORD_TOKEN_REGEX.test(tok)) {
+      items.push({ col, tag: `[${transposeSingleChord(tok, semi)}]` });
+    } else {
+      items.push({ col, tag: `(${tok})` });
+    }
+  }
+  if (!items.length) return lyricLine;
+  let res = lyricLine;
+  const inBounds = items.filter(it => it.col < res.length);
+  const outBounds = items.filter(it => it.col >= res.length).map(it => it.tag);
+  for (let i = inBounds.length - 1; i >= 0; i--) {
+    const { col, tag } = inBounds[i];
+    res = res.slice(0, col) + tag + res.slice(col);
+  }
+  if (outBounds.length) {
+    res = res.trimEnd() + (res.trim() ? ' ' : '') + outBounds.join(' ');
+  }
+  return res;
+}
+
+function convertLinesToChordPro(rawLines, semi = 0) {
+  const expanded = [];
+  for (const line of rawLines) {
+    const m = line.match(/^(\s*Припев:\s+)([A-G].*)$/);
+    if (m && isPureChordLine(m[2])) {
+      expanded.push('Припев:');
+      expanded.push(' '.repeat(m[1].length) + m[2]);
+    } else {
+      expanded.push(line);
+    }
+  }
+
+  const out = [];
+  let i = 0;
+  while (i < expanded.length) {
+    const line = expanded[i];
+    const s = line.trim();
+    if (!s) {
+      if (out.length && out[out.length - 1] !== '') out.push('');
+      i++;
+      continue;
+    }
+    if (s.toLowerCase() === 'вступление') { i++; continue; }
+
+    const inlinePref = extractInlinePrefixChords(line);
+    if (inlinePref) {
+      out.push(`${inlinePref.prefix} ${wrapProgressionChords(inlinePref.rest, semi)}`);
+      i++;
+      continue;
+    }
+
+    if (isPureChordLine(line)) {
+      if (i + 1 < expanded.length) {
+        const nextLine = expanded[i + 1];
+        const nextS = nextLine.trim();
+        if (nextS && !isPureChordLine(nextLine) && !isSectionOrMetaLine(nextLine)) {
+          out.push(mergeTwoLinesToChordPro(line, nextLine, semi));
+          i += 2;
+          continue;
+        }
+      }
+      out.push(wrapProgressionChords(line, semi));
+      i++;
+      continue;
+    }
+
+    out.push(line.replace(/\s+$/, ''));
+    i++;
+  }
+  while (out.length && out[0] === '') out.shift();
+  while (out.length && out[out.length - 1] === '') out.pop();
+  return out.join('\n');
+}
+
+// ИСПРАВЛЕННЫЙ ПАКЕТНЫЙ ПАРСЕР: НОРМАЛИЗУЕТ \r\n ДО РАЗБИВКИ ПО -----
+function parseMultiSongTxt(fullText) {
+  const normalized = fullText.replace(/\r\n?/g, '\n');
+  const blocks = normalized.split(/\n[ \t]*-{4,}[ \t]*\n/);
+  const catHeaders = new Set(['Би-2', 'Алена Швец', 'Моргенштерн', 'Нойз', 'Оля Ля', 'Папин Олимпос']);
+  const parsedSongs = [];
+
+  blocks.forEach((block, idx) => {
+    const lines = block.split('\n');
+    const nonEmptyIndices = [];
+    lines.forEach((l, i) => { if (l.trim()) nonEmptyIndices.push(i); });
+    if (!nonEmptyIndices.length) return;
+
+    let headerLine = lines[nonEmptyIndices[0]].trim();
+    let bodyStart = nonEmptyIndices[0] + 1;
+    if (catHeaders.has(headerLine) && nonEmptyIndices.length > 1) {
+      headerLine = lines[nonEmptyIndices[1]].trim();
+      bodyStart = nonEmptyIndices[1] + 1;
+    }
+
+    // Проверка на Лаэла (+5 полутонов: Em G C Am -> Am C F Dm)
+    const isLaela = /Лаэла/i.test(headerLine);
+    const semiShift = isLaela ? 5 : 0;
+
+    let artist = 'Разное', title = headerLine, capo = '';
+    const dashParts = headerLine.split(/\s+-\s+/);
+    if (dashParts.length >= 2) {
+      artist = dashParts[0].trim();
+      title = dashParts.slice(1).join(' - ').trim();
+    }
+
+    const parenMatch = title.match(/\(([^)]+)\)\s*$/);
+    if (parenMatch && /(кап|0|\d|-4|\+)/i.test(parenMatch[1])) {
+      capo = parenMatch[1].trim();
+      title = title.replace(/\s*\([^)]+\)\s*$/, '').trim();
+    }
+    if (isLaela) capo = 'капо 0 (Am C F Dm)';
+
+    const bodyLines = lines.slice(bodyStart);
+    bodyLines.slice(0, 5).forEach(bl => {
+      const mCapo = bl.trim().match(/^(?:Капо|Каподастр)[^:]*:?\s*(.+)$/i);
+      if (mCapo && !capo) capo = 'капо ' + mCapo[1].trim();
+    });
+
+    for (const [key, val] of Object.entries(PRESET_CAPO_MAP)) {
+      if (title.toLowerCase().includes(key.toLowerCase()) && !capo) {
+        capo = val;
+      }
+    }
+
+    let category = 'Разное';
+    if (/Би-2/i.test(artist)) category = 'Би-2';
+    else if (/Швец/i.test(artist)) category = 'Швец';
+    else if (/Нервы/i.test(artist)) category = 'Нервы';
+    else if (/MORGENSHTERN|Моргенштерн/i.test(artist)) category = 'Моргенштерн';
+    else if (/Noize|Нойз/i.test(artist)) category = 'Нойз';
+    else if (/Оля Ля/i.test(artist)) category = 'Оля Ля';
+    else if (/Папин Олимпос/i.test(artist)) category = 'Папин Олимпос';
+
+    const chordProBody = convertLinesToChordPro(bodyLines, semiShift);
+    parsedSongs.push({
+      id: 'song_' + Date.now() + '_' + idx,
+      artist,
+      title,
+      category,
+      capo,
+      body: chordProBody
+    });
+  });
+
+  return parsedSongs;
+}
+
+/* ============================================================================
+   5. СТАРТОВАЯ БАЗА (ДО ИМПОРТА ПОЛНОГО ФАЙЛА 53 штуки+.txt)
+   ============================================================================ */
+/*__DEFAULT_SONGS_START__*/
+const DEFAULT_SONGS = [
+  {
+    id: "s_1",
+    artist: "Би-2 - Оксимирон",
+    title: "Пора возвращаться домой",
+    category: "Би-2",
+    capo: "капо 2 | Бой: Восьмерка",
+    body: `Рекомендуемый Бой: Восьмерка\n\nвст. [Em] [G] [Bm] [A] 2p\n\n[Куплет 1, Би-2]:\n[Em]Чёрный чёрствый хлеб туп[G]ой ломает нож, [Bm]\nУставлены глаза в разм[A]ытый горизонт. [Em]\nПрямо с потолка и[G]дёт бесшумный дождь, [Bm]\nБегущая строка у[A]пёрлась в переплёт. [Em]\n\n[Припев, Би-2]:\n[Em]Любовью чужой гор[G]ят города, [Bm]\nИзвилистый путь затян[A]улся петлёй; [Em]\nКогда все дороги вед[G]ут в никуда - [Bm]\nНастала пор[A]а возвращаться дом[Em]ой.\n[Em] [G] [Bm] [A] 2p\n\n[Куплет 2, Би-2]:\n[Em]Шумная толпа зап[G]олнила перрон [Bm]\nИ мальчик за стеклом всё м[A]ашет мне рукой. [Em]\nКаждая судьба зав[G]язана со мной, [Bm]\nИ в памяти живой давн[A]о снесённый дом. [Em]`
+  },
+  {
+    id: "s_3",
+    artist: "Би-2",
+    title: "Её глаза",
+    category: "Би-2",
+    capo: "",
+    body: `[Bm]Ее глаза на зв[A]езды непох[D]ожи\nВ них бь[Em]ется мотыльк[D]ом живой ог[A7]онь\nЕще один о[F#m7]бычный вечер пр[G]ожит,\nА с [Bm]ней он к[A]аждый раз друг[G]ой\n\nПрипев\n[Bm]Где-то ангелы крича[G]т\nПрост[F#]и - прощ[Bm]ай\n[Bm7]Плавится душ[G]а\n[F#]Как свеч[Bm]а\n[Bm7]Разлилась по [G]серд[F#]цу печ[Bm]аль\n[Bm7]Я навеки [G]твой, [F#]ты - ничь[Bm]я\n\n[Bm]Ее сиянье за[A]тмевает со[D]лнце\nИ з[Em]амерзает кр[D]овь в ее тен[A(no3)]и\nТакое счастье [F#m7]дорого да[G]ется\nВен[Bm]ец, отк[A(no3)]уда ни взглян[G]и\n\nПроигрыш: [G] [A] [Bm] [Em+7] [Em+7] [A] [F#]`
+  },
+  {
+    id: "s_9",
+    artist: "Нервы",
+    title: "Лаэла",
+    category: "Нервы",
+    capo: "капо 0 (Am C F Dm)",
+    body: `[Вступление]:\n[Am] [C] [F] [Dm]\n\n[Куплет 1]:\n[Am]Она любит [C]своего бойфренда.\n[F]И еще она [Dm]тает на моих руках.\n[Am]Мы не ждем[C] с ней хэппи-энда.\n[F]Мы просто [Dm]запутались в облаках.\n[Am]Но, конечн[C]о, я ей не нужен.\n[F]Но забит е[Dm]е письмами телефон.\n[Am]Я устал, я[C] ужасно загружен.\n[F]Я приду к [Dm]ней и мне будет л[Am]егко! [C]\n\n[Припев 1]:\nИ мы [F]будем игр[Dm]ать в волей[Am]бол. [C]\nИ, кон[F]ечно, я б[Dm]уду не пр[Am]ав. [C]\nИ как[F]ая моя [Dm]в этом роль?\n[Am]И чья [C]игр[F]а? [Dm]\nЛаэл[Am]а, [C] [F] [Dm]\nЛаэл[Am]а… [C] [F] [Dm]`
+  },
+  {
+    id: "s_12",
+    artist: "Нервы",
+    title: "Вороны",
+    category: "Нервы",
+    capo: "",
+    body: `[Bm]Воля в кулаке, мысли в разные стороны,\nПо моей комнат[Bm]е гул[A]яют ч[G]ёрные вороны.\nНа потолке чувств[F#]а одинокие собраны,\nОни с грохотом [F#7]падают мне на г[Bm]олову.\n\nПрипев:\n[Bm]Мне нужен свежий воздух.\n[Bm]И мне не страшно.\n[G]Билет на поезд,\nКуда не важ[Em]но.\nЯ не боюсь [Em]потерять всё,\nНа[G]чать заново о[Asus4]ттуда, к[A]уда зан[Bm]есёт.\n\nПроигрыш: [Bmadd13-] | [Bmadd13-] [A] | [Gmaj] | [F#] [F#7] }x2\n\nНе [Bm]страш[Bm/D]но, не [Bm]страш[Bm/D]но, не [G]страшно, не [F#m]страшно\nКода: [Bm] [G6] [Asus4] | [Bm]`
+  },
+  {
+    id: "s_58",
+    artist: "Noize MC",
+    title: "Ты не считаешь",
+    category: "Нойз",
+    capo: "",
+    body: `[Вступление]:\n[Cm] [Bb] [Eb] [Gm]\n[Куплет]:\n[Cm]Я написал бы тебе грустную пес[Bb]ню полную фраз пустых\n[Eb]Но зато красивых, как ты люби[Bb]шь, [Gm] - кр[Gm6]аски бы сгустил.\n\n[Припев]:\nТы [Cm]не считаешь, с[Bb]колько дней [Eb]я тебе не з[Gm/D]вонил,\nНе [Cm]отвечаешь ни п[Bb]о одной и[Eb]з своих двух [Gm/D]мобил\nИ з[Cm]асыпаешь рядом[Bb] с тем, кого [Eb]я бы у[Gm/D]бил,\nЕсл[Cm]и только бы вс[Bb]третил и е[Eb]сли хватило б[Gm/D]ы сил!`
+  }
+];
+/*__DEFAULT_SONGS_END__*/
+
+/* ============================================================================
+   6. СОСТОЯНИЕ ПРИЛОЖЕНИЯ, РЕНДЕР И WAKE LOCK API
+   ============================================================================ */
+const STORAGE_KEY = 'busker_chordpro_setlist_v4';
+let songs = [];
+let currentSongId = null;
+let currentCategory = 'Все';
+let transposeMap = {};
+let chordVariationMap = {};
+let simplifyMode = false;
+let fontSize = 17;
+let isScrolling = false;
+let scrollSpeed = 0.8;
+let scrollAccum = 0;
+let rafId = null;
+let deleteConfirmPending = false;
+
+function loadSongsFromStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        songs = parsed;
+        if (songs.length >= 50) {
+          document.getElementById('importBanner').style.display = 'none';
+        }
+        return;
+      }
+    }
+  } catch (e) {}
+  songs = [...DEFAULT_SONGS];
+  if (songs.length >= 50) {
+    document.getElementById('importBanner').style.display = 'none';
+  }
+}
+
+function saveSongsToStorage() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(songs));
+  } catch (e) {}
+  document.getElementById('songCount').textContent = songs.length;
+  document.getElementById('drawerCount').textContent = songs.length;
+  if (songs.length >= 50) {
+    document.getElementById('importBanner').style.display = 'none';
+  }
+}
+
+let wakeLock = null;
+async function requestWakeLock() {
+  try {
+    if ('wakeLock' in navigator) {
+      wakeLock = await navigator.wakeLock.request('screen');
+    }
+  } catch (e) {}
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') requestWakeLock();
+});
+
+function extractUniqueChords(body, semi) {
+  const set = new Set();
+  const re = /\[([^\]]+)\]/g;
+  let m;
+  while ((m = re.exec(body)) !== null) {
+    const token = m[1].trim();
+    if (CHORD_TOKEN_REGEX.test(token)) {
+      set.add(transposeSingleChord(token, semi));
+    }
+  }
+  return Array.from(set);
+}
+
+function renderCurrentSong() {
+  const song = songs.find(s => s.id === currentSongId) || songs[0];
+  if (!song) return;
+  currentSongId = song.id;
+
+  const semi = transposeMap[song.id] || 0;
+  document.getElementById('transVal').textContent = semi > 0 ? `+${semi}` : `${semi}`;
+  document.getElementById('songTitle').textContent = `${song.artist} — ${song.title}`;
+
+  const uniqueChords = extractUniqueChords(song.body, semi);
+  const rawChords = extractUniqueChords(song.body, 0);
+  const bestCapo = findBestCapo(rawChords);
+
+  let metaHtml = `<span>Категория: <b>${song.category || 'Разное'}</b></span>`;
+  if (song.capo) {
+    metaHtml += `<span class="badge">📌 ${song.capo}</span>`;
+  }
+  if (/Это было в России/i.test(song.title)) {
+    metaHtml += `<span class="badge capo-suggest" onclick="setSongTranspose(3)">⚡ Включить F G Am Em (+3♯)</span>`;
+  }
+  if (bestCapo && bestCapo.capo > 0 && semi !== bestCapo.shift) {
+    metaHtml += `<span class="badge capo-suggest" onclick="setSongTranspose(${bestCapo.shift})">💡 Без баррэ: Капо ${bestCapo.capo} (${bestCapo.shift})</span>`;
+  }
+  document.getElementById('songMeta').innerHTML = metaHtml;
+
+  renderChordStrip(uniqueChords);
+
+  const lines = song.body.split('\n');
+  let html = '';
+  let inTabBlock = false;
+  let tabBuffer = [];
+
+  const flushTab = () => {
+    if (tabBuffer.length) {
+      html += `<pre class="guitar-tab">${tabBuffer.join('\n')}</pre>`;
+      tabBuffer = [];
+      inTabBlock = false;
+    }
+  };
+
+  for (const line of lines) {
+    if (isGuitarTabLine(line)) {
+      inTabBlock = true;
+      tabBuffer.push(line.replace(/</g, '&lt;'));
+      continue;
+    } else if (inTabBlock) {
+      flushTab();
+    }
+
+    const trimmed = line.trim();
+    if (!trimmed) {
+      html += `<div class="lyric-empty"></div>`;
+      continue;
+    }
+
+    if (!line.includes('[') && /^(Куплет|Припев|Пред-припев|Пре-хорус|Постприпев|Бридж|Переход|Финал|Проигрыш|Кода|Соло|Verse|Chorus|Pre-Chorus|Bridge|Coda|Interlude|Intro|Outro|\d+\s*куплет)/i.test(trimmed)) {
+      html += `<div class="section-tag">${trimmed}</div>`;
+      continue;
+    }
+    if (/^\[(Куплет|Припев|Пред-припев|Пре-хорус|Постприпев|Бридж|Переход|Финал|Проигрыш|Кода|Соло|Verse|Chorus|Pre-Chorus|Bridge|Coda|Interlude|Intro|Outro)[^\]]*\]:?$/i.test(trimmed)) {
+      html += `<div class="section-tag">${trimmed.replace(/[\[\]]/g, '')}</div>`;
+      continue;
+    }
+
+    const parts = line.split(/(\[[^\]]+\])/g);
+    let lineHtml = `<div class="lyric-line">`;
+    let i = 0;
+    while (i < parts.length) {
+      const part = parts[i];
+      if (part.startsWith('[') && part.endsWith(']')) {
+        const inner = part.slice(1, -1).trim();
+        if (CHORD_TOKEN_REGEX.test(inner)) {
+          const trChord = transposeSingleChord(inner, semi);
+          const nextText = (i + 1 < parts.length && !parts[i + 1].startsWith('[')) ? parts[i + 1] : '';
+          lineHtml += `<span class="pair"><span class="ch" onclick="openChordPopup('${trChord.replace(/'/g, "\\'")}')">${trChord}</span><span class="wd">${nextText || ' '}</span></span>`;
+          i += 2;
+          continue;
+        } else {
+          lineHtml += `<span class="section-tag">${inner}</span>`;
+          i++;
+          continue;
+        }
+      } else if (part) {
+        lineHtml += `<span class="pair"><span class="ch-empty"></span><span class="wd">${part}</span></span>`;
+      }
+      i++;
+    }
+    lineHtml += `</div>`;
+    html += lineHtml;
+  }
+  flushTab();
+
+  document.getElementById('lyricsArea').innerHTML = html;
+  renderSetlist();
+}
+
+function renderChordStrip(chords) {
+  const strip = document.getElementById('chordStrip');
+  if (!chords.length) {
+    strip.innerHTML = `<span style="font-size:12px; color:var(--text-muted);">В этой песне не размечены аккорды</span>`;
+    return;
+  }
+  strip.innerHTML = chords.map(ch => {
+    const vars = getChordVoicings(ch);
+    const idx = (chordVariationMap[ch] || 0) % vars.length;
+    const v = vars[idx];
+    const safeCh = ch.replace(/'/g, "\\'");
+    return `
+      <div class="chord-card" data-chord="${ch}" onclick="playGuitarChord([${v.f.join(',')}])">
+        <div class="chord-card-name">${ch}</div>
+        <div class="chord-card-pos">${v.n}</div>
+        ${renderChordSvg(v.f)}
+        ${vars.length > 1 ? `
+          <div class="chord-nav" onclick="event.stopPropagation()">
+            <button onclick="cycleChordVar('${safeCh}', -1)">◀</button>
+            <span>${idx + 1}/${vars.length}</span>
+            <button onclick="cycleChordVar('${safeCh}', 1)">▶</button>
+          </div>
+        ` : `<div class="chord-nav" style="justify-content:center;"><span>1/1</span></div>`}
+      </div>
+    `;
+  }).join('');
+}
+
+function cycleChordVar(chord, dir) {
+  const vars = getChordVoicings(chord);
+  const cur = chordVariationMap[chord] || 0;
+  chordVariationMap[chord] = (cur + dir + vars.length) % vars.length;
+  const newFrets = vars[chordVariationMap[chord]].f;
+  playGuitarChord(newFrets);
+  renderCurrentSong();
+}
+
+function openChordPopup(chord) {
+  const vars = getChordVoicings(chord);
+  playGuitarChord(vars[chordVariationMap[chord] || 0].f);
+  document.getElementById('popupChordTitle').textContent = `Аккорд ${chord} — все варианты на грифе`;
+  document.getElementById('popupChordBody').innerHTML = vars.map((v, i) => `
+    <div class="chord-card" style="flex:0 0 115px;" onclick="playGuitarChord([${v.f.join(',')}])">
+      <div class="chord-card-name">${chord}</div>
+      <div class="chord-card-pos">${i + 1}. ${v.n}</div>
+      ${renderChordSvg(v.f, 102, 112)}
+    </div>
+  `).join('');
+  document.getElementById('chordModal').classList.add('open');
+}
+
+/* ============================================================================
+   7. УПРАВЛЕНИЕ: ТРАНСПОНИРОВАНИЕ, КАПО, АВТОСКРОЛЛ, СЕТЛИСТ
+   ============================================================================ */
+function changeTranspose(delta) {
+  const cur = transposeMap[currentSongId] || 0;
+  let next = cur + delta;
+  if (next > 11) next -= 12;
+  if (next < -11) next += 12;
+  transposeMap[currentSongId] = next;
+  renderCurrentSong();
+}
+
+function setSongTranspose(val) {
+  transposeMap[currentSongId] = val;
+  renderCurrentSong();
+}
+
+function resetTranspose() {
+  transposeMap[currentSongId] = 0;
+  renderCurrentSong();
+  showToast('Тональность сброшена (0)');
+}
+
+function applySmartCapo() {
+  const song = songs.find(s => s.id === currentSongId);
+  if (!song) return;
+  const rawChords = extractUniqueChords(song.body, 0);
+  const best = findBestCapo(rawChords);
+  if (!best || best.capo === 0) {
+    transposeMap[currentSongId] = 0;
+    showToast('В этой песне уже открытые аккорды');
+  } else {
+    const nextVal = (transposeMap[currentSongId] === best.shift) ? 0 : best.shift;
+    transposeMap[currentSongId] = nextVal;
+    showToast(nextVal !== 0 ? `Капо на ${best.capo} лад (аккорды ${best.shift} пт)` : 'Возврат к оригинальным аккордам');
+  }
+  renderCurrentSong();
+}
+
+function toggleSimplify() {
+  simplifyMode = !simplifyMode;
+  document.getElementById('simplifyBtn').classList.toggle('active', simplifyMode);
+  renderCurrentSong();
+  showToast(simplifyMode ? 'Упрощение аккордов включено' : 'Оригинальные аккорды');
+}
+
+function changeFontSize(delta) {
+  fontSize = Math.min(28, Math.max(12, fontSize + delta));
+  document.documentElement.style.setProperty('--font-size-lyrics', fontSize + 'px');
+  document.getElementById('fontVal').textContent = fontSize;
+}
+
+function toggleTheme() {
+  document.body.classList.toggle('light-theme');
+  const isLight = document.body.classList.contains('light-theme');
+  document.getElementById('themeBtn').textContent = isLight ? '🪵' : '☀️';
+  showToast(isLight ? '☀️ Дневная тема' : '🪵 Тёмная древесная тема');
+}
+
+function toggleChordStrip() {
+  const strip = document.getElementById('chordStrip');
+  strip.classList.toggle('collapsed');
+  document.getElementById('hideChordsBtn').textContent = strip.classList.contains('collapsed') ? 'Показать ▼' : 'Скрыть ▲';
+}
+
+function toggleChordGrid() {
+  const strip = document.getElementById('chordStrip');
+  strip.classList.toggle('grid-mode');
+  document.getElementById('gridModeBtn').classList.toggle('active', strip.classList.contains('grid-mode'));
+}
+
+function scrollLoop() {
+  if (!isScrolling) return;
+  scrollAccum += scrollSpeed * 0.45;
+  if (scrollAccum >= 1) {
+    const px = Math.floor(scrollAccum);
+    window.scrollBy(0, px);
+    scrollAccum -= px;
+  }
+  rafId = requestAnimationFrame(scrollLoop);
+}
+
+function toggleAutoscroll() {
+  isScrolling = !isScrolling;
+  const btn = document.getElementById('scrollBtn');
+  btn.classList.toggle('playing', isScrolling);
+  btn.textContent = isScrolling ? '⏸ Пауза' : '▶ Скролл';
+  if (isScrolling) {
+    requestWakeLock();
+    rafId = requestAnimationFrame(scrollLoop);
+  } else if (rafId) {
+    cancelAnimationFrame(rafId);
+  }
+}
+
+function changeScrollSpeed(delta) {
+  scrollSpeed = Math.round(Math.min(4.0, Math.max(0.2, scrollSpeed + delta)) * 10) / 10;
+  document.getElementById('speedVal').textContent = scrollSpeed.toFixed(1) + 'x';
+}
+
+function toggleDrawer(open) {
+  deleteConfirmPending = false;
+  const delBtn = document.getElementById('deleteSongBtn');
+  if (delBtn) delBtn.textContent = '🗑 Удалить трек';
+  document.getElementById('drawer').classList.toggle('open', open);
+  document.getElementById('drawerBackdrop').classList.toggle('open', open);
+}
+
+function renderSetlist() {
+  const categories = ['Все', ...new Set(songs.map(s => s.category || 'Разное'))];
+  document.getElementById('catChips').innerHTML = categories.map(cat => `
+    <span class="chip ${cat === currentCategory ? 'active' : ''}" onclick="selectCategory('${cat}')">${cat}</span>
+  `).join('');
+
+  const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  const filtered = songs.filter(s => {
+    const matchCat = currentCategory === 'Все' || (s.category || 'Разное') === currentCategory;
+    const matchQ = !q || s.title.toLowerCase().includes(q) || s.artist.toLowerCase().includes(q) || s.body.toLowerCase().includes(q);
+    return matchCat && matchQ;
+  });
+
+  document.getElementById('songCount').textContent = songs.length;
+  document.getElementById('drawerCount').textContent = songs.length;
+  document.getElementById('songList').innerHTML = filtered.map((s, idx) => `
+    <div class="song-item ${s.id === currentSongId ? 'active' : ''}" onclick="selectSong('${s.id}')">
+      <div style="min-width:0;">
+        <div class="song-item-title">${idx + 1}. ${s.title}</div>
+        <div class="song-item-sub">${s.artist}</div>
+      </div>
+      ${s.capo ? `<span class="song-item-capo">${s.capo}</span>` : ''}
+    </div>
+  `).join('');
+}
+
+function selectCategory(cat) {
+  currentCategory = cat;
+  renderSetlist();
+}
+
+function selectSong(id) {
+  currentSongId = id;
+  if (isScrolling) toggleAutoscroll();
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  renderCurrentSong();
+  toggleDrawer(false);
+}
+
+function stepSong(dir) {
+  const idx = songs.findIndex(s => s.id === currentSongId);
+  if (idx === -1) return;
+  const nextIdx = (idx + dir + songs.length) % songs.length;
+  selectSong(songs[nextIdx].id);
+}
+
+/* ============================================================================
+   8. ИМПОРТ ФАЙЛА 53 штуки+.txt, РЕДАКТОР И САМОСБОРКА INDEX.HTML ДЛЯ GITHUB
+   ============================================================================ */
+function handleFileImport(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const content = e.target.result;
+    if (file.name.endsWith('.json')) {
+      try {
+        const parsed = JSON.parse(content);
+        if (Array.isArray(parsed) && parsed.length) {
+          songs = parsed;
+          currentSongId = songs[0].id;
+          currentCategory = 'Все';
+          saveSongsToStorage();
+          renderCurrentSong();
+          showToast(`✅ Загружено треков из JSON: ${songs.length}`);
+        }
+      } catch (err) {
+        showToast('Ошибка чтения JSON файла', true);
+      }
+    } else {
+      const imported = parseMultiSongTxt(content);
+      if (imported.length) {
+        songs = imported;
+        currentSongId = songs[0].id;
+        currentCategory = 'Все';
+        saveSongsToStorage();
+        renderCurrentSong();
+        showToast(`🎸 Загружено песен из файла: ${imported.length}!`);
+      } else {
+        showToast('Не удалось распознать песни в файле', true);
+      }
+    }
+    event.target.value = '';
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+let editingSongId = null;
+function openEditModal(songId) {
+  editingSongId = songId;
+  const modal = document.getElementById('editModal');
+  if (songId) {
+    const s = songs.find(x => x.id === songId);
+    if (!s) return;
+    document.getElementById('modalTitle').textContent = 'Редактировать трек';
+    document.getElementById('editArtist').value = s.artist;
+    document.getElementById('editTitle').value = s.title;
+    document.getElementById('editCapo').value = s.capo || '';
+    document.getElementById('editBody').value = s.body;
+  } else {
+    document.getElementById('modalTitle').textContent = 'Добавить трек (или пачку через -----)';
+    document.getElementById('editArtist').value = '';
+    document.getElementById('editTitle').value = '';
+    document.getElementById('editCapo').value = '';
+    document.getElementById('editBody').value = '';
+  }
+  modal.classList.add('open');
+}
+
+function openQuickPasteModal() {
+  openEditModal(null);
+}
+
+function closeEditModal() {
+  document.getElementById('editModal').classList.remove('open');
+}
+
+async function pasteFromClipboardAndParse() {
+  try {
+    const clip = await navigator.clipboard.readText();
+    if (!clip.trim()) return;
+    document.getElementById('editBody').value = clip;
+    convertTextareaToChordPro();
+    showToast('Текст вставлен и размечен в [ChordPro]');
+  } catch (e) {
+    showToast('Вставь текст в поле ниже и нажми ⚡ Склеить аккорды', true);
+  }
+}
+
+function convertTextareaToChordPro() {
+  const raw = document.getElementById('editBody').value;
+  if (!raw.trim()) return;
+  const lines = raw.replace(/\r\n?/g, '\n').split('\n');
+  if (!document.getElementById('editTitle').value.trim() && lines[0].includes(' - ')) {
+    const first = lines.shift().trim();
+    const parts = first.split(/\s+-\s+/);
+    document.getElementById('editArtist').value = parts[0] || '';
+    document.getElementById('editTitle').value = parts.slice(1).join(' - ') || '';
+  }
+  document.getElementById('editBody').value = convertLinesToChordPro(lines, 0);
+}
+
+function transposeTextarea(semi) {
+  const raw = document.getElementById('editBody').value;
+  document.getElementById('editBody').value = raw.replace(/\[([^\]]+)\]/g, (m, c) => {
+    if (CHORD_TOKEN_REGEX.test(c.trim())) return `[${transposeSingleChord(c.trim(), semi)}]`;
+    return m;
+  });
+}
+
+function saveEditedSong() {
+  const rawBody = document.getElementById('editBody').value;
+  if (!rawBody.trim()) return;
+
+  // Поддержка пакетной вставки с нормализацией \r\n
+  if (!editingSongId && /\r?\n[ \t]*-{4,}[ \t]*\r?\n/.test(rawBody)) {
+    const batch = parseMultiSongTxt(rawBody);
+    if (batch.length) {
+      songs = [...songs, ...batch];
+      currentSongId = batch[0].id;
+      saveSongsToStorage();
+      renderCurrentSong();
+      closeEditModal();
+      showToast(`Добавлено песен пачкой: ${batch.length}`);
+      return;
+    }
+  }
+
+  const artist = document.getElementById('editArtist').value.trim() || 'Разное';
+  const title = document.getElementById('editTitle').value.trim() || 'Без названия';
+  const capo = document.getElementById('editCapo').value.trim();
+  const normLines = rawBody.replace(/\r\n?/g, '\n').split('\n');
+  const convertedBody = rawBody.includes('[') ? rawBody.replace(/\r\n?/g, '\n') : convertLinesToChordPro(normLines, 0);
+
+  if (editingSongId) {
+    const idx = songs.findIndex(s => s.id === editingSongId);
+    if (idx !== -1) {
+      songs[idx] = { ...songs[idx], artist, title, capo, body: convertedBody };
+    }
+  } else {
+    const newSong = {
+      id: 'song_' + Date.now(),
+      artist,
+      title,
+      category: artist,
+      capo,
+      body: convertedBody
+    };
+    songs.unshift(newSong);
+    currentSongId = newSong.id;
+  }
+  saveSongsToStorage();
+  renderCurrentSong();
+  closeEditModal();
+  showToast('💾 Песня сохранена в треклист');
+}
+
+function deleteCurrentSong() {
+  if (songs.length <= 1) {
+    showToast('Нельзя удалить единственную песню', true);
+    return;
+  }
+  const delBtn = document.getElementById('deleteSongBtn');
+  if (!deleteConfirmPending) {
+    deleteConfirmPending = true;
+    delBtn.textContent = '⚠️ Точно удалить? Нажми ещё раз';
+    return;
+  }
+  deleteConfirmPending = false;
+  delBtn.textContent = '🗑 Удалить трек';
+  songs = songs.filter(x => x.id !== currentSongId);
+  currentSongId = songs[0].id;
+  saveSongsToStorage();
+  renderCurrentSong();
+  showToast('Песня удалена');
+}
+
+function exportJsonBackup() {
+  const blob = new Blob([JSON.stringify(songs, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `setlist_${songs.length}_songs.json`;
+  a.click();
+  showToast('💾 Бэкап .json скачан');
+}
+
+// БЕЗОПАСНАЯ СБОРКА ГОТОВОГО INDEX.HTML СО ВСЕМИ ВШИТЫМИ ТРЕКАМИ ДЛЯ GITHUB PAGES
+function exportSelfContainedHtml() {
+  const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  const replacement = `/*__DEFAULT_SONGS_START__*/\nconst DEFAULT_SONGS = ${JSON.stringify(songs, null, 2)};\n/*__DEFAULT_SONGS_END__*/`;
+  const updatedHtml = fullHtml.replace(
+    /\/\*__DEFAULT_SONGS_START__\*\/[\s\S]*?\/\*__DEFAULT_SONGS_END__\*\//,
+    () => replacement
+  );
+  const blob = new Blob([updatedHtml], { type: 'text/html;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'index.html';
+  a.click();
+  showToast(`📦 Готовый index.html (${songs.length} песен) скачан!`);
+}
+
+// Инициализация
+loadSongsFromStorage();
+currentSongId = songs[0]?.id || null;
+renderCurrentSong();
+requestWakeLock();
+</script>
+</body>
+</html>
